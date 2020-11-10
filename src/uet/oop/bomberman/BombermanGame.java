@@ -7,10 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
-import uet.oop.bomberman.entities.Bomber;
-import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Grass;
-import uet.oop.bomberman.entities.Wall;
+import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.ArrayList;
@@ -20,7 +17,8 @@ public class BombermanGame extends Application {
     
     public static final int WIDTH = 20;
     public static final int HEIGHT = 15;
-    
+
+    private Game game;
     private GraphicsContext gc;
     private Canvas canvas;
     private List<Entity> entities = new ArrayList<>();
@@ -48,30 +46,30 @@ public class BombermanGame extends Application {
         stage.setScene(scene);
         stage.show();
 
+        game = new Game();
+
+        Entity p = new Player(1, 1, Sprite.player_right);
+
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
                 render();
-                update();
             }
         };
         timer.start();
 
         createMap();
 
-        Entity bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        entities.add(bomberman);
     }
 
     public void createMap() {
+        Entity object;
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
-                Entity object;
                 if (j == 0 || j == HEIGHT - 1 || i == 0 || i == WIDTH - 1) {
-                    object = new Wall(i, j, Sprite.wall.getFxImage());
-                }
-                else {
-                    object = new Grass(i, j, Sprite.grass.getFxImage());
+                    object = new Wall(i, j, Sprite.wall);
+                } else {
+                    object = new Grass(i, j, Sprite.grass);
                 }
                 stillObjects.add(object);
             }
@@ -79,7 +77,7 @@ public class BombermanGame extends Application {
     }
 
     public void update() {
-        entities.forEach(Entity::update);
+        stillObjects.forEach(Entity::update);
     }
 
     public void render() {

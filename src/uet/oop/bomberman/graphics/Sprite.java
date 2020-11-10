@@ -237,4 +237,12 @@ public class Sprite {
 		}
 		return output;
 	}
+
+	public int getSize() {
+		return SIZE;
+	}
+
+	public int getPixels(int i) {
+		return pixels[i];
+	}
 }
