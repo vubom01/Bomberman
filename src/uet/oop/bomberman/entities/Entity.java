@@ -10,26 +10,23 @@ import uet.oop.bomberman.graphics.Sprite;
 
 public abstract class Entity {
     protected double x, y;
+    protected boolean removed = false;
     protected Sprite sprite;
 
-    public Entity( int x, int y, Sprite sprite) {
-        this.x = x;
-        this.y = y;
-        this.sprite = sprite;
-    }
-
-    public void render(GraphicsContext gc) {
-        SnapshotParameters params = new SnapshotParameters();
-        params.setFill(Color.TRANSPARENT);
-
-        ImageView iv = new ImageView(sprite.getFxImage());
-        Image base = iv.snapshot(params, null);
-
-        gc.drawImage(base, x * Sprite.SCALED_SIZE, y * Sprite.SCALED_SIZE);
-    }
+    public abstract void update();
 
     public abstract void render(Screen screen);
-    public abstract void update();
+
+    public abstract boolean collide(Entity e);
+
+
+    public void remove() {
+        removed = true;
+    }
+
+    public boolean isRemoved() {
+        return removed;
+    }
 
     public Sprite getSprite() {
         return sprite;
@@ -42,6 +39,5 @@ public abstract class Entity {
     public double getY() {
         return y;
     }
-
 
 }

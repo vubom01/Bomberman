@@ -7,13 +7,6 @@ public class Keyboard implements KeyListener {
 
     public boolean up, down, left, right, space;
 
-    public Keyboard() {
-        up = false;
-        down = false;
-        left = false;
-        right = false;
-        space = false;
-    }
     @Override
     public void keyTyped(KeyEvent e) {
 
