@@ -38,8 +38,15 @@ public class Player extends Mob {
 
     @Override
     public void render(Screen screen) {
-        setSprite();
-        screen.renderEntity((int)x, (int)y - sprite.SIZE, this);
+        if (moving == true) {
+            setSprite();
+        } else {
+            if (direction == 0) sprite = Sprite.player_up;
+            if (direction == 1) sprite = Sprite.player_down;
+            if (direction == 2) sprite = Sprite.player_left;
+            if (direction == 3) sprite = Sprite.player_right;
+        }
+        screen.renderEntity((int) x, (int) y - sprite.SIZE, this);
     }
 
     @Override
@@ -97,6 +104,7 @@ public class Player extends Mob {
     }
 
     public void setSprite() {
+        // time = 60: 60fps
         switch (direction) {
             case 0:
                 sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, _animate, 60);

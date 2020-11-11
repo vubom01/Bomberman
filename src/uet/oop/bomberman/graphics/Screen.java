@@ -1,6 +1,7 @@
 package uet.oop.bomberman.graphics;
 
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.mob.Player;
 
 import java.awt.*;
 
@@ -9,6 +10,8 @@ public class Screen {
     protected int width, height;
     public int[] pixels;
     private int transparent_color = 0xffff00ff;
+
+    public static int xOffset = 0, yOffset = 0;
 
     public Screen(int width, int height) {
         this.width = width;
@@ -29,6 +32,7 @@ public class Screen {
             }
         }
     }
+
 
     public void drawChangeLevel(Graphics g, int level) {
         g.setColor(Color.black);
