@@ -2,6 +2,8 @@ package uet.oop.bomberman.graphics;
 
 import uet.oop.bomberman.entities.Entity;
 
+import java.awt.*;
+
 public class Screen {
 
     protected int width, height;
@@ -28,4 +30,18 @@ public class Screen {
         }
     }
 
+    public void drawChangeLevel(Graphics g, int level) {
+        g.setColor(Color.black);
+        g.fillRect(0, 0, width * 3, height * 3);
+
+        Font font = new Font("Arial", Font.PLAIN, 20 * 3);
+        g.setFont(font);
+        g.setColor(Color.white);
+    }
+
+    public void clear() {
+        for (int i = 0; i < pixels.length; i++) {
+            pixels[i] = 0;
+        }
+    }
 }

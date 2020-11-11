@@ -28,6 +28,8 @@ public abstract class Mob extends AnimatedEntity {
 
     public abstract void dead();
 
+    protected abstract void calculateMove();
+
     public abstract void canMove(double xa, double ya);
 
     public boolean isAlive() {
