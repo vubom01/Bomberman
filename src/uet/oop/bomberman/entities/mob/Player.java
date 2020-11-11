@@ -32,6 +32,7 @@ public class Player extends Mob {
 
     @Override
     public void update() {
+        animate();
         calculateMove();
     }
 
@@ -98,16 +99,16 @@ public class Player extends Mob {
     public void setSprite() {
         switch (direction) {
             case 0:
-                sprite = Sprite.player_up;
+                sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, _animate, 60);
                 break;
             case 1:
-                sprite = Sprite.player_down;
+                sprite = Sprite.movingSprite(Sprite.player_down, Sprite.player_down_1, Sprite.player_down_2, _animate, 60);
                 break;
             case 2:
-                sprite = Sprite.player_left;
+                sprite = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, _animate, 60);;
                 break;
             default:
-                sprite = Sprite.player_right;
+                sprite = Sprite.movingSprite(Sprite.player_right, Sprite.player_right_1, Sprite.player_right_2, _animate, 60);
                 break;
         }
     }
