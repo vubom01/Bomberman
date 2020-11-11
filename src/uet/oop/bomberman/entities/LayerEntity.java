@@ -35,8 +35,8 @@ public class LayerEntity extends Entity {
     }
 
     @Override
-    public boolean collide(Entity e) {
-        return getTopEntity().collide(e);
+    public boolean checkcollision(Entity e) {
+        return getTopEntity().checkcollision(e);
     }
 
     public Entity getTopEntity() {

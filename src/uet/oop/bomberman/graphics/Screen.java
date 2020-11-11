@@ -29,8 +29,9 @@ public class Screen {
             int ya = y + yp;
             for (int x = 0; x < entity.getSprite().getSize(); x++) {
                 int xa = x + xp;
-                if (xa < -entity.getSprite().getSize() || xa >= width || ya < 0 || ya >= height) break;
+                if (xa < -entity.getSprite().getSize() || xa >= width || ya < -entity.getSprite().getSize() || ya >= height) break;
                 if (xa < 0) xa = 0;
+                if (ya < 0) ya = 0;
                 int color = entity.getSprite().getPixels(x + y * entity.getSprite().getSize());
                 if (color != transparent_color) pixels[xa + ya * width] = color;
             }
@@ -51,7 +52,7 @@ public class Screen {
         int firstBreakpoint = board.getWidth() / 4;
         int lastBreakpoint = board.getWidth() - firstBreakpoint;
 
-        if(player.getX() / 16 > firstBreakpoint + 0.5 && player.getX() / 16 < lastBreakpoint - 0.5) {
+        if(player.getX() / 16 > firstBreakpoint + 0.45 && player.getX() / 16 < lastBreakpoint - 0.45) {
             temp = player.getX()  - (Game.WIDTH / 2);
         }
 
@@ -64,7 +65,7 @@ public class Screen {
         int firstBreakpoint = board.getHeight() / 4;
         int lastBreakpoint = board.getHeight() - firstBreakpoint;
 
-        if(player.getY() / 16 > firstBreakpoint + 0.5 && player.getY() / 16 < lastBreakpoint - 0.5) {
+        if(player.getY() / 16 > firstBreakpoint - 0.5 && player.getY() / 16 < lastBreakpoint + 0.5) {
             temp = player.getY()  - (Game.HEIGHT / 2);
         }
 

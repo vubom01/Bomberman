@@ -17,7 +17,7 @@ public abstract class Entity {
 
     public abstract void render(Screen screen);
 
-    public abstract boolean collide(Entity e);
+    public abstract boolean checkcollision(Entity e);
 
 
     public void remove() {

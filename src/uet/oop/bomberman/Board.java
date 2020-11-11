@@ -106,4 +106,8 @@ public class Board {
     public int getHeight() {
         return level.getHeight();
     }
+
+    public CreateMap getLevel() {
+        return level;
+    }
 }

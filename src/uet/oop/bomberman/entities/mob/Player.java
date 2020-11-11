@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities.mob;
 
 import uet.oop.bomberman.Board;
+import uet.oop.bomberman.CreateMap;
 import uet.oop.bomberman.Game;
 import uet.oop.bomberman.Keyboard;
 import uet.oop.bomberman.entities.Entity;
@@ -37,8 +38,11 @@ public class Player extends Mob {
 
     @Override
     public void render(Screen screen) {
-        calculateXOffset();
-        calculateYOffset();
+        if (board.getLevel().getWidth() == 31) {
+            calculateXOffset();
+        } else if (board.getLevel().getHeight() == 29) {
+            calculateYOffset();
+        }
 
         if (moving == true) {
             setSprite();
@@ -52,7 +56,7 @@ public class Player extends Mob {
     }
 
     @Override
-    public boolean collide(Entity e) {
+    public boolean checkcollision(Entity e) {
         return false;
     }
 

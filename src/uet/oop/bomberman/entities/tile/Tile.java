@@ -12,7 +12,7 @@ public abstract class Tile extends Entity {
         this.sprite = sprite;
     }
 
-    public boolean collide(Entity e) {
+    public boolean checkcollision(Entity e) {
         return false;
     }
 
