@@ -16,8 +16,12 @@ public class Player extends Mob {
 
     protected Keyboard input;
 
-    protected int _timeBetweenPutBombs = 0;
-
+    /* 0: up
+    // 1: down
+    // 2: left
+    // 3: right
+     */
+    public int direction = 3;
 
     public Player(int x, int y, Board board) {
         super(x, y, board);
@@ -28,15 +32,12 @@ public class Player extends Mob {
 
     @Override
     public void update() {
-        if(_timeBetweenPutBombs < -7500) _timeBetweenPutBombs = 0; else _timeBetweenPutBombs--; //dont let this get tooo big
-
-        animate();
-
         calculateMove();
     }
 
     @Override
     public void render(Screen screen) {
+        setSprite();
         screen.renderEntity((int)x, (int)y - sprite.SIZE, this);
     }
 
@@ -48,10 +49,22 @@ public class Player extends Mob {
     @Override
     protected void calculateMove() {
         int xa = 0, ya = 0;
-        if(input.up) ya--;
-        if(input.down) ya++;
-        if(input.left) xa--;
-        if(input.right) xa++;
+        if(input.up) {
+            direction = 0;
+            ya--;
+        }
+        if(input.down) {
+            direction = 1;
+            ya++;
+        }
+        if(input.left) {
+            direction = 2;
+            xa--;
+        }
+        if(input.right) {
+            direction = 3;
+            xa++;
+        }
 
         if(xa != 0 || ya != 0)  {
             move(xa * Game.getPlayerSpeed(), ya * Game.getPlayerSpeed());
@@ -80,5 +93,22 @@ public class Player extends Mob {
     @Override
     public void dead() {
 
+    }
+
+    public void setSprite() {
+        switch (direction) {
+            case 0:
+                sprite = Sprite.player_up;
+                break;
+            case 1:
+                sprite = Sprite.player_down;
+                break;
+            case 2:
+                sprite = Sprite.player_left;
+                break;
+            default:
+                sprite = Sprite.player_right;
+                break;
+        }
     }
 }

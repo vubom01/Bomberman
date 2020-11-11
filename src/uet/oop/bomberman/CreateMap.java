@@ -47,9 +47,6 @@ public class CreateMap {
                     case '#':
                         board.addEntity(pos, new WallTile(x, y, Sprite.wall));
                         break;
-                    case ' ':
-                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass));
-                        break;
                     case 'p':
                         board.addMob(new Player(x * 16, y * 16 + 16, board));
                         board.addEntity(pos, new GrassTile(x, y, Sprite.grass));

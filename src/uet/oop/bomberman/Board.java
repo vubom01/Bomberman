@@ -12,7 +12,6 @@ import java.util.List;
 
 public class Board {
 
-    public int width, height;
     protected CreateMap level;
     protected Game game;
     protected Keyboard input;
@@ -20,8 +19,6 @@ public class Board {
 
     public Entity[] entities;
     public List<Mob> mobs = new ArrayList<Mob>();
-
-    private int _screenToShow = -1; //1:endgame, 2:changelevel, 3:paused
 
     public Board(Game game, Keyboard input, Screen screen) {
         this.game = game;
@@ -32,11 +29,9 @@ public class Board {
     }
 
     public void update() {
-
         updateEntities();
         updateMobs();
     }
-
 
     public void render(Screen screen) {
         for (int y = 0; y < level.getHeight(); y++) {
@@ -47,17 +42,7 @@ public class Board {
         renderMobs(screen);
     }
 
-    public void newGame() {
-        changeLevel(1);
-    }
-
-    public void restartLevel() {
-        changeLevel(level.getLevel());
-    }
-
     public void changeLevel(int levelNumber) {
-        _screenToShow = 2;
-
         try {
             level = new CreateMap("res/levels/Level" + levelNumber + ".txt", this);
             entities = new Entity[level.getHeight() * level.getWidth()];
@@ -77,12 +62,6 @@ public class Board {
 
     public void addMob(Mob e) {
         mobs.add(e);
-    }
-
-    protected void renderEntities(Screen screen) {
-        for (int i = 0; i < entities.length; i++) {
-            entities[i].render(screen);
-        }
     }
 
     protected void renderMobs(Screen screen) {

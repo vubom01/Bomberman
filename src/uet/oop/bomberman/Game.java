@@ -11,36 +11,15 @@ import java.awt.image.DataBufferInt;
 
 public class Game extends Canvas {
 
-    public static final double VERSION = 1.9;
-
     public static final int TILES_SIZE = 16,
-            WIDTH = TILES_SIZE * (int)(31), //minus one to ajust the window,
+            WIDTH = TILES_SIZE * (int)(31),
             HEIGHT = 13 * TILES_SIZE;
 
     public static int SCALE = 3;
 
-    public static final String TITLE = "Bomberman " + VERSION;
-
-    //initial configs
-    private static final int BOMBRATE = 1;
-    private static final int BOMBRADIUS = 1;
     private static final double PLAYERSPEED = 1.0;
 
-    public static final int TIME = 200;
-    public static final int POINTS = 0;
-    public static final int LIVES = 3;
-
-    protected static int SCREENDELAY = 3;
-
-
-    //can be modified with bonus
-    protected static int bombRate = BOMBRATE;
-    protected static int bombRadius = BOMBRADIUS;
     protected static double playerSpeed = PLAYERSPEED;
-
-
-    //Time in the level screen in seconds
-    protected int _screenDelay = SCREENDELAY;
 
     private Keyboard input;
     private boolean _running = false;
@@ -50,13 +29,11 @@ public class Game extends Canvas {
     private Screen screen;
     private Frame frame;
 
-    //this will be used to render the game, each render is a calculated image saved here
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 
     public Game(Frame frame) {
-        frame = frame;
-        frame.setTitle(TITLE);
+        this.frame = frame;
 
         screen = new Screen(WIDTH, HEIGHT);
         input = new Keyboard();
@@ -66,10 +43,10 @@ public class Game extends Canvas {
     }
 
 
-    private void renderGame() { //render will run the maximum times it can per second
-        BufferStrategy bs = getBufferStrategy(); //create a buffer to store images using canvas
-        if(bs == null) { //if canvas dont have a bufferstrategy, create it
-            createBufferStrategy(3); //triple buffer
+    private void renderGame() {
+        BufferStrategy bs = getBufferStrategy();
+        if(bs == null) {
+            createBufferStrategy(3);
             return;
         }
 
@@ -77,7 +54,7 @@ public class Game extends Canvas {
 
         board.render(screen);
 
-        for (int i = 0; i < pixels.length; i++) { //create the image to be rendered
+        for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
         }
 
@@ -89,7 +66,7 @@ public class Game extends Canvas {
         bs.show();
     }
 
-    private void renderScreen() { //TODO: merge these render methods
+    private void renderScreen() {
         BufferStrategy bs = getBufferStrategy();
         if(bs == null) {
             createBufferStrategy(3);
@@ -114,11 +91,8 @@ public class Game extends Canvas {
         _running = true;
 
         long  lastTime = System.nanoTime();
-        long timer = System.currentTimeMillis();
-        final double ns = 1000000000.0 / 60.0; //nanosecond, 60 frames per second
+        final double ns = 1000000000.0 / 60.0;
         double delta = 0;
-        int frames = 0;
-        int updates = 0;
         requestFocus();
         while(_running) {
             long now = System.nanoTime();
@@ -126,9 +100,7 @@ public class Game extends Canvas {
             lastTime = now;
             while(delta >= 1) {
                 update();
-                updates++;
                 delta--;
-
                 renderGame();
             }
         }
