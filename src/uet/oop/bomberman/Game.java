@@ -107,7 +107,6 @@ public class Game extends Canvas {
     }
 
     private void update() {
-        input.update();
         board.update();
     }
 

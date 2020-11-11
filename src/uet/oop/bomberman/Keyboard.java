@@ -5,29 +5,28 @@ import java.awt.event.KeyListener;
 
 public class Keyboard implements KeyListener {
 
-    private boolean[] keys = new boolean[120]; //120 is enough to this game
     public boolean up, down, left, right, space;
-
-    public void update() {
-        up = keys[KeyEvent.VK_UP];
-        down = keys[KeyEvent.VK_DOWN];
-        left = keys[KeyEvent.VK_LEFT];
-        right = keys[KeyEvent.VK_RIGHT];
-        space = keys[KeyEvent.VK_SPACE];
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {}
 
     @Override
     public void keyPressed(KeyEvent e) {
-        keys[e.getKeyCode()] = true;
+        if (e.getKeyCode() == KeyEvent.VK_UP) up = true;
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) down = true;
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) left = true;
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) right = true;
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) space = true;
 
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        keys[e.getKeyCode()] = false;
+        if (e.getKeyCode() == KeyEvent.VK_UP) up = false;
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) down = false;
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) left = false;
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) right = false;
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) space = false;
 
     }
 }

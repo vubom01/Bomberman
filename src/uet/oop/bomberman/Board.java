@@ -39,8 +39,8 @@ public class Board {
 
 
     public void render(Screen screen) {
-        for (int y = 0; y < 13; y++) {
-            for (int x = 0; x < 31; x++) {
+        for (int y = 0; y < level.getHeight(); y++) {
+            for (int x = 0; x < level.getWidth(); x++) {
                 entities[x + y * level.getWidth()].render(screen);
             }
         }
