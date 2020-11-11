@@ -1,5 +1,7 @@
 package uet.oop.bomberman.graphics;
 
+import uet.oop.bomberman.Board;
+import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.mob.Player;
 
@@ -11,7 +13,7 @@ public class Screen {
     public int[] pixels;
     private int transparent_color = 0xffff00ff;
 
-    public static int xOffset = 0, yOffset = 0;
+    public static double xOffset = 0, yOffset = 0;
 
     public Screen(int width, int height) {
         this.width = width;
@@ -21,6 +23,8 @@ public class Screen {
     }
 
     public void renderEntity(int xp, int yp, Entity entity) {
+        xp -= xOffset;
+        yp -= yOffset;
         for (int y = 0; y < entity.getSprite().getSize(); y++) {
             int ya = y + yp;
             for (int x = 0; x < entity.getSprite().getSize(); x++) {
@@ -31,6 +35,40 @@ public class Screen {
                 if (color != transparent_color) pixels[xa + ya * width] = color;
             }
         }
+    }
+
+    public static void setxOffset(double xO) {
+        xOffset = xO;
+    }
+
+    public static void setyOffset(double y0) {
+        yOffset = y0;
+    }
+
+    public static double calculateXOffset(Board board, Player player) {
+        double temp = xOffset;
+
+        int firstBreakpoint = board.getWidth() / 4;
+        int lastBreakpoint = board.getWidth() - firstBreakpoint;
+
+        if(player.getX() / 16 > firstBreakpoint + 0.5 && player.getX() / 16 < lastBreakpoint - 0.5) {
+            temp = player.getX()  - (Game.WIDTH / 2);
+        }
+
+        return temp;
+    }
+
+    public static double calculateYOffset(Board board, Player player) {
+        double temp = yOffset;
+
+        int firstBreakpoint = board.getHeight() / 4;
+        int lastBreakpoint = board.getHeight() - firstBreakpoint;
+
+        if(player.getY() / 16 > firstBreakpoint + 0.5 && player.getY() / 16 < lastBreakpoint - 0.5) {
+            temp = player.getY()  - (Game.HEIGHT / 2);
+        }
+
+        return temp;
     }
 
 

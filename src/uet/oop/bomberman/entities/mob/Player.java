@@ -21,12 +21,11 @@ public class Player extends Mob {
     // 2: left
     // 3: right
      */
-    public int direction = 3;
+    public int direction = 1; //ban dau xuat hien voi tu the down
 
     public Player(int x, int y, Board board) {
         super(x, y, board);
         input = board.getInput();
-        sprite = Sprite.player_right;
     }
 
 
@@ -38,6 +37,9 @@ public class Player extends Mob {
 
     @Override
     public void render(Screen screen) {
+        calculateXOffset();
+        calculateYOffset();
+
         if (moving == true) {
             setSprite();
         } else {
@@ -74,7 +76,7 @@ public class Player extends Mob {
             xa++;
         }
 
-        if(xa != 0 || ya != 0)  {
+        if(xa != 0 || ya != 0) {
             move(xa * Game.getPlayerSpeed(), ya * Game.getPlayerSpeed());
             moving = true;
         } else {
@@ -84,7 +86,6 @@ public class Player extends Mob {
 
     @Override
     public void canMove(double xa, double ya) {
-
     }
 
     @Override
@@ -119,5 +120,15 @@ public class Player extends Mob {
                 sprite = Sprite.movingSprite(Sprite.player_right, Sprite.player_right_1, Sprite.player_right_2, _animate, 60);
                 break;
         }
+    }
+
+    public void calculateXOffset() {
+        double x0 = Screen.calculateXOffset(board, this);
+        Screen.setxOffset(x0);
+    }
+
+    public void calculateYOffset() {
+        double y0 = Screen.calculateYOffset(board, this);
+        Screen.setyOffset(y0);
     }
 }

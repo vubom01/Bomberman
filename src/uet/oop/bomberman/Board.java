@@ -2,6 +2,7 @@ package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.mob.Mob;
+import uet.oop.bomberman.entities.tile.GrassTile;
 import uet.oop.bomberman.graphics.Screen;
 
 import java.awt.*;
@@ -87,5 +88,22 @@ public class Board {
 
     public Keyboard getInput() {
         return input;
+    }
+
+    public boolean checkEntity(double xa, double ya) {
+        for (int i = 0; i < entities.length; i++) {
+            if (!(entities[i] instanceof GrassTile) && entities[i].getX() == xa && entities[i].getY() == ya) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getWidth() {
+        return level.getWidth();
+    }
+
+    public int getHeight() {
+        return level.getHeight();
     }
 }

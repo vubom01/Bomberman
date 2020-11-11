@@ -6,7 +6,6 @@ import uet.oop.bomberman.entities.tile.WallTile;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
