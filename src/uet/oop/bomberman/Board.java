@@ -44,6 +44,7 @@ public class Board {
                 entities[x + y * level.getWidth()].render(screen);
             }
         }
+        renderMobs(screen);
     }
 
     public void newGame() {
