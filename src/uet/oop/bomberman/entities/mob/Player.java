@@ -89,13 +89,28 @@ public class Player extends Mob {
     }
 
     @Override
-    public void canMove(double xa, double ya) {
+    public boolean canMove(double xa, double ya) {
+        for (int c = 0; c < 4; c++) {
+            double xt = ((x + xa) + c % 2 * 11) / Game.TILES_SIZE;
+            double yt = ((y + ya) + c / 2 * 12 - 13) / Game.TILES_SIZE;
+
+            Entity a = board.getEntity(xt, yt);
+
+            if(!a.checkcollision(this))
+                return false;
+        }
+
+        return true;
     }
 
     @Override
     public void move(double xa, double ya) {
-        y += ya;
-        x += xa;
+        if (canMove(xa, 0)) {
+            x += xa;
+        }
+        if (canMove(0, ya)) {
+            y+=ya;
+        }
     }
 
     @Override

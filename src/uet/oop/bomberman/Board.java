@@ -99,6 +99,12 @@ public class Board {
         return false;
     }
 
+    public Entity getEntity(double x, double y) {
+        Entity res = entities[(int) x + (int) y * level.getWidth()];
+
+        return res;
+    }
+
     public int getWidth() {
         return level.getWidth();
     }

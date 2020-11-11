@@ -11,7 +11,7 @@ public class Screen {
 
     protected int width, height;
     public int[] pixels;
-    private int transparent_color = 0xffff00ff;
+    private int transparent_color = 0xffffffff;
 
     public static double xOffset = 0, yOffset = 0;
 

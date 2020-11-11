@@ -30,7 +30,7 @@ public abstract class Mob extends AnimatedEntity {
 
     protected abstract void calculateMove();
 
-    public abstract void canMove(double xa, double ya);
+    public abstract boolean canMove(double xa, double ya);
 
     public boolean isAlive() {
         return alive;

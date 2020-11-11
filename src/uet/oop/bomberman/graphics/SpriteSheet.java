@@ -12,7 +12,7 @@ public class SpriteSheet {
 	public int[] pixels;
 	public BufferedImage image;
 
-	public static SpriteSheet tiles = new SpriteSheet("/textures/classic.png", 256);
+	public static SpriteSheet tiles = new SpriteSheet("/textures/sprites.png", 1009);
 	
 	public SpriteSheet(String filePath, int size) {
 		this.filePath = filePath;
