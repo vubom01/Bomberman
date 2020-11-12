@@ -57,7 +57,7 @@ public class Player extends Mob {
 
     @Override
     public boolean checkcollision(Entity e) {
-        return false;
+        return true;
     }
 
     @Override
@@ -92,7 +92,7 @@ public class Player extends Mob {
     public boolean canMove(double xa, double ya) {
         for (int c = 0; c < 4; c++) {
             double xt = ((x + xa) + c % 2 * 14 + 3) / Game.TILES_SIZE;
-            double yt = ((y + ya) + c / 2 * 12 - 13) / Game.TILES_SIZE;
+            double yt = ((y + ya) + c / 2 * 14 - 16) / Game.TILES_SIZE;
 
             Entity a = board.getEntity(xt, yt);
 
