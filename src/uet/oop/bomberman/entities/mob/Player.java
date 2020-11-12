@@ -143,9 +143,13 @@ public class Player extends Mob {
     }
 
     public void detectPlaceBomb() {
-        if (input.space) {
-            Bomb b = new Bomb(x, y, board);
+        if (input.space && Game.getBomRate() > 0) {
+            int x0 = (int) ((x + 16 / 2) / Game.TILES_SIZE);
+            int y0 = (int) ((y + 16 / 2 - 16) / Game.TILES_SIZE);
+            
+            Bomb b = new Bomb(x0, y0, board);
             board.addBomb(b);
+            Game.setBomRate(-1);
         }
     }
 

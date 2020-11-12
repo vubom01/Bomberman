@@ -43,8 +43,8 @@ public class Board {
                 entities[x + y * level.getWidth()].render(screen);
             }
         }
-        renderMobs(screen);
         renderBombs(screen);
+        renderMobs(screen);
     }
 
     public void changeLevel(int levelNumber) {

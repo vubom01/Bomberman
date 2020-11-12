@@ -122,6 +122,10 @@ public class Game extends Canvas {
         return bomRadius;
     }
 
+    public static void setBomRate(int i) {
+        bomRate+=i;
+    }
+
     public Keyboard getInput() {
         return input;
     }

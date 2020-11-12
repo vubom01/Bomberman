@@ -23,7 +23,9 @@ public class Bomb extends AnimatedEntity {
 
     @Override
     public void render(Screen screen) {
-        screen.renderEntity((int) x, (int) y, this);
+        int x0 = (int) x << 4;
+        int y0 = (int) y << 4;
+        screen.renderEntity(x0, y0, this);
     }
 
     @Override
