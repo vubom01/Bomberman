@@ -14,20 +14,19 @@ public class Game extends Canvas {
     public static final int TILES_SIZE = 16,
             WIDTH = TILES_SIZE * 15,
             HEIGHT = TILES_SIZE * 13;
-
     public static int SCALE = 3;
 
+    private static final double PLAYERSPEED = 1.0;
     private static final int BOMBRATE = 1;
     private static final int BOMBRADIUS = 1;
-    private static final double PLAYERSPEED = 1.0;
 
-    protected static double playerSpeed = PLAYERSPEED;
-    protected static double bomRate = BOMBRATE;
-    protected static double bomRadius = BOMBRADIUS;
+    private static double playerSpeed = PLAYERSPEED;
+    private static int bomRate = BOMBRATE;
+    private static int bomRadius = BOMBRADIUS;
 
     private Keyboard input;
-    private boolean _running = false;
-    private boolean _paused = true;
+    private boolean running = false;
+    private boolean paused = true;
 
     private Board board;
     private Screen screen;
@@ -47,7 +46,7 @@ public class Game extends Canvas {
     }
 
 
-    private void renderGame() {
+    public void renderGame() {
         BufferStrategy bs = getBufferStrategy();
         if(bs == null) {
             createBufferStrategy(3);
@@ -70,7 +69,7 @@ public class Game extends Canvas {
         bs.show();
     }
 
-    private void renderScreen() {
+    public void renderScreen() {
         BufferStrategy bs = getBufferStrategy();
         if(bs == null) {
             createBufferStrategy(3);
@@ -87,18 +86,18 @@ public class Game extends Canvas {
         bs.show();
     }
 
-    private void update() {
+    public void update() {
         board.update();
     }
 
     public void start() {
-        _running = true;
+        running = true;
 
         long  lastTime = System.nanoTime();
         final double ns = 1000000000.0 / 60.0;
         double delta = 0;
         requestFocus();
-        while(_running) {
+        while(running) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -114,11 +113,11 @@ public class Game extends Canvas {
         return playerSpeed;
     }
 
-    public static double getBomRate() {
+    public static int getBomRate() {
         return bomRate;
     }
 
-    public static double getBomRadius() {
+    public static int getBomRadius() {
         return bomRadius;
     }
 

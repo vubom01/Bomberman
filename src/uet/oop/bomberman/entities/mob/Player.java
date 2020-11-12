@@ -13,17 +13,11 @@ import java.util.List;
 
 public class Player extends Mob {
 
-    protected Keyboard input;
+    private Keyboard input;
 
-    private List<Bomb> bombs = new ArrayList<>();
-    private Collision c = new Collision(board, this);
-
-    /* 0: up
-    // 1: down
-    // 2: left
-    // 3: right
-     */
-    public int direction = 1; //ban dau xuat hien voi tu the down
+    private List<Bomb> bombs;
+    private Collision collision = new Collision(board, this);
+    private int timetoPutBomb;
 
     public Player(double x, double y, Board board) {
         super(x, y, board);
@@ -35,6 +29,13 @@ public class Player extends Mob {
     @Override
     public void update() {
         clearBombs();
+        if(timetoPutBomb < 0) {
+            timetoPutBomb = 0;
+        }
+        else {
+            timetoPutBomb--;
+        }
+
         animate();
         calculateMove();
         detectPlaceBomb();
@@ -56,7 +57,7 @@ public class Player extends Mob {
             if (direction == 2) sprite = Sprite.player_left;
             if (direction == 3) sprite = Sprite.player_right;
         }
-        screen.renderEntity((int) x, (int) y - sprite.SIZE, this);
+        screen.renderEntity((int) x, (int) y - sprite.getSize(), this);
     }
 
     @Override
@@ -65,7 +66,7 @@ public class Player extends Mob {
     }
 
     @Override
-    protected void calculateMove() {
+    public void calculateMove() {
         int xa = 0, ya = 0;
         if(input.up) {
             direction = 0;
@@ -94,7 +95,7 @@ public class Player extends Mob {
 
     @Override
     public boolean canMove(double xa, double ya) {
-        return c.collision(xa, ya);
+        return collision.collision(xa, ya);
     }
 
     @Override
@@ -118,7 +119,7 @@ public class Player extends Mob {
     }
 
     public void setSprite() {
-        int time = 20;
+        int time = 36;
         switch (direction) {
             case 0:
                 sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, _animate, time);
@@ -146,13 +147,14 @@ public class Player extends Mob {
     }
 
     public void detectPlaceBomb() {
-        if (input.space && Game.getBomRate() > 0) {
+        if (input.space && Game.getBomRate() > 0 && timetoPutBomb < 0) {
             int x0 = (int) ((x + 16 / 2) / Game.TILES_SIZE);
             int y0 = (int) ((y + 16 / 2 - 16) / Game.TILES_SIZE);
 
             Bomb b = new Bomb(x0, y0, board);
             board.addBomb(b);
             Game.setBomRate(-1);
+            timetoPutBomb = 20;
         }
     }
 

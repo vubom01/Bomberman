@@ -4,11 +4,9 @@ import javafx.scene.image.*;
 
 public class Sprite {
 	
-	public static final int DEFAULT_SIZE = 16; // kich thuoc anh
-	public static final int SCALED_SIZE = DEFAULT_SIZE * 2; // kich thuoc khi in len man hinh
-	public final int SIZE;
+	private final int SIZE;
 	private int x, y;
-	public int[] pixels; // diem anh
+	private int[] pixels; // diem anh
 	private SpriteSheet sheet = SpriteSheet.tiles;
 
 	// LAY ANH CON TU 1 ANH LON

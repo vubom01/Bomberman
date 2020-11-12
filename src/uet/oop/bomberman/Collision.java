@@ -12,8 +12,8 @@ import static java.lang.System.exit;
 
 public class Collision {
 
-    Board board;
-    Player player;
+    private Board board;
+    private Player player;
 
     public Collision(Board board , Player player) {
         this.board = board;

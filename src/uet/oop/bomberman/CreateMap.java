@@ -12,9 +12,9 @@ import java.io.IOException;
 
 public class CreateMap {
 
-    protected int width, height, level;
-    protected char[][] map;
-    protected Board board;
+    private int width, height, level;
+    private char[][] map;
+    private Board board;
 
     public CreateMap(String path, Board board) throws IOException {
         loadLevel(path);

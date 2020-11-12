@@ -9,11 +9,12 @@ import java.awt.*;
 
 public class Screen {
 
-    protected int width, height;
-    public int[] pixels;
-    private int transparent_color = 0xffffffff;
 
-    public static double xOffset = 0, yOffset = 0;
+    private int width, height;
+    private int transparent_color = 0xffffffff;
+    private static double xOffset = 0, yOffset = 0;
+
+    public int[] pixels;
 
     public Screen(int width, int height) {
         this.width = width;

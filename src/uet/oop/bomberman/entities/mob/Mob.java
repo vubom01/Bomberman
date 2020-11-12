@@ -7,10 +7,16 @@ import uet.oop.bomberman.graphics.Screen;
 public abstract class Mob extends AnimatedEntity {
 
     protected Board board;
-    protected int direction = -1;
+
+    /* 0: up
+    // 1: down
+    // 2: left
+    // 3: right
+    */
+    protected int direction = 1;
+
     protected boolean alive = true;
     protected boolean moving = false;
-    public int timeAfter = 80;
 
     public Mob(double x, double y, Board board) {
         this.x = x;
@@ -28,7 +34,7 @@ public abstract class Mob extends AnimatedEntity {
 
     public abstract void dead();
 
-    protected abstract void calculateMove();
+    public abstract void calculateMove();
 
     public abstract boolean canMove(double xa, double ya);
 

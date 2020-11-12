@@ -8,12 +8,10 @@ import uet.oop.bomberman.graphics.Sprite;
 
 public class Bomb extends AnimatedEntity {
 
-    protected Board board;
+    private Board board;
 
-    protected double timeToExplode = 120; //2s
-
-    protected boolean exploded = false;
-
+    private int timeToExplode = 120; //2s
+    private boolean exploded = false;
 
     public Bomb(double x, double y, Board board) {
         this.x = x;

@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class LayerEntity extends Entity {
 
-    protected LinkedList<Entity> entities = new LinkedList<>();
+    private LinkedList<Entity> entities = new LinkedList<>();
 
     public LayerEntity(int x, int y, Entity ... entities) {
         this.x = x;
@@ -44,7 +44,7 @@ public class LayerEntity extends Entity {
         return entities.getLast();
     }
 
-    private void clearRemoved() {
+    public void clearRemoved() {
         Entity top  = getTopEntity();
 
         if(top.isRemoved())  {

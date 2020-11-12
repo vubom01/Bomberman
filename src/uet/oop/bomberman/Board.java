@@ -14,16 +14,15 @@ import java.util.List;
 
 public class Board {
 
-    protected CreateMap level;
-    protected Game game;
-    protected Keyboard input;
-    protected Screen screen;
+    private CreateMap level;
+    private Game game;
+    private Keyboard input;
+    private Screen screen;
 
-    public Entity[] entities;
-    public List<Mob> mobs = new ArrayList<Mob>();
-    protected List<Bomb> bombs = new ArrayList<>();
+    private Entity[] entities;
+    private List<Mob> mobs = new ArrayList<Mob>();
+    private List<Bomb> bombs = new ArrayList<>();
 
-    public Board() {}
     public Board(Game game, Keyboard input, Screen screen) {
         this.game = game;
         this.input = input;
@@ -74,35 +73,34 @@ public class Board {
         bombs.add(b);
     }
 
-    protected void renderMobs(Screen screen) {
+    public void renderMobs(Screen screen) {
         Iterator<Mob> itr = mobs.iterator();
 
         while(itr.hasNext())
             itr.next().render(screen);
     }
 
-    protected void renderBombs(Screen screen) {
+    public void renderBombs(Screen screen) {
         Iterator<Bomb> itr = bombs.iterator();
 
         while(itr.hasNext())
             itr.next().render(screen);
     }
 
-
-    protected void updateEntities() {
+    public void updateEntities() {
         for (int i = 0; i < entities.length; i++) {
             entities[i].update();
         }
     }
 
-    protected void updateMobs() {
+    public void updateMobs() {
         Iterator<Mob> itr = mobs.iterator();
 
         while(itr.hasNext())
             itr.next().update();
     }
 
-    protected void updateBombs() {
+    public void updateBombs() {
         Iterator<Bomb> itr = bombs.iterator();
 
         while(itr.hasNext())
@@ -117,18 +115,8 @@ public class Board {
         return bombs;
     }
 
-    public boolean checkEntity(double xa, double ya) {
-        for (int i = 0; i < entities.length; i++) {
-            if (!(entities[i] instanceof GrassTile) && entities[i].getX() == xa && entities[i].getY() == ya) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public Entity getEntity(double x, double y) {
         Entity res = entities[(int) x + (int) y * level.getWidth()];
-
         return res;
     }
 

@@ -9,9 +9,8 @@ import javax.swing.JPanel;
 
 public class Frame extends JFrame {
 
-    public GamePanel gamepane;
+    private GamePanel gamepane;
     private JPanel containerpane;
-
     private Game game;
 
     public Frame() {

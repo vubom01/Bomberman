@@ -8,10 +8,10 @@ import java.net.URL;
 public class SpriteSheet {
 
 	private String filePath;
-	public final int SIZE;
-	public int[] pixels;
-	public BufferedImage image;
+	private BufferedImage image;
 
+	public int SIZE;
+	public int[] pixels;
 	public static SpriteSheet tiles = new SpriteSheet("/textures/sprites.png", 1009);
 	
 	public SpriteSheet(String filePath, int size) {
