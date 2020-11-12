@@ -24,7 +24,7 @@ public class Player extends Mob {
      */
     public int direction = 1; //ban dau xuat hien voi tu the down
 
-    public Player(int x, int y, Board board) {
+    public Player(double x, double y, Board board) {
         super(x, y, board);
         input = board.getInput();
     }
@@ -91,7 +91,7 @@ public class Player extends Mob {
     @Override
     public boolean canMove(double xa, double ya) {
         for (int c = 0; c < 4; c++) {
-            double xt = ((x + xa) + c % 2 * 11) / Game.TILES_SIZE;
+            double xt = ((x + xa) + c % 2 * 14 + 3) / Game.TILES_SIZE;
             double yt = ((y + ya) + c / 2 * 12 - 13) / Game.TILES_SIZE;
 
             Entity a = board.getEntity(xt, yt);
@@ -109,7 +109,7 @@ public class Player extends Mob {
             x += xa;
         }
         if (canMove(0, ya)) {
-            y+=ya;
+            y += ya;
         }
     }
 
@@ -127,16 +127,16 @@ public class Player extends Mob {
         // time = 60: 60fps
         switch (direction) {
             case 0:
-                sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, _animate, 60);
+                sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, _animate, 42);
                 break;
             case 1:
-                sprite = Sprite.movingSprite(Sprite.player_down, Sprite.player_down_1, Sprite.player_down_2, _animate, 60);
+                sprite = Sprite.movingSprite(Sprite.player_down, Sprite.player_down_1, Sprite.player_down_2, _animate, 42);
                 break;
             case 2:
-                sprite = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, _animate, 60);;
+                sprite = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, _animate, 42);;
                 break;
             default:
-                sprite = Sprite.movingSprite(Sprite.player_right, Sprite.player_right_1, Sprite.player_right_2, _animate, 60);
+                sprite = Sprite.movingSprite(Sprite.player_right, Sprite.player_right_1, Sprite.player_right_2, _animate, 42);
                 break;
         }
     }

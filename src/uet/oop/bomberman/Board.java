@@ -21,6 +21,7 @@ public class Board {
     public Entity[] entities;
     public List<Mob> mobs = new ArrayList<Mob>();
 
+    public Board() {}
     public Board(Game game, Keyboard input, Screen screen) {
         this.game = game;
         this.input = input;

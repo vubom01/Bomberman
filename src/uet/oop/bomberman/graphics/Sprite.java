@@ -20,10 +20,16 @@ public class Sprite {
 	|--------------------------------------------------------------------------
 	 */
 	public static Sprite grass = new Sprite(16, 689, 110);
-//	public static Sprite brick = new Sprite(7, 0);
-	public static Sprite wall = new Sprite(16, 737, 110);
+	public static Sprite brick = new Sprite(16, 721,110);
 //	public static Sprite portal = new Sprite(4, 0);
-	
+
+	/*
+	|--------------------------------------------------------------------------
+	| Board sprites
+	|--------------------------------------------------------------------------
+	 */
+	public static Sprite wall = new Sprite(16, 737, 110);
+
 	/*
 	|--------------------------------------------------------------------------
 	| Bomber Sprites
