@@ -1,9 +1,6 @@
 package uet.oop.bomberman.entities.mob;
 
-import uet.oop.bomberman.Board;
-import uet.oop.bomberman.CreateMap;
-import uet.oop.bomberman.Game;
-import uet.oop.bomberman.Keyboard;
+import uet.oop.bomberman.*;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
@@ -16,6 +13,8 @@ import java.util.List;
 public class Player extends Mob {
 
     protected Keyboard input;
+
+    private Collision c = new Collision(board, this);
 
     /* 0: up
     // 1: down
@@ -34,6 +33,7 @@ public class Player extends Mob {
     public void update() {
         animate();
         calculateMove();
+        //System.out.println(getX() + " " + getY());
     }
 
     @Override
@@ -90,17 +90,7 @@ public class Player extends Mob {
 
     @Override
     public boolean canMove(double xa, double ya) {
-        for (int c = 0; c < 4; c++) {
-            double xt = ((x + xa) + c % 2 * 14 + 3) / Game.TILES_SIZE;
-            double yt = ((y + ya) + c / 2 * 14 - 16) / Game.TILES_SIZE;
-
-            Entity a = board.getEntity(xt, yt);
-
-            if(!a.checkcollision(this))
-                return false;
-        }
-
-        return true;
+        return c.collision(xa, ya);
     }
 
     @Override
@@ -124,7 +114,6 @@ public class Player extends Mob {
     }
 
     public void setSprite() {
-        // time = 60: 60fps
         switch (direction) {
             case 0:
                 sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, _animate, 42);
