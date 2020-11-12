@@ -126,8 +126,8 @@ public class Sprite {
 	|--------------------------------------------------------------------------
 	 */
 	public static Sprite bomb = new Sprite(16, 470, 0);
-//	public static Sprite bomb_1 = new Sprite(1, 3);
-//	public static Sprite bomb_2 = new Sprite(2, 3);
+	public static Sprite bomb_1 = new Sprite(16, 486, 0);
+	public static Sprite bomb_2 = new Sprite(16, 502, 0);
 	
 	/*
 	|--------------------------------------------------------------------------

@@ -28,11 +28,13 @@ public class Player extends Mob {
     public Player(double x, double y, Board board) {
         super(x, y, board);
         input = board.getInput();
+        bombs = board.getBombs();
     }
 
 
     @Override
     public void update() {
+        clearBombs();
         animate();
         calculateMove();
         detectPlaceBomb();
@@ -116,18 +118,19 @@ public class Player extends Mob {
     }
 
     public void setSprite() {
+        int time = 20;
         switch (direction) {
             case 0:
-                sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, _animate, 42);
+                sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, _animate, time);
                 break;
             case 1:
-                sprite = Sprite.movingSprite(Sprite.player_down, Sprite.player_down_1, Sprite.player_down_2, _animate, 42);
+                sprite = Sprite.movingSprite(Sprite.player_down, Sprite.player_down_1, Sprite.player_down_2, _animate, time);
                 break;
             case 2:
-                sprite = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, _animate, 42);;
+                sprite = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, _animate, time);;
                 break;
             default:
-                sprite = Sprite.movingSprite(Sprite.player_right, Sprite.player_right_1, Sprite.player_right_2, _animate, 42);
+                sprite = Sprite.movingSprite(Sprite.player_right, Sprite.player_right_1, Sprite.player_right_2, _animate, time);
                 break;
         }
     }
@@ -146,11 +149,23 @@ public class Player extends Mob {
         if (input.space && Game.getBomRate() > 0) {
             int x0 = (int) ((x + 16 / 2) / Game.TILES_SIZE);
             int y0 = (int) ((y + 16 / 2 - 16) / Game.TILES_SIZE);
-            
+
             Bomb b = new Bomb(x0, y0, board);
             board.addBomb(b);
             Game.setBomRate(-1);
         }
     }
 
+    public void clearBombs() {
+        Iterator<Bomb> bs = bombs.iterator();
+
+        Bomb b;
+        while(bs.hasNext()) {
+            b = bs.next();
+            if(b.isRemoved())  {
+                bs.remove();
+                Game.setBomRate(1);
+            }
+        }
+    }
 }

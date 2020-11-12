@@ -34,6 +34,7 @@ public class Board {
 
     public void update() {
         updateEntities();
+        updateBombs();
         updateMobs();
     }
 
@@ -101,8 +102,19 @@ public class Board {
             itr.next().update();
     }
 
+    protected void updateBombs() {
+        Iterator<Bomb> itr = bombs.iterator();
+
+        while(itr.hasNext())
+            itr.next().update();
+    }
+
     public Keyboard getInput() {
         return input;
+    }
+
+    public List<Bomb> getBombs() {
+        return bombs;
     }
 
     public boolean checkEntity(double xa, double ya) {
