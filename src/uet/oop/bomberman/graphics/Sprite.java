@@ -6,7 +6,6 @@ public class Sprite {
 	
 	public static final int DEFAULT_SIZE = 16; // kich thuoc anh
 	public static final int SCALED_SIZE = DEFAULT_SIZE * 2; // kich thuoc khi in len man hinh
-    private static final int TRANSPARENT_COLOR = 0xffff00ff; // xu li diem anh (xoa background)
 	public final int SIZE;
 	private int x, y;
 	public int[] pixels; // diem anh
@@ -126,7 +125,7 @@ public class Sprite {
 	| Bomb Sprites
 	|--------------------------------------------------------------------------
 	 */
-//	public static Sprite bomb = new Sprite(0, 3);
+	public static Sprite bomb = new Sprite(16, 470, 0);
 //	public static Sprite bomb_1 = new Sprite(1, 3);
 //	public static Sprite bomb_2 = new Sprite(2, 3);
 	

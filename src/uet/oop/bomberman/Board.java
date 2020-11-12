@@ -1,6 +1,7 @@
 package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.bomb.Bomb;
 import uet.oop.bomberman.entities.mob.Mob;
 import uet.oop.bomberman.entities.tile.GrassTile;
 import uet.oop.bomberman.graphics.Screen;
@@ -20,6 +21,7 @@ public class Board {
 
     public Entity[] entities;
     public List<Mob> mobs = new ArrayList<Mob>();
+    protected List<Bomb> bombs = new ArrayList<>();
 
     public Board() {}
     public Board(Game game, Keyboard input, Screen screen) {
@@ -42,6 +44,7 @@ public class Board {
             }
         }
         renderMobs(screen);
+        renderBombs(screen);
     }
 
     public void changeLevel(int levelNumber) {
@@ -66,8 +69,19 @@ public class Board {
         mobs.add(e);
     }
 
+    public void addBomb(Bomb b) {
+        bombs.add(b);
+    }
+
     protected void renderMobs(Screen screen) {
         Iterator<Mob> itr = mobs.iterator();
+
+        while(itr.hasNext())
+            itr.next().render(screen);
+    }
+
+    protected void renderBombs(Screen screen) {
+        Iterator<Bomb> itr = bombs.iterator();
 
         while(itr.hasNext())
             itr.next().render(screen);

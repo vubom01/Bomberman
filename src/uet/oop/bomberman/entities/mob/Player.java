@@ -2,6 +2,7 @@ package uet.oop.bomberman.entities.mob;
 
 import uet.oop.bomberman.*;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.bomb.Bomb;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
 
@@ -14,6 +15,7 @@ public class Player extends Mob {
 
     protected Keyboard input;
 
+    private List<Bomb> bombs = new ArrayList<>();
     private Collision c = new Collision(board, this);
 
     /* 0: up
@@ -33,7 +35,7 @@ public class Player extends Mob {
     public void update() {
         animate();
         calculateMove();
-        //System.out.println(getX() + " " + getY());
+        detectPlaceBomb();
     }
 
     @Override
@@ -139,4 +141,12 @@ public class Player extends Mob {
         double y0 = Screen.calculateYOffset(board, this);
         Screen.setyOffset(y0);
     }
+
+    public void detectPlaceBomb() {
+        if (input.space) {
+            Bomb b = new Bomb(x, y, board);
+            board.addBomb(b);
+        }
+    }
+
 }

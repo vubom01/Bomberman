@@ -5,7 +5,7 @@ import uet.oop.bomberman.graphics.Sprite;
 
 public class GrassTile extends Tile {
 
-    public GrassTile(int x, int y, Sprite sprite) {
+    public GrassTile(double x, double y, Sprite sprite) {
         super(x, y, sprite);
     }
 

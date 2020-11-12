@@ -5,7 +5,7 @@ import uet.oop.bomberman.graphics.Sprite;
 
 public class WallTile extends Tile {
 
-    public WallTile(int x, int y, Sprite sprite) {
+    public WallTile(double x, double y, Sprite sprite) {
         super(x, y, sprite);
     }
 

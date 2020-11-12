@@ -17,9 +17,13 @@ public class Game extends Canvas {
 
     public static int SCALE = 3;
 
+    private static final int BOMBRATE = 1;
+    private static final int BOMBRADIUS = 1;
     private static final double PLAYERSPEED = 1.0;
 
     protected static double playerSpeed = PLAYERSPEED;
+    protected static double bomRate = BOMBRATE;
+    protected static double bomRadius = BOMBRADIUS;
 
     private Keyboard input;
     private boolean _running = false;
@@ -108,6 +112,14 @@ public class Game extends Canvas {
 
     public static double getPlayerSpeed() {
         return playerSpeed;
+    }
+
+    public static double getBomRate() {
+        return bomRate;
+    }
+
+    public static double getBomRadius() {
+        return bomRadius;
     }
 
     public Keyboard getInput() {
