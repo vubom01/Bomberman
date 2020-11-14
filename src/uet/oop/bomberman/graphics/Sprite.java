@@ -67,33 +67,41 @@ public class Sprite {
 	| FlameSegment Sprites
 	|--------------------------------------------------------------------------
 	 */
-//	public static Sprite bomb_exploded = new Sprite(0, 4);
-//	public static Sprite bomb_exploded1 = new Sprite(0, 5);
-	public static Sprite bomb_exploded2 = new Sprite(16, 390, 32);
+	public static Sprite bomb_exploded = new Sprite(16, 454, 32);
+	public static Sprite bomb_exploded1 = new Sprite(16, 438, 32);
+	public static Sprite bomb_exploded2 = new Sprite(16, 422, 32);
+	public static Sprite bomb_exploded3 = new Sprite(16, 406, 32);
+	public static Sprite bomb_exploded4 = new Sprite(16, 390, 32);
 //
-//	public static Sprite explosion_vertical = new Sprite(1, 5);
-//	public static Sprite explosion_vertical1 = new Sprite(2, 5);
-	public static Sprite explosion_vertical2 = new Sprite(16, 582, 16);
+	public static Sprite explosion_vertical = new Sprite(16, 630, 16);
+	public static Sprite explosion_vertical1 = new Sprite(16, 614, 16);
+	public static Sprite explosion_vertical2 = new Sprite(16, 598, 16);
+	public static Sprite explosion_vertical3 = new Sprite(16, 582, 16);
 //
-//	public static Sprite explosion_horizontal = new Sprite(1, 7);
-//	public static Sprite explosion_horizontal1 = new Sprite(1, 8);
-	public static Sprite explosion_horizontal2 = new Sprite(16, 326, 32);
+	public static Sprite explosion_horizontal = new Sprite(16, 374, 32);
+	public static Sprite explosion_horizontal1 = new Sprite(16, 358, 32);
+	public static Sprite explosion_horizontal2 = new Sprite(16, 342, 32);
+	public static Sprite explosion_horizontal3 = new Sprite(16, 326, 32);
 //
-//	public static Sprite explosion_horizontal_left_last = new Sprite(0, 7);
-//	public static Sprite explosion_horizontal_left_last1 = new Sprite(0, 8);
-	public static Sprite explosion_horizontal_left_last2 = new Sprite(16, 518, 16);
+	public static Sprite explosion_horizontal_left_last = new Sprite(16, 566, 16);
+	public static Sprite explosion_horizontal_left_last1 = new Sprite(16, 550, 16);
+	public static Sprite explosion_horizontal_left_last2 = new Sprite(16, 534, 16);
+	public static Sprite explosion_horizontal_left_last3 = new Sprite(16, 518, 16);
 //
-//	public static Sprite explosion_horizontal_right_last = new Sprite(2, 7);
-//	public static Sprite explosion_horizontal_right_last1 = new Sprite(2, 8);
-	public static Sprite explosion_horizontal_right_last2 = new Sprite(16, 390, 16);
+	public static Sprite explosion_horizontal_right_last = new Sprite(16, 438, 16);
+	public static Sprite explosion_horizontal_right_last1 = new Sprite(16, 422, 16);
+	public static Sprite explosion_horizontal_right_last2 = new Sprite(16, 406, 16);
+	public static Sprite explosion_horizontal_right_last3 = new Sprite(16, 390, 16);
 //
-//	public static Sprite explosion_vertical_top_last = new Sprite(1, 4);
-//	public static Sprite explosion_vertical_top_last1 = new Sprite(2, 4);
-	public static Sprite explosion_vertical_top_last2 = new Sprite(16, 326, 16);
+	public static Sprite explosion_vertical_top_last = new Sprite(16, 374, 16);
+	public static Sprite explosion_vertical_top_last1 = new Sprite(16, 358, 16);
+	public static Sprite explosion_vertical_top_last2 = new Sprite(16, 342, 16);
+	public static Sprite explosion_vertical_top_last3 = new Sprite(16, 326, 16);
 //
-//	public static Sprite explosion_vertical_down_last = new Sprite(1, 6);
-//	public static Sprite explosion_vertical_down_last1 = new Sprite(2, 6);
-	public static Sprite explosion_vertical_down_last2 = new Sprite(16, 454, 16);
+	public static Sprite explosion_vertical_down_last = new Sprite(16, 502, 16);
+	public static Sprite explosion_vertical_down_last1 = new Sprite(16, 486, 16);
+	public static Sprite explosion_vertical_down_last2 = new Sprite(16, 470, 16);
+	public static Sprite explosion_vertical_down_last3 = new Sprite(16, 454, 16);
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -203,19 +211,30 @@ public class Sprite {
 
 		if(calc < diff) {
 			return normal;
-		}
-
-		if(calc < diff * 2) {
+		} else if(calc < diff * 2) {
 			return x1;
+		} else {
+			return x2;
 		}
-
-		return x2;
 	}
 
-	public static Sprite movingSprite(Sprite x1, Sprite x2, int animate, int time) {
-		int diff = time / 2;
-		return (animate % time > diff) ? x1 : x2;
+	public static Sprite movingSprite(Sprite normal, Sprite x1, Sprite x2, Sprite x3, Sprite x4, int animate, int time) {
+		int calc = animate % time;
+		int diff = time / 5;
+
+		if (calc < diff) {
+			return normal;
+		} else if (calc < diff * 2) {
+			return x1;
+		} else if (calc < diff * 3) {
+			return x2;
+		} else if (calc < diff * 4){
+			return x3;
+		} else {
+			return x4;
+		}
 	}
+
 
 	public int getSize() {
 		return SIZE;

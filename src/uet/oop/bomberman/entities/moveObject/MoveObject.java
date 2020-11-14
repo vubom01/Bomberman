@@ -1,10 +1,10 @@
 package uet.oop.bomberman.entities.moveObject;
 
 import uet.oop.bomberman.Board;
-import uet.oop.bomberman.entities.AnimatedEntity;
+import uet.oop.bomberman.entities.AnimationEntity;
 import uet.oop.bomberman.graphics.Screen;
 
-public abstract class MoveObject extends AnimatedEntity {
+public abstract class MoveObject extends AnimationEntity {
 
     protected Board board;
 

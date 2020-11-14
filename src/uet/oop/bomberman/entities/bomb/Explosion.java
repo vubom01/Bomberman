@@ -1,63 +1,35 @@
 package uet.oop.bomberman.entities.bomb;
 
 import uet.oop.bomberman.Board;
+import uet.oop.bomberman.entities.AnimationEntity;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
 
-public class Explosion extends Entity {
+public class Explosion extends AnimationEntity {
 
     private boolean last = false;
     private Board board;
+    private int direction;
 
     public Explosion(double x, double y, int direction, boolean last, Board board) {
         this.x = x;
         this.y = y;
         this.last = last;
         this.board = board;
-
-        switch (direction) {
-            case 0:
-                if(last == false) {
-                    sprite = Sprite.explosion_vertical2;
-                } else {
-                    sprite = Sprite.explosion_vertical_top_last2;
-                }
-                break;
-            case 1:
-                if(last == false) {
-                    sprite = Sprite.explosion_vertical2;
-                } else {
-                    sprite = Sprite.explosion_vertical_down_last2;
-                }
-                break;
-            case 2:
-                if(last == false) {
-                    sprite = Sprite.explosion_horizontal2;
-                } else {
-                    sprite = Sprite.explosion_horizontal_left_last2;
-                }
-                break;
-            case 3:
-                if(last == false) {
-                    sprite = Sprite.explosion_horizontal2;
-                } else {
-                    sprite = Sprite.explosion_horizontal_right_last2;
-                }
-                break;
-        }
+        this.direction = direction;
     }
 
     @Override
     public void update() {
-
+        setAnimation();
     }
 
     @Override
     public void render(Screen screen) {
+        setSprite(direction);
         int x0 = (int) x << 4;
         int y0 = (int) y << 4;
-
         screen.renderEntity(x0, y0, this);
 
     }
@@ -65,5 +37,41 @@ public class Explosion extends Entity {
     @Override
     public boolean checkcollision(Entity e) {
         return false;
+    }
+
+    public Sprite setSprite(int direction) {
+        int time = 20;
+        switch (direction) {
+            case 0:
+                if(last == false) {
+                    sprite = Sprite.movingSprite(Sprite.explosion_vertical3, Sprite.explosion_vertical2, Sprite.explosion_vertical1, animation, time);
+                } else {
+                    sprite = Sprite.movingSprite(Sprite.explosion_vertical_top_last3, Sprite.explosion_vertical_top_last2, Sprite.explosion_vertical_top_last1, animation, time);
+
+                }
+                break;
+            case 1:
+                if(last == false) {
+                    sprite = Sprite.movingSprite(Sprite.explosion_vertical3, Sprite.explosion_vertical2, Sprite.explosion_vertical1, Sprite.explosion_vertical, Sprite.explosion_vertical, animation, time);
+                } else {
+                    sprite = Sprite.movingSprite(Sprite.explosion_vertical_down_last3, Sprite.explosion_vertical_down_last2, Sprite.explosion_vertical_down_last1, Sprite.explosion_vertical_down_last, Sprite.explosion_vertical_down_last, animation, time);
+                }
+                break;
+            case 2:
+                if(last == false) {
+                    sprite = Sprite.movingSprite(Sprite.explosion_horizontal3, Sprite.explosion_horizontal2, Sprite.explosion_horizontal1, Sprite.explosion_horizontal, Sprite.explosion_horizontal, animation, time);
+                } else {
+                    sprite = Sprite.movingSprite(Sprite.explosion_horizontal_left_last3, Sprite.explosion_horizontal_left_last2, Sprite.explosion_horizontal_left_last1, Sprite.explosion_horizontal_left_last, Sprite.explosion_horizontal_left_last, animation, time);
+                }
+                break;
+            case 3:
+                if(last == false) {
+                    sprite = Sprite.movingSprite(Sprite.explosion_horizontal3, Sprite.explosion_horizontal2, Sprite.explosion_horizontal1, Sprite.explosion_horizontal, Sprite.explosion_horizontal, animation, time);
+                } else {
+                    sprite = Sprite.movingSprite(Sprite.explosion_horizontal_right_last3, Sprite.explosion_horizontal_right_last2, Sprite.explosion_horizontal_right_last1, Sprite.explosion_horizontal_right_last, Sprite.explosion_horizontal_right_last, animation, time);
+                }
+                break;
+        }
+        return null;
     }
 }

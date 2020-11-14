@@ -37,7 +37,7 @@ public class Player extends MoveObject {
             timetoPutBomb--;
         }
 
-        animate();
+        setAnimation();
         calculateMove();
         detectPlaceBomb();
     }
@@ -123,16 +123,16 @@ public class Player extends MoveObject {
         int time = 36;
         switch (direction) {
             case 0:
-                sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, _animate, time);
+                sprite = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, animation, time);
                 break;
             case 1:
-                sprite = Sprite.movingSprite(Sprite.player_down, Sprite.player_down_1, Sprite.player_down_2, _animate, time);
+                sprite = Sprite.movingSprite(Sprite.player_down, Sprite.player_down_1, Sprite.player_down_2, animation, time);
                 break;
             case 2:
-                sprite = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, _animate, time);;
+                sprite = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, animation, time);;
                 break;
             default:
-                sprite = Sprite.movingSprite(Sprite.player_right, Sprite.player_right_1, Sprite.player_right_2, _animate, time);
+                sprite = Sprite.movingSprite(Sprite.player_right, Sprite.player_right_1, Sprite.player_right_2, animation, time);
                 break;
         }
     }

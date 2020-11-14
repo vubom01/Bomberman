@@ -2,7 +2,6 @@ package uet.oop.bomberman.entities.bomb;
 
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.graphics.Screen;
 
 public class Directional extends Entity {
@@ -37,18 +36,10 @@ public class Directional extends Entity {
         int y0 = (int) y;
         for (int i = 0; i < explosions.length; i++) {
             switch (direction) {
-                case 0:
-                    y--;
-                    break;
-                case 1:
-                    y++;
-                    break;
-                case 2:
-                    x--;
-                    break;
-                case 3:
-                    x++;
-                    break;
+                case 0: y--; break;
+                case 1: y++; break;
+                case 2: x--; break;
+                case 3: x++; break;
             }
 
             if (i == explosions.length - 1) last = true;
@@ -60,7 +51,9 @@ public class Directional extends Entity {
 
     @Override
     public void update() {
-
+        for (int i = 0; i < explosions.length; i++) {
+            explosions[i].update();
+        }
     }
 
     @Override

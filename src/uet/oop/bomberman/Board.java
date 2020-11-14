@@ -38,11 +38,7 @@ public class Board {
     }
 
     public void render(Screen screen) {
-        for (int y = 0; y < level.getHeight(); y++) {
-            for (int x = 0; x < level.getWidth(); x++) {
-                entities[x + y * level.getWidth()].render(screen);
-            }
-        }
+        renderEntity(screen);
         renderBombs(screen);
         renderMobs(screen);
     }
@@ -71,6 +67,14 @@ public class Board {
 
     public void addBomb(Bomb b) {
         bombs.add(b);
+    }
+
+    public void renderEntity(Screen screen) {
+        for (int y = 0; y < level.getHeight(); y++) {
+            for (int x = 0; x < level.getWidth(); x++) {
+                entities[x + y * level.getWidth()].render(screen);
+            }
+        }
     }
 
     public void renderMobs(Screen screen) {
