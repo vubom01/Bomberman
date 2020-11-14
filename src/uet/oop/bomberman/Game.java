@@ -113,11 +113,11 @@ public class Game extends Canvas {
         return playerSpeed;
     }
 
-    public static int getBomRate() {
+    public static int getBombRate() {
         return bomRate;
     }
 
-    public static int getBomRadius() {
+    public static int getBombRadius() {
         return bomRadius;
     }
 

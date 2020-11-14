@@ -22,14 +22,14 @@ public class Sprite {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Board sprites
+	| Wall sprites
 	|--------------------------------------------------------------------------
 	 */
 	public static Sprite wall = new Sprite(16, 737, 110);
 
 	/*
 	|--------------------------------------------------------------------------
-	| Bomber Sprites
+	| Player Sprites
 	|--------------------------------------------------------------------------
 	 */
 	public static Sprite player_up = new Sprite(21,217, 0);
@@ -52,6 +52,48 @@ public class Sprite {
 //	public static Sprite player_dead1 = new Sprite(4, 2);
 //	public static Sprite player_dead2 = new Sprite(5, 2);
 //	public static Sprite player_dead3 = new Sprite(6, 2);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Bomb Sprites
+	|--------------------------------------------------------------------------
+	 */
+	public static Sprite bomb = new Sprite(16, 470, 0);
+	public static Sprite bomb_1 = new Sprite(16, 486, 0);
+	public static Sprite bomb_2 = new Sprite(16, 502, 0);
+
+	/*
+	|--------------------------------------------------------------------------
+	| FlameSegment Sprites
+	|--------------------------------------------------------------------------
+	 */
+//	public static Sprite bomb_exploded = new Sprite(0, 4);
+//	public static Sprite bomb_exploded1 = new Sprite(0, 5);
+	public static Sprite bomb_exploded2 = new Sprite(16, 390, 32);
+//
+//	public static Sprite explosion_vertical = new Sprite(1, 5);
+//	public static Sprite explosion_vertical1 = new Sprite(2, 5);
+	public static Sprite explosion_vertical2 = new Sprite(16, 582, 16);
+//
+//	public static Sprite explosion_horizontal = new Sprite(1, 7);
+//	public static Sprite explosion_horizontal1 = new Sprite(1, 8);
+	public static Sprite explosion_horizontal2 = new Sprite(16, 326, 32);
+//
+//	public static Sprite explosion_horizontal_left_last = new Sprite(0, 7);
+//	public static Sprite explosion_horizontal_left_last1 = new Sprite(0, 8);
+	public static Sprite explosion_horizontal_left_last2 = new Sprite(16, 518, 16);
+//
+//	public static Sprite explosion_horizontal_right_last = new Sprite(2, 7);
+//	public static Sprite explosion_horizontal_right_last1 = new Sprite(2, 8);
+	public static Sprite explosion_horizontal_right_last2 = new Sprite(16, 390, 16);
+//
+//	public static Sprite explosion_vertical_top_last = new Sprite(1, 4);
+//	public static Sprite explosion_vertical_top_last1 = new Sprite(2, 4);
+	public static Sprite explosion_vertical_top_last2 = new Sprite(16, 326, 16);
+//
+//	public static Sprite explosion_vertical_down_last = new Sprite(1, 6);
+//	public static Sprite explosion_vertical_down_last1 = new Sprite(2, 6);
+	public static Sprite explosion_vertical_down_last2 = new Sprite(16, 454, 16);
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -120,48 +162,6 @@ public class Sprite {
 	
 	/*
 	|--------------------------------------------------------------------------
-	| Bomb Sprites
-	|--------------------------------------------------------------------------
-	 */
-	public static Sprite bomb = new Sprite(16, 470, 0);
-	public static Sprite bomb_1 = new Sprite(16, 486, 0);
-	public static Sprite bomb_2 = new Sprite(16, 502, 0);
-	
-	/*
-	|--------------------------------------------------------------------------
-	| FlameSegment Sprites
-	|--------------------------------------------------------------------------
-	 */
-//	public static Sprite bomb_exploded = new Sprite(0, 4);
-//	public static Sprite bomb_exploded1 = new Sprite(0, 5);
-//	public static Sprite bomb_exploded2 = new Sprite(0, 6);
-//
-//	public static Sprite explosion_vertical = new Sprite(1, 5);
-//	public static Sprite explosion_vertical1 = new Sprite(2, 5);
-//	public static Sprite explosion_vertical2 = new Sprite(3, 5);
-//
-//	public static Sprite explosion_horizontal = new Sprite(1, 7);
-//	public static Sprite explosion_horizontal1 = new Sprite(1, 8);
-//	public static Sprite explosion_horizontal2 = new Sprite(1, 9);
-//
-//	public static Sprite explosion_horizontal_left_last = new Sprite(0, 7);
-//	public static Sprite explosion_horizontal_left_last1 = new Sprite(0, 8);
-//	public static Sprite explosion_horizontal_left_last2 = new Sprite(0, 9);
-//
-//	public static Sprite explosion_horizontal_right_last = new Sprite(2, 7);
-//	public static Sprite explosion_horizontal_right_last1 = new Sprite(2, 8);
-//	public static Sprite explosion_horizontal_right_last2 = new Sprite(2, 9);
-//
-//	public static Sprite explosion_vertical_top_last = new Sprite(1, 4);
-//	public static Sprite explosion_vertical_top_last1 = new Sprite(2, 4);
-//	public static Sprite explosion_vertical_top_last2 = new Sprite(3, 4);
-//
-//	public static Sprite explosion_vertical_down_last = new Sprite(1, 6);
-//	public static Sprite explosion_vertical_down_last1 = new Sprite(2, 6);
-//	public static Sprite explosion_vertical_down_last2 = new Sprite(3, 6);
-	
-	/*
-	|--------------------------------------------------------------------------
 	| Brick FlameSegment
 	|--------------------------------------------------------------------------
 	 */
@@ -199,7 +199,7 @@ public class Sprite {
 
 	public static Sprite movingSprite(Sprite normal, Sprite x1, Sprite x2, int animate, int time) {
 		int calc = animate % time;
-		int diff = time / 3; // 20, 40, 60
+		int diff = time / 3;
 
 		if(calc < diff) {
 			return normal;

@@ -1,10 +1,10 @@
-package uet.oop.bomberman.entities.mob;
+package uet.oop.bomberman.entities.moveObject;
 
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.entities.AnimatedEntity;
 import uet.oop.bomberman.graphics.Screen;
 
-public abstract class Mob extends AnimatedEntity {
+public abstract class MoveObject extends AnimatedEntity {
 
     protected Board board;
 
@@ -18,7 +18,7 @@ public abstract class Mob extends AnimatedEntity {
     protected boolean alive = true;
     protected boolean moving = false;
 
-    public Mob(double x, double y, Board board) {
+    public MoveObject(double x, double y, Board board) {
         this.x = x;
         this.y = y;
         this.board = board;

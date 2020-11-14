@@ -1,8 +1,9 @@
-package uet.oop.bomberman.entities.mob;
+package uet.oop.bomberman.entities.moveObject;
 
 import uet.oop.bomberman.*;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.Bomb;
+import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Player extends Mob {
+public class Player extends MoveObject {
 
     private Keyboard input;
 
@@ -147,7 +148,7 @@ public class Player extends Mob {
     }
 
     public void detectPlaceBomb() {
-        if (input.space && Game.getBomRate() > 0 && timetoPutBomb < 0) {
+        if (input.space && Game.getBombRate() > 0 && timetoPutBomb < 0) {
             int x0 = (int) ((x + 16 / 2) / Game.TILES_SIZE);
             int y0 = (int) ((y + 16 / 2 - 16) / Game.TILES_SIZE);
 

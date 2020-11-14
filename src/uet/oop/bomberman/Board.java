@@ -2,7 +2,7 @@ package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.Bomb;
-import uet.oop.bomberman.entities.mob.Mob;
+import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.entities.tile.GrassTile;
 import uet.oop.bomberman.graphics.Screen;
 
@@ -20,7 +20,7 @@ public class Board {
     private Screen screen;
 
     private Entity[] entities;
-    private List<Mob> mobs = new ArrayList<Mob>();
+    private List<MoveObject> mobs = new ArrayList<MoveObject>();
     private List<Bomb> bombs = new ArrayList<>();
 
     public Board(Game game, Keyboard input, Screen screen) {
@@ -65,7 +65,7 @@ public class Board {
         entities[pos] = e;
     }
 
-    public void addMob(Mob e) {
+    public void addMob(MoveObject e) {
         mobs.add(e);
     }
 
@@ -74,7 +74,7 @@ public class Board {
     }
 
     public void renderMobs(Screen screen) {
-        Iterator<Mob> itr = mobs.iterator();
+        Iterator<MoveObject> itr = mobs.iterator();
 
         while(itr.hasNext())
             itr.next().render(screen);
@@ -94,7 +94,7 @@ public class Board {
     }
 
     public void updateMobs() {
-        Iterator<Mob> itr = mobs.iterator();
+        Iterator<MoveObject> itr = mobs.iterator();
 
         while(itr.hasNext())
             itr.next().update();

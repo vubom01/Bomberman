@@ -1,15 +1,13 @@
 package uet.oop.bomberman.entities;
 
 import uet.oop.bomberman.graphics.Screen;
-import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.LinkedList;
 
-public class LayerEntity extends Entity {
-
+public class ListEntity extends Entity {
     private LinkedList<Entity> entities = new LinkedList<>();
 
-    public LayerEntity(int x, int y, Entity ... entities) {
+    public ListEntity(int x, int y, Entity ... entities) {
         this.x = x;
         this.y = y;
 
@@ -55,5 +53,4 @@ public class LayerEntity extends Entity {
     public void addBeforeTop(Entity e) {
         entities.add(entities.size() - 1, e);
     }
-
 }

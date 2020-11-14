@@ -1,7 +1,7 @@
 package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.mob.Player;
+import uet.oop.bomberman.entities.moveObject.Player;
 import uet.oop.bomberman.entities.tile.BrickTile;
 
 import java.awt.*;

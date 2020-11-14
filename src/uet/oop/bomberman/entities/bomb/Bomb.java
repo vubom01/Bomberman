@@ -1,8 +1,10 @@
 package uet.oop.bomberman.entities.bomb;
 
 import uet.oop.bomberman.Board;
+import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.AnimatedEntity;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
 
@@ -11,7 +13,11 @@ public class Bomb extends AnimatedEntity {
     private Board board;
 
     private int timeToExplode = 120; //2s
+    private int timeAfter = 20; //thoi gian bomb bien mat
     private boolean exploded = false;
+    private Directional[] explosions;
+    private boolean pass = true; //tia lua co xuyen duoc qua Tile hay khong
+
 
     public Bomb(double x, double y, Board board) {
         this.x = x;
@@ -24,15 +30,28 @@ public class Bomb extends AnimatedEntity {
         if (timeToExplode > 0) {
             timeToExplode--;
         } else {
-            remove();
+            if (!exploded) explosion();
+            else updateExplosions();
+
+            if (timeAfter > 0) timeAfter--;
+            //else remove();
+        }
+        if (Game.getBombRate() == 0) {
+            Game.setBomRate(1);
         }
         animate();
     }
 
     @Override
     public void render(Screen screen) {
+        if (exploded) {
+            sprite = Sprite.bomb_exploded2;
+            renderExplosions(screen);
+        }
+        else {
+            sprite = Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, _animate, 60);
+        }
 
-        sprite = Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, _animate, 60);
         int x0 = (int) x << 4;
         int y0 = (int) y << 4;
         screen.renderEntity(x0, y0, this);
@@ -42,4 +61,28 @@ public class Bomb extends AnimatedEntity {
     public boolean checkcollision(Entity e) {
         return false;
     }
+
+    public void renderExplosions(Screen screen) {
+        for (int i = 0; i < explosions.length; i++) {
+            explosions[i].render(screen);
+        }
+    }
+
+    public void updateExplosions() {
+        for (int i = 0; i < explosions.length; i++) {
+            explosions[i].update();
+        }
+    }
+
+    protected void explosion() {
+        pass = true;
+        exploded = true;
+
+        explosions = new Directional[4];
+
+        for (int i = 0; i < explosions.length; i++) {
+            explosions[i] = new Directional((int) x, (int) y, i, Game.getBombRadius(), board);
+        }
+    }
+
 }
