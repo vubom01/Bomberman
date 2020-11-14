@@ -25,7 +25,7 @@ public class Directional extends Entity {
         this.direction = direction;
         this.radius = radius;
 
-        explosions = new Explosion[3];
+        explosions = new Explosion[calculateDistance()];
         createExplosions();
     }
 
@@ -66,5 +66,25 @@ public class Directional extends Entity {
     @Override
     public boolean checkcollision(Entity e) {
         return false;
+    }
+
+    public int calculateDistance() {
+        int radius0 = 0;
+        double x0 = x;
+        double y0 = y;
+        while (radius0 < radius) {
+            if (direction == 0) y0--;
+            if (direction == 1) y0++;
+            if (direction == 2) x0--;
+            if (direction == 3) x0++;
+
+            Entity a = board.getEntity(x0, y0);
+            if (a.checkcollision(this) == false) {
+                break;
+            }
+
+            radius0++;
+        }
+        return radius0;
     }
 }

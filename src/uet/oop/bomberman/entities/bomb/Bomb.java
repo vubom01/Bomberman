@@ -35,9 +35,6 @@ public class Bomb extends AnimationEntity {
             if (timeAfter > 0) timeAfter--;
             else remove();
         }
-        if (Game.getBombRate() == 0) {
-            Game.setBomRate(1);
-        }
         setAnimation();
     }
 

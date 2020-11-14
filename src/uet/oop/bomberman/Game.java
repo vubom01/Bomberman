@@ -18,7 +18,7 @@ public class Game extends Canvas {
 
     private static final double PLAYERSPEED = 1.0;
     private static final int BOMBRATE = 1;
-    private static final int BOMBRADIUS = 1;
+    private static final int BOMBRADIUS = 2;
 
     private static double playerSpeed = PLAYERSPEED;
     private static int bomRate = BOMBRATE;

@@ -31,7 +31,6 @@ public class Explosion extends AnimationEntity {
         int x0 = (int) x << 4;
         int y0 = (int) y << 4;
         screen.renderEntity(x0, y0, this);
-
     }
 
     @Override
