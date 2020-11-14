@@ -43,9 +43,9 @@ public class Explosion extends AnimationEntity {
         switch (direction) {
             case 0:
                 if(last == false) {
-                    sprite = Sprite.movingSprite(Sprite.explosion_vertical3, Sprite.explosion_vertical2, Sprite.explosion_vertical1, animation, time);
+                    sprite = Sprite.movingSprite(Sprite.explosion_vertical3, Sprite.explosion_vertical2, Sprite.explosion_vertical1, Sprite.explosion_vertical, Sprite.explosion_vertical, animation, time);
                 } else {
-                    sprite = Sprite.movingSprite(Sprite.explosion_vertical_top_last3, Sprite.explosion_vertical_top_last2, Sprite.explosion_vertical_top_last1, animation, time);
+                    sprite = Sprite.movingSprite(Sprite.explosion_vertical_top_last3, Sprite.explosion_vertical_top_last2, Sprite.explosion_vertical_top_last1, Sprite.explosion_vertical_top_last, Sprite.explosion_vertical_top_last, animation, time);
 
                 }
                 break;

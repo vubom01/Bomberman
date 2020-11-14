@@ -11,7 +11,7 @@ public class Screen {
 
 
     private int width, height;
-    private int transparent_color = 0xffffffff;
+    private int transparent_color = 0xFFFFFFFF;
     private static double xOffset = 0, yOffset = 0;
 
     public int[] pixels;
@@ -38,6 +38,24 @@ public class Screen {
             }
         }
     }
+
+    public void renderEntity(int xp, int yp, Entity entity, Sprite below) {
+        xp -= xOffset;
+        yp -= yOffset;
+        for (int y = 0; y < entity.getSprite().getSize(); y++) {
+            int ya = y + yp;
+            for (int x = 0; x < entity.getSprite().getSize(); x++) {
+                int xa = x + xp;
+                if (xa < -entity.getSprite().getSize() || xa >= width || ya < -entity.getSprite().getSize() || ya >= height) break;
+                if (xa < 0) xa = 0;
+                if (ya < 0) ya = 0;
+                int color = entity.getSprite().getPixels(x + y * entity.getSprite().getSize());
+                if(color != transparent_color) pixels[xa + ya * width] = color;
+                else pixels[xa + ya * width] = below.getPixels(x + y * below.getSize());
+            }
+        }
+    }
+
 
     public static void setxOffset(double xO) {
         xOffset = xO;
@@ -75,12 +93,12 @@ public class Screen {
 
 
     public void drawChangeLevel(Graphics g, int level) {
-        g.setColor(Color.black);
+        g.setColor(Color.BLACK);
         g.fillRect(0, 0, width * 3, height * 3);
 
         Font font = new Font("Arial", Font.PLAIN, 20 * 3);
         g.setFont(font);
-        g.setColor(Color.white);
+        g.setColor(Color.WHITE);
     }
 
     public void clear() {

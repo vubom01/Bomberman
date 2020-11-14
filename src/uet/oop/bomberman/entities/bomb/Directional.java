@@ -42,7 +42,7 @@ public class Directional extends Entity {
                 case 3: x++; break;
             }
 
-            if (i == explosions.length - 1) last = true;
+            if (i == radius - 1) last = true;
             else last = false;
 
             explosions[i] = new Explosion(x, y, direction, last, board);

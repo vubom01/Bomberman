@@ -1,5 +1,6 @@
 package uet.oop.bomberman;
 
+import uet.oop.bomberman.entities.ListEntity;
 import uet.oop.bomberman.entities.moveObject.Player;
 import uet.oop.bomberman.entities.tile.BrickTile;
 import uet.oop.bomberman.entities.tile.GrassTile;
@@ -48,7 +49,10 @@ public class CreateMap {
                         board.addEntity(pos, new WallTile(x, y, Sprite.wall));
                         break;
                     case '*':
-                        board.addEntity(pos, new BrickTile(x, y, Sprite.brick));
+                        board.addEntity(pos, new ListEntity(x, y,
+                                new GrassTile(x, y, Sprite.grass),
+                                new BrickTile(x, y, Sprite.brick)
+                        ));
                         break;
                     case 'p':
                         board.addMob(new Player(x * 16, y * 16 + 16, board));

@@ -173,10 +173,15 @@ public class Sprite {
 	| Brick FlameSegment
 	|--------------------------------------------------------------------------
 	 */
-//	public static Sprite brick_exploded = new Sprite(7, 1);
-//	public static Sprite brick_exploded1 = new Sprite(7, 2);
-//	public static Sprite brick_exploded2 = new Sprite(7, 3);
-	
+	public static Sprite brick_exploded = new Sprite(16, 495 + 16 * 6, 159);
+	public static Sprite brick_exploded1 = new Sprite(16, 495 + 16 * 5, 159);
+
+	public static Sprite brick_exploded2 = new Sprite(16, 495 + 16 * 4, 159);
+	public static Sprite brick_exploded3 = new Sprite(16, 495 + 16 * 3, 159);
+	public static Sprite brick_exploded4 = new Sprite(16, 495 + 16 * 2, 159);
+	public static Sprite brick_exploded5 = new Sprite(16, 495 + 16 * 1, 159);
+	public static Sprite brick_exploded6 = new Sprite(16, 495, 159);
+
 	/*
 	|--------------------------------------------------------------------------
 	| Powerups
@@ -222,16 +227,47 @@ public class Sprite {
 		int calc = animate % time;
 		int diff = time / 5;
 
-		if (calc < diff) {
-			return normal;
-		} else if (calc < diff * 2) {
-			return x1;
-		} else if (calc < diff * 3) {
-			return x2;
-		} else if (calc < diff * 4){
-			return x3;
-		} else {
+		if (calc == 0 && animate > time) {
 			return x4;
+		}
+		else {
+			if (calc < diff) {
+				return normal;
+			} else if (calc < diff * 2) {
+				return x1;
+			} else if (calc < diff * 3) {
+				return x2;
+			} else if (calc < diff * 4) {
+				return x3;
+			} else {
+				return x4;
+			}
+		}
+	}
+
+	public static Sprite movingSprite(Sprite normal, Sprite x1, Sprite x2, Sprite x3, Sprite x4, Sprite x5, Sprite x6, int animate, int time) {
+		int calc = animate % time;
+		int diff = time / 7;
+
+		if (calc == 0 && animate > time) {
+			return x6;
+		}
+		else {
+			if (calc < diff) {
+				return normal;
+			} else if (calc < diff * 2) {
+				return x1;
+			} else if (calc < diff * 3) {
+				return x2;
+			} else if (calc < diff * 4) {
+				return x3;
+			} else if (calc < diff * 5) {
+				return x4;
+			} else if (calc < diff * 6) {
+				return x5;
+			} else {
+				return x6;
+			}
 		}
 	}
 
