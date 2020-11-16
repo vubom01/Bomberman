@@ -3,9 +3,8 @@ package uet.oop.bomberman.entities.bomb;
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.moveObject.Player;
-import uet.oop.bomberman.graphics.Screen;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.gui.Screen;
+import uet.oop.bomberman.gui.Sprite;
 
 public class Bomb extends Entity {
 
@@ -22,7 +21,6 @@ public class Bomb extends Entity {
         this.x = x;
         this.y = y;
         this.board = board;
-        sprite = Sprite.bomb;
     }
     @Override
     public void update() {
@@ -55,7 +53,12 @@ public class Bomb extends Entity {
 
     @Override
     public boolean checkcollision(Entity e) {
-        return false;
+        if(e instanceof ListExplosion) {
+            timeToExplode = 5;
+            return false;
+        }
+
+        return true;
     }
 
     public void renderExplosions(Screen screen) {
@@ -80,4 +83,15 @@ public class Bomb extends Entity {
         }
     }
 
+    public Explosion explosionAt(int x, int y) {
+        if(!exploded) return null;
+
+        for (int i = 0; i < explosions.length; i++) {
+            if(explosions[i] == null) return null;
+            Explosion e = explosions[i].explosionAt(x, y);
+            if(e != null) return e;
+        }
+
+        return null;
+    }
 }

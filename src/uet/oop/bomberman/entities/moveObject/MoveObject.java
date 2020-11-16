@@ -2,7 +2,7 @@ package uet.oop.bomberman.entities.moveObject;
 
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.graphics.Screen;
+import uet.oop.bomberman.gui.Screen;
 
 public abstract class MoveObject extends Entity {
 

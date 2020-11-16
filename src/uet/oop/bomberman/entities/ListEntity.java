@@ -1,6 +1,6 @@
 package uet.oop.bomberman.entities;
 
-import uet.oop.bomberman.graphics.Screen;
+import uet.oop.bomberman.gui.Screen;
 
 import java.util.LinkedList;
 

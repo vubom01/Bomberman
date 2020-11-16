@@ -1,7 +1,7 @@
 package uet.oop.bomberman.entities;
 
-import uet.oop.bomberman.graphics.Screen;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.gui.Screen;
+import uet.oop.bomberman.gui.Sprite;
 
 public abstract class Entity {
     protected double x, y;

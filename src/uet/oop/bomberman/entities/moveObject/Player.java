@@ -4,8 +4,8 @@ import uet.oop.bomberman.*;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.Bomb;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
-import uet.oop.bomberman.graphics.Screen;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.gui.Screen;
+import uet.oop.bomberman.gui.Sprite;
 
 import java.awt.*;
 import java.util.ArrayList;

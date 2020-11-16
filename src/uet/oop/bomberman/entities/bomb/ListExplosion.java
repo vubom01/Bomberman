@@ -2,7 +2,7 @@ package uet.oop.bomberman.entities.bomb;
 
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.graphics.Screen;
+import uet.oop.bomberman.gui.Screen;
 
 public class ListExplosion extends Entity {
 
@@ -78,7 +78,7 @@ public class ListExplosion extends Entity {
             if (direction == 2) x0--;
             if (direction == 3) x0++;
 
-            Entity a = board.getEntity(x0, y0);
+            Entity a = board.getEntity(x0, y0, null);
             if (a.checkcollision(this) == false) {
                 break;
             }
@@ -86,5 +86,13 @@ public class ListExplosion extends Entity {
             radius0++;
         }
         return radius0;
+    }
+
+    public Explosion explosionAt(int x, int y) {
+        for (int i = 0; i < explosions.length; i++) {
+            if(explosions[i].getX() == x && explosions[i].getY() == y)
+                return explosions[i];
+        }
+        return null;
     }
 }

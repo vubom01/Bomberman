@@ -2,9 +2,9 @@ package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.Bomb;
+import uet.oop.bomberman.entities.bomb.Explosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
-import uet.oop.bomberman.entities.tile.GrassTile;
-import uet.oop.bomberman.graphics.Screen;
+import uet.oop.bomberman.gui.Screen;
 
 import java.awt.*;
 import java.io.IOException;
@@ -119,9 +119,51 @@ public class Board {
         return bombs;
     }
 
-    public Entity getEntity(double x, double y) {
-        Entity res = entities[(int) x + (int) y * level.getWidth()];
+    public Entity getEntity(double x, double y, MoveObject m) {
+
+        Entity res = null;
+
+        res = getExplosion((int)x, (int)y);
+        if( res != null) return res;
+
+        res = getBomb(x, y);
+        if( res != null) return res;
+
+        res = getEntity((int)x, (int)y);
+
         return res;
+    }
+
+    public Explosion getExplosion(int x, int y) {
+        Iterator<Bomb> bs = bombs.iterator();
+        Bomb b;
+        while(bs.hasNext()) {
+            b = bs.next();
+
+            Explosion e = b.explosionAt(x, y);
+            if(e != null) {
+                return e;
+            }
+
+        }
+
+        return null;
+    }
+
+    public Bomb getBomb(double x, double y) {
+        Iterator<Bomb> bs = bombs.iterator();
+        Bomb b;
+        while(bs.hasNext()) {
+            b = bs.next();
+            if(b.getX() == (int)x && b.getY() == (int)y)
+                return b;
+        }
+
+        return null;
+    }
+
+    public Entity getEntity(double x, double y) {
+       return entities[(int) x + (int) y * level.getWidth()];
     }
 
     public int getWidth() {

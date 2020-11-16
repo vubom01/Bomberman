@@ -5,7 +5,7 @@ import uet.oop.bomberman.entities.moveObject.Player;
 import uet.oop.bomberman.entities.tile.BrickTile;
 import uet.oop.bomberman.entities.tile.GrassTile;
 import uet.oop.bomberman.entities.tile.WallTile;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.gui.Sprite;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

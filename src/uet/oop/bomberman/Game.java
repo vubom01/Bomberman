@@ -1,6 +1,6 @@
 package uet.oop.bomberman;
 
-import uet.oop.bomberman.graphics.Screen;
+import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Frame;
 
 import java.awt.Canvas;
@@ -14,10 +14,10 @@ public class Game extends Canvas {
     public static final int TILES_SIZE = 16,
             WIDTH = TILES_SIZE * 15,
             HEIGHT = TILES_SIZE * 13;
-    public static int SCALE = 3;
+    public static int SCALE = 2;
 
     private static final double PLAYERSPEED = 1.0;
-    private static final int BOMBRATE = 1;
+    private static final int BOMBRATE = 8;
     private static final int BOMBRADIUS = 2;
 
     private static double playerSpeed = PLAYERSPEED;
