@@ -1,34 +1,36 @@
 package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.bomb.Bomb;
+import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.entities.moveObject.Player;
-import uet.oop.bomberman.entities.tile.BrickTile;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.io.IOException;
 import java.util.ArrayList;
-
-import static java.lang.System.exit;
+import java.util.Iterator;
+import java.util.List;
 
 public class Collision {
 
     private Board board;
-    private Player player;
+    private MoveObject moveObject;
 
-    public Collision(Board board , Player player) {
+    public Collision(Board board, MoveObject moveObject) {
         this.board = board;
-        this.player = player;
+        this.moveObject = moveObject;
     }
 
-    public boolean collision(double x, double y) {
+    public boolean tileCollision(double x, double y) {
         CreateMap level = board.getLevel();
         int width = level.getWidth();
         int height = level.getHeight();
 
         ArrayList<Rectangle> rect = new ArrayList<>();
         Rectangle2D playerRect = new Rectangle2D.Double(
-                player.getX() + x + 3,
-                player.getY() + y,
+                moveObject.getX() + x + 3,
+                moveObject.getY() + y,
                 15,
                 15
         );
@@ -38,8 +40,8 @@ public class Collision {
                 Entity e = board.getEntity(i, j);
                 if (!e.checkcollision(e)) {
                     Rectangle rectTile = new Rectangle(
-                        i * 16, j * 16 + 16,
-                        16, 16
+                            i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
+                            Game.TILES_SIZE, Game.TILES_SIZE
                     );
                     rect.add(rectTile);
                 }
@@ -54,5 +56,62 @@ public class Collision {
         }
 
         return true;
+    }
+
+    public boolean check2Rect(Rectangle r) {
+        double x1 = moveObject.getX() + 3;
+        double y1 = moveObject.getY();
+        double w1 = Game.TILES_SIZE - 1;
+        double h1 = Game.TILES_SIZE - 1;
+
+        double x2 = r.getX();
+        double y2 = r.getY();
+        double w2 = Game.TILES_SIZE;
+        double h2 = Game.TILES_SIZE;
+
+        if ((x1 + w1 > x2) && (x2 + w2 > x1) && (y1 + h1 > y2) && (y2 + h2 > y1)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean bombCollision(double x, double y) {
+        CreateMap level = board.getLevel();
+        int width = level.getWidth();
+        int height = level.getHeight();
+
+        ArrayList<Rectangle> rect = new ArrayList<>();
+        Rectangle2D playerRect = new Rectangle2D.Double(
+                moveObject.getX() + x + 3,
+                moveObject.getY() + y,
+                15,
+                15
+        );
+
+        List<Bomb> b = board.getBombs();
+        for (int i = 0; i < b.size(); i++) {
+            Bomb bomb = b.get(i);
+            int x0 = (int) bomb.getX();
+            int y0 = (int) bomb.getY();
+            Rectangle rectTile = new Rectangle(
+                    x0 * Game.TILES_SIZE, y0 * Game.TILES_SIZE + Game.TILES_SIZE,
+                    Game.TILES_SIZE, Game.TILES_SIZE
+            );
+            rect.add(rectTile);
+        }
+
+        for (Rectangle r : rect) {
+            if (check2Rect(r) == true) {
+                return true;
+            }else if (r.intersects(playerRect)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean collision(double x, double y) {
+        return tileCollision(x, y) && bombCollision(x, y);
     }
 }

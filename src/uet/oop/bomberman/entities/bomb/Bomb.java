@@ -2,19 +2,19 @@ package uet.oop.bomberman.entities.bomb;
 
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.Game;
-import uet.oop.bomberman.entities.AnimationEntity;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.moveObject.Player;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
 
-public class Bomb extends AnimationEntity {
+public class Bomb extends Entity {
 
     private Board board;
 
     private int timeToExplode = 120; //2s
     private int timeAfter = 20; //thoi gian bomb bien mat
     private boolean exploded = false;
-    private Directional[] explosions;
+    private ListExplosion[] explosions;
     private boolean pass = true; //tia lua co xuyen duoc qua Tile hay khong
 
 
@@ -48,8 +48,8 @@ public class Bomb extends AnimationEntity {
             sprite = Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, animation, 60);
         }
 
-        int x0 = (int) x << 4;
-        int y0 = (int) y << 4;
+        int x0 = (int) x * Game.TILES_SIZE;
+        int y0 = (int) y * Game.TILES_SIZE;
         screen.renderEntity(x0, y0, this);
     }
 
@@ -73,10 +73,10 @@ public class Bomb extends AnimationEntity {
     protected void explosion() {
         pass = true;
         exploded = true;
-        explosions = new Directional[4];
+        explosions = new ListExplosion[4];
 
         for (int i = 0; i < explosions.length; i++) {
-            explosions[i] = new Directional((int) x, (int) y, i, Game.getBombRadius(), board);
+            explosions[i] = new ListExplosion((int) x, (int) y, i, Game.getBombRadius(), board);
         }
     }
 

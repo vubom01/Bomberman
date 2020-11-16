@@ -17,13 +17,15 @@ public class Player extends MoveObject {
     private Keyboard input;
 
     private List<Bomb> bombs;
-    private Collision collision = new Collision(board, this);
+    private Collision collision;
     private int timetoPutBomb;
 
     public Player(double x, double y, Board board) {
         super(x, y, board);
         input = board.getInput();
         bombs = board.getBombs();
+
+        collision = new Collision(board, this);
     }
 
 
@@ -149,8 +151,8 @@ public class Player extends MoveObject {
 
     public void detectPlaceBomb() {
         if (input.space && Game.getBombRate() > 0 && timetoPutBomb < 0) {
-            int x0 = (int) ((x + 16 / 2) / Game.TILES_SIZE);
-            int y0 = (int) ((y + 16 / 2 - 16) / Game.TILES_SIZE);
+            int x0 = (int) ((x + Game.TILES_SIZE / 2) / Game.TILES_SIZE);
+            int y0 = (int) ((y + Game.TILES_SIZE / 2 - Game.TILES_SIZE) / Game.TILES_SIZE);
 
             Bomb b = new Bomb(x0, y0, board);
             board.addBomb(b);

@@ -4,7 +4,7 @@ import uet.oop.bomberman.Board;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Screen;
 
-public class Directional extends Entity {
+public class ListExplosion extends Entity {
 
     private Board board;
 
@@ -18,7 +18,7 @@ public class Directional extends Entity {
     private int radius;
     private Explosion[] explosions;
 
-    public Directional(double x, double y, int direction, int radius, Board board) {
+    public ListExplosion(double x, double y, int direction, int radius, Board board) {
         this.board = board;
         this.x = x;
         this.y = y;

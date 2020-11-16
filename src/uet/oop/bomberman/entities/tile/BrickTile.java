@@ -1,19 +1,17 @@
 package uet.oop.bomberman.entities.tile;
 
-import uet.oop.bomberman.entities.AnimationEntity;
+import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.bomb.Directional;
+import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
 
-public class BrickTile extends AnimationEntity {
+public class BrickTile extends Tile {
     private boolean destroyed = false;
     private int timeAfter = 21;
 
     public BrickTile(double x, double y, Sprite sprite) {
-        this.x = x;
-        this.y = y;
-        this.sprite = sprite;
+        super(x, y, sprite);
     }
 
     @Override
@@ -28,12 +26,12 @@ public class BrickTile extends AnimationEntity {
     @Override
     public void render(Screen screen) {
         if (destroyed) sprite = Sprite.movingSprite(Sprite.brick_exploded6, Sprite.brick_exploded5, Sprite.brick_exploded4, Sprite.brick_exploded3, Sprite.brick_exploded2, Sprite.brick_exploded1, Sprite.brick_exploded, animation, 21);
-        screen.renderEntity((int) x * 16, (int) y * 16, this, Sprite.grass);
+        screen.renderEntity((int) x * Game.TILES_SIZE, (int) y * Game.TILES_SIZE, this, Sprite.grass);
     }
 
     @Override
     public boolean checkcollision(Entity e) {
-        if (e instanceof Directional) {
+        if (e instanceof ListExplosion) {
             destroy();
         }
         return false;

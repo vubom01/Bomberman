@@ -20,7 +20,7 @@ public class Board {
     private Screen screen;
 
     private Entity[] entities;
-    private List<MoveObject> mobs = new ArrayList<MoveObject>();
+    private List<MoveObject> moveObjects = new ArrayList<MoveObject>();
     private List<Bomb> bombs = new ArrayList<>();
 
     public Board(Game game, Keyboard input, Screen screen) {
@@ -34,13 +34,13 @@ public class Board {
     public void update() {
         updateEntities();
         updateBombs();
-        updateMobs();
+        updateMoveObjects();
     }
 
     public void render(Screen screen) {
         renderEntity(screen);
         renderBombs(screen);
-        renderMobs(screen);
+        renderMoveObjects(screen);
     }
 
     public void changeLevel(int levelNumber) {
@@ -62,7 +62,7 @@ public class Board {
     }
 
     public void addMob(MoveObject e) {
-        mobs.add(e);
+        moveObjects.add(e);
     }
 
     public void addBomb(Bomb b) {
@@ -77,8 +77,8 @@ public class Board {
         }
     }
 
-    public void renderMobs(Screen screen) {
-        Iterator<MoveObject> itr = mobs.iterator();
+    public void renderMoveObjects(Screen screen) {
+        Iterator<MoveObject> itr = moveObjects.iterator();
 
         while(itr.hasNext())
             itr.next().render(screen);
@@ -97,8 +97,8 @@ public class Board {
         }
     }
 
-    public void updateMobs() {
-        Iterator<MoveObject> itr = mobs.iterator();
+    public void updateMoveObjects() {
+        Iterator<MoveObject> itr = moveObjects.iterator();
 
         while(itr.hasNext())
             itr.next().update();

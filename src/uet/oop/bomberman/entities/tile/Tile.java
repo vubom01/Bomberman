@@ -1,5 +1,6 @@
 package uet.oop.bomberman.entities.tile;
 
+import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
@@ -17,7 +18,7 @@ public abstract class Tile extends Entity {
     }
 
     public void render(Screen screen) {
-        screen.renderEntity( (int) x * 16, (int) y * 16, this);
+        screen.renderEntity( (int) x * Game.TILES_SIZE, (int) y * Game.TILES_SIZE, this);
     }
 
     public void update() {}

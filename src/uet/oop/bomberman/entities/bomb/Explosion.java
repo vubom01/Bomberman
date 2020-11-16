@@ -1,12 +1,12 @@
 package uet.oop.bomberman.entities.bomb;
 
 import uet.oop.bomberman.Board;
-import uet.oop.bomberman.entities.AnimationEntity;
+import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
 
-public class Explosion extends AnimationEntity {
+public class Explosion extends Entity {
 
     private boolean last = false;
     private Board board;
@@ -28,9 +28,7 @@ public class Explosion extends AnimationEntity {
     @Override
     public void render(Screen screen) {
         setSprite(direction);
-        int x0 = (int) x << 4;
-        int y0 = (int) y << 4;
-        screen.renderEntity(x0, y0, this);
+        screen.renderEntity((int) x * Game.TILES_SIZE, (int) y * Game.TILES_SIZE, this);
     }
 
     @Override
