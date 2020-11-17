@@ -17,6 +17,8 @@ public abstract class MoveObject extends Entity {
 
     protected boolean alive = true;
     protected boolean moving = false;
+    protected int timeAfter = 84;
+    protected boolean kt = false;
 
     public MoveObject(double x, double y, Board board) {
         this.x = x;

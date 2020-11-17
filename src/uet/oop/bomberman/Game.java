@@ -17,7 +17,7 @@ public class Game extends Canvas {
     public static int SCALE = 2;
 
     private static final double PLAYERSPEED = 1.0;
-    private static final int BOMBRATE = 8;
+    private static final int BOMBRATE = 2;
     private static final int BOMBRADIUS = 2;
 
     private static double playerSpeed = PLAYERSPEED;
@@ -133,4 +133,7 @@ public class Game extends Canvas {
         return board;
     }
 
+    public static void main(String[] args) {
+        Frame app = new Frame();
+    }
 }

@@ -26,6 +26,9 @@ public class BrickTile extends Tile {
     @Override
     public void render(Screen screen) {
         if (destroyed) sprite = Sprite.movingSprite(Sprite.brick_exploded6, Sprite.brick_exploded5, Sprite.brick_exploded4, Sprite.brick_exploded3, Sprite.brick_exploded2, Sprite.brick_exploded1, Sprite.brick_exploded, animation, 21);
+        if (sprite == Sprite.brick_exploded) {
+            timeAfter = 0;
+        }
         screen.renderEntity((int) x * Game.TILES_SIZE, (int) y * Game.TILES_SIZE, this, Sprite.grass);
     }
 

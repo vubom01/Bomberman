@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.moveObject;
 import uet.oop.bomberman.*;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.Bomb;
+import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
@@ -32,16 +33,21 @@ public class Player extends MoveObject {
     @Override
     public void update() {
         clearBombs();
+        if (!alive) {
+            dead();
+            return;
+        }
+
         if(timetoPutBomb < 0) {
             timetoPutBomb = 0;
         }
         else {
             timetoPutBomb--;
         }
-
         setAnimation();
         calculateMove();
         detectPlaceBomb();
+        collision.checkBombExplode();
     }
 
     @Override
@@ -52,20 +58,36 @@ public class Player extends MoveObject {
             calculateYOffset();
         }
 
-        if (moving == true) {
-            setSprite();
-        } else {
-            if (direction == 0) sprite = Sprite.player_up;
-            if (direction == 1) sprite = Sprite.player_down;
-            if (direction == 2) sprite = Sprite.player_left;
-            if (direction == 3) sprite = Sprite.player_right;
+        if (!alive) {
+            if (!kt) {
+                animation = 0;
+                kt = true;
+            }
+            if (sprite != Sprite.player_dead) {
+                sprite = Sprite.movingSprite(Sprite.player_dead6, Sprite.player_dead5, Sprite.player_dead4, Sprite.player_dead3, Sprite.player_dead2, Sprite.player_dead1, Sprite.player_dead, animation, 84);
+            }
+        }
+        else {
+            if (moving == true) {
+                setSprite();
+            } else {
+                if (direction == 0) sprite = Sprite.player_up;
+                if (direction == 1) sprite = Sprite.player_down;
+                if (direction == 2) sprite = Sprite.player_left;
+                if (direction == 3) sprite = Sprite.player_right;
+            }
         }
         screen.renderEntity((int) x, (int) y - sprite.getSize(), this);
+
     }
 
     @Override
     public boolean checkcollision(Entity e) {
-        return true;
+        if (e instanceof ListExplosion) {
+            kill();
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -113,12 +135,16 @@ public class Player extends MoveObject {
 
     @Override
     public void kill() {
-
+        alive = false;
     }
 
     @Override
     public void dead() {
-
+        if (timeAfter > 0) {
+            setAnimation();
+            timeAfter--;
+        }
+        else remove();
     }
 
     public void setSprite() {
@@ -149,15 +175,23 @@ public class Player extends MoveObject {
         Screen.setyOffset(y0);
     }
 
+    public boolean check(int x0, int y0) {
+        Bomb res = board.getBomb(x0, y0);
+        if (res == null) return true;
+        return false;
+    }
+
     public void detectPlaceBomb() {
         if (input.space && Game.getBombRate() > 0 && timetoPutBomb < 0) {
             int x0 = (int) ((x + Game.TILES_SIZE / 2) / Game.TILES_SIZE);
             int y0 = (int) ((y + Game.TILES_SIZE / 2 - Game.TILES_SIZE) / Game.TILES_SIZE);
 
-            Bomb b = new Bomb(x0, y0, board);
-            board.addBomb(b);
-            Game.setBomRate(-1);
-            timetoPutBomb = 20;
+            if (check(x0, y0)) {
+                Bomb b = new Bomb(x0, y0, board);
+                board.addBomb(b);
+                Game.setBomRate(-1);
+                timetoPutBomb = 20;
+            }
         }
     }
 

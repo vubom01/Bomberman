@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.bomb;
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
@@ -33,7 +34,10 @@ public class Explosion extends Entity {
 
     @Override
     public boolean checkcollision(Entity e) {
-        return false;
+        if (e instanceof MoveObject) {
+            ((MoveObject) e).kill();
+        }
+        return true;
     }
 
     public Sprite setSprite(int direction) {

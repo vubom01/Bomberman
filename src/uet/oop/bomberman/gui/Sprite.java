@@ -49,9 +49,13 @@ public class Sprite {
     public static Sprite player_right_1 = new Sprite(21, 97, 0);
     public static Sprite player_right_2 = new Sprite(21, 121, 0);
 
-//	public static Sprite player_dead1 = new Sprite(4, 2);
-//	public static Sprite player_dead2 = new Sprite(5, 2);
-//	public static Sprite player_dead3 = new Sprite(6, 2);
+    public static Sprite player_dead = new Sprite(21, 168, 25);
+	public static Sprite player_dead1 = new Sprite(21, 145, 25);
+    public static Sprite player_dead2 = new Sprite(21, 121, 25);
+    public static Sprite player_dead3 = new Sprite(21, 97, 25);
+	public static Sprite player_dead4 = new Sprite(21, 49, 24);
+	public static Sprite player_dead5 = new Sprite(21, 25, 24);
+	public static Sprite player_dead6 = new Sprite(21, 1, 24);
 
     /*
     |--------------------------------------------------------------------------

@@ -35,6 +35,12 @@ public class Board {
         updateEntities();
         updateBombs();
         updateMoveObjects();
+
+        for (int i = 0; i < moveObjects.size(); i++) {
+            MoveObject a = moveObjects.get(i);
+            if(((Entity)a).isRemoved()) moveObjects.remove(i);
+        }
+
     }
 
     public void render(Screen screen) {
@@ -123,18 +129,18 @@ public class Board {
 
         Entity res = null;
 
-        res = getExplosion((int)x, (int)y);
+        res = getExplosion(x, y);
         if( res != null) return res;
 
         res = getBomb(x, y);
         if( res != null) return res;
 
-        res = getEntity((int)x, (int)y);
+        res = getEntity(x, y);
 
         return res;
     }
 
-    public Explosion getExplosion(int x, int y) {
+    public Explosion getExplosion(double x, double y) {
         Iterator<Bomb> bs = bombs.iterator();
         Bomb b;
         while(bs.hasNext()) {
@@ -155,7 +161,7 @@ public class Board {
         Bomb b;
         while(bs.hasNext()) {
             b = bs.next();
-            if(b.getX() == (int)x && b.getY() == (int)y)
+            if(b.getX() == x && b.getY() == y)
                 return b;
         }
 

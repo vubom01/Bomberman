@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.bomb;
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
@@ -10,11 +11,10 @@ public class Bomb extends Entity {
 
     private Board board;
 
-    private int timeToExplode = 120; //2s
+    private int timeToExplode = 180; //3s
     private int timeAfter = 20; //thoi gian bomb bien mat
     private boolean exploded = false;
     private ListExplosion[] explosions;
-    private boolean pass = true; //tia lua co xuyen duoc qua Tile hay khong
 
 
     public Bomb(double x, double y, Board board) {
@@ -45,10 +45,7 @@ public class Bomb extends Entity {
         else {
             sprite = Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, animation, 60);
         }
-
-        int x0 = (int) x * Game.TILES_SIZE;
-        int y0 = (int) y * Game.TILES_SIZE;
-        screen.renderEntity(x0, y0, this);
+        screen.renderEntity((int) x * Game.TILES_SIZE, (int) y * Game.TILES_SIZE, this);
     }
 
     @Override
@@ -57,7 +54,6 @@ public class Bomb extends Entity {
             timeToExplode = 5;
             return false;
         }
-
         return true;
     }
 
@@ -74,7 +70,6 @@ public class Bomb extends Entity {
     }
 
     protected void explosion() {
-        pass = true;
         exploded = true;
         explosions = new ListExplosion[4];
 
@@ -83,7 +78,7 @@ public class Bomb extends Entity {
         }
     }
 
-    public Explosion explosionAt(int x, int y) {
+    public Explosion explosionAt(double x, double y) {
         if(!exploded) return null;
 
         for (int i = 0; i < explosions.length; i++) {
@@ -92,6 +87,15 @@ public class Bomb extends Entity {
             if(e != null) return e;
         }
 
+        return null;
+    }
+
+    public boolean isExploded() {
+        return exploded;
+    }
+
+    public ListExplosion[] getExplosion() {
+        if (exploded) return explosions;
         return null;
     }
 }

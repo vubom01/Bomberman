@@ -2,6 +2,8 @@ package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.Bomb;
+import uet.oop.bomberman.entities.bomb.Explosion;
+import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.entities.moveObject.Player;
 
@@ -76,10 +78,6 @@ public class Collision {
     }
 
     public boolean bombCollision(double x, double y) {
-        CreateMap level = board.getLevel();
-        int width = level.getWidth();
-        int height = level.getHeight();
-
         ArrayList<Rectangle> rect = new ArrayList<>();
         Rectangle2D playerRect = new Rectangle2D.Double(
                 moveObject.getX() + x + 3,
@@ -109,6 +107,40 @@ public class Collision {
         }
 
         return true;
+    }
+
+    public void checkBombExplode() {
+        ArrayList<Rectangle> rect = new ArrayList<>();
+        List<Bomb> bombs = board.getBombs();
+        for (int i = 0; i < bombs.size(); i++) {
+            rect.clear();
+            Bomb bomb = bombs.get(i);
+            int x0 = (int) bomb.getX();
+            int y0 = (int) bomb.getY();
+            Rectangle rectTile = new Rectangle(
+                    x0 * Game.TILES_SIZE, y0 * Game.TILES_SIZE + Game.TILES_SIZE,
+                    Game.TILES_SIZE, Game.TILES_SIZE
+            );
+            rect.add(rectTile);
+            if (bomb.getExplosion() == null) continue;
+            for (int j = 0; j < bomb.getExplosion().length; j++) {
+                ListExplosion listExplosion = bomb.getExplosion()[j];
+                for (int k = 0; k < listExplosion.getExplosions().length; k++) {
+                    Explosion explosion = listExplosion.getExplosions()[k];
+                    x0 = (int) explosion.getX();
+                    y0 = (int) explosion.getY();
+                    rectTile = new Rectangle(
+                            x0 * Game.TILES_SIZE, y0 * Game.TILES_SIZE + Game.TILES_SIZE,
+                            Game.TILES_SIZE, Game.TILES_SIZE
+                    );
+                    rect.add(rectTile);
+                }
+            }
+            for (Rectangle r : rect) {
+                if (check2Rect(r) == true) moveObject.kill();
+            }
+        }
+
     }
 
     public boolean collision(double x, double y) {
