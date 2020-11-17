@@ -41,23 +41,4 @@ public abstract class Entity {
         if (animation < 7500) animation++;
         else animation = 0;
     }
-    public static int pixelToTile(double i) {
-        return (int)(i / Game.TILES_SIZE);
-    }
-
-    public static int tileToPixel(int i) {
-        return i * Game.TILES_SIZE;
-    }
-
-    public static int tileToPixel(double i) {
-        return (int)(i * Game.TILES_SIZE);
-    }
-
-    public double getXTile() {
-        return pixelToTile(x + sprite.getSize() / 2); //plus half block for precision
-    }
-
-    public double getYTile() {
-        return pixelToTile(y - sprite.getSize() / 2); //plus half block
-    }
 }

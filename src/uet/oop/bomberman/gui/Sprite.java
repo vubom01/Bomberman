@@ -112,16 +112,14 @@ public class Sprite {
 	| Character
 	|--------------------------------------------------------------------------
 	 */
-    //BALLOM
-//	public static Sprite balloom_left1 = new Sprite(9, 0);
-//	public static Sprite balloom_left2 = new Sprite(9, 1);
-//	public static Sprite balloom_left3 = new Sprite(9, 2);
-//
-//	public static Sprite balloom_right1 = new Sprite(10, 0);
-//	public static Sprite balloom_right2 = new Sprite(10, 1);
-//	public static Sprite balloom_right3 = new Sprite(10, 2);
-//
-//	public static Sprite balloom_dead = new Sprite(9, 3);
+    //Enemy 1
+
+	public static Sprite enemy1_1 = new Sprite(16, 426, 215);
+	public static Sprite enemy1_2 = new Sprite(16, 442, 215);
+	public static Sprite enemy1_3 = new Sprite(16, 458, 215);
+
+	public static Sprite enemy1_dead1 = new Sprite(16, 474, 215);
+	public static Sprite enemy1_dead2 = new Sprite(16, 490, 215);
 //
 //	//ONEAL
 //	public static Sprite oneal_left1 = new Sprite(11, 0);
@@ -211,6 +209,16 @@ public class Sprite {
             for (int i = 0; i < SIZE; i++) {
                 pixels[i + j * SIZE] = sheet.pixels[(i + x) + (j + y) * sheet.SIZE];
             }
+        }
+    }
+    public static Sprite movingSprite(Sprite x1, Sprite x2, int animate, int time) {
+        int calc = animate % time;
+        int diff = time / 2;
+
+        if(calc < diff) {
+            return x1;
+        } else {
+            return x2;
         }
     }
 

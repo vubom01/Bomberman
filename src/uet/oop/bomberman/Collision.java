@@ -7,6 +7,7 @@ import uet.oop.bomberman.entities.bomb.Explosion;
 import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.entities.moveObject.Player;
+import uet.oop.bomberman.entities.moveObject.enemy.Enemy;
 import uet.oop.bomberman.entities.tile.item.Item;
 
 import java.awt.*;
@@ -159,6 +160,20 @@ public class Collision {
                     );
                     if (check2Rect(rectTile)) e.checkcollision(moveObject);
                 }
+            }
+        }
+    }
+
+    public void enemyCollision(double x, double y) {
+        List<MoveObject> moveObjects = board.getMoveObject();
+        for (int i = 0; i < moveObjects.size(); i++) {
+            MoveObject e = moveObjects.get(i);
+            if (e instanceof Enemy) {
+                Rectangle rectTile = new Rectangle(
+                        (int) e.getX(), (int) e.getY(),
+                        Game.TILES_SIZE, Game.TILES_SIZE
+                );
+                if (check2Rect(rectTile)) moveObject.kill();
             }
         }
     }

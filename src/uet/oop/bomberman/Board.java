@@ -170,6 +170,10 @@ public class Board {
         return null;
     }
 
+    public List<MoveObject> getMoveObject() {
+        return moveObjects;
+    }
+
     public Entity getEntity(double x, double y) {
        return entities[(int) x + (int) y * level.getWidth()];
     }

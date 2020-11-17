@@ -51,7 +51,7 @@ public class Player extends MoveObject {
         detectPlaceBomb();
         collision.checkBombExplode();
         collision.itemCollision();
-
+        collision.enemyCollision(this.x, this.y);
     }
 
     @Override
