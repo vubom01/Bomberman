@@ -1,5 +1,6 @@
 package uet.oop.bomberman.entities;
 
+import uet.oop.bomberman.entities.tile.BrickTile;
 import uet.oop.bomberman.gui.Screen;
 
 import java.util.LinkedList;
@@ -14,10 +15,10 @@ public class ListEntity extends Entity {
         for (int i = 0; i < entities.length; i++) {
             this.entities.add(entities[i]);
 
-//            if(i > 1) { //Add to destroyable tiles the bellow sprite for rendering in explosion
-//                if(entities[i] instanceof DestroyableTile)
-//                    ((DestroyableTile)entities[i]).addBelowSprite(entities[i-1].getSprite());
-//            }
+            if(i > 1) {
+                if(entities[i] instanceof BrickTile)
+                    ((BrickTile)entities[i]).addBelowSprite(entities[i-1].getSprite());
+            }
         }
     }
 
@@ -44,7 +45,6 @@ public class ListEntity extends Entity {
 
     public void clearRemoved() {
         Entity top  = getTopEntity();
-
         if(top.isRemoved())  {
             entities.removeLast();
         }

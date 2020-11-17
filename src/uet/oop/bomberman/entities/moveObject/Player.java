@@ -4,7 +4,7 @@ import uet.oop.bomberman.*;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.Bomb;
 import uet.oop.bomberman.entities.bomb.ListExplosion;
-import uet.oop.bomberman.entities.moveObject.MoveObject;
+import uet.oop.bomberman.entities.tile.item.Item;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
@@ -20,6 +20,8 @@ public class Player extends MoveObject {
     private List<Bomb> bombs;
     private Collision collision;
     private int timetoPutBomb;
+
+    public static List<Item> items = new ArrayList<>();
 
     public Player(double x, double y, Board board) {
         super(x, y, board);
@@ -48,6 +50,8 @@ public class Player extends MoveObject {
         calculateMove();
         detectPlaceBomb();
         collision.checkBombExplode();
+        collision.itemCollision();
+
     }
 
     @Override
@@ -189,7 +193,7 @@ public class Player extends MoveObject {
             if (check(x0, y0)) {
                 Bomb b = new Bomb(x0, y0, board);
                 board.addBomb(b);
-                Game.setBomRate(-1);
+                Game.setBombRate(-1);
                 timetoPutBomb = 20;
             }
         }
@@ -203,8 +207,15 @@ public class Player extends MoveObject {
             b = bs.next();
             if(b.isRemoved())  {
                 bs.remove();
-                Game.setBomRate(1);
+                Game.setBombRate(1);
             }
         }
+    }
+
+    //Add item
+    public void addItem(Item item) {
+        if(item.isRemoved()) return;
+        items.add(item);
+        item.setValues();
     }
 }

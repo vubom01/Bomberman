@@ -191,9 +191,9 @@ public class Sprite {
 	| Powerups
 	|--------------------------------------------------------------------------
 	 */
-//	public static Sprite powerup_bombs = new Sprite(0, 10);
-//	public static Sprite powerup_flames = new Sprite(1, 10);
-//	public static Sprite powerup_speed = new Sprite(2, 10);
+	public static Sprite itemBomb = new Sprite(16, 16, 48);
+	public static Sprite itemFire = new Sprite(16, 0, 48);
+	public static Sprite itemSpeed = new Sprite(16, 48, 48);
 //	public static Sprite powerup_wallpass = new Sprite(3, 10);
 //	public static Sprite powerup_detonator = new Sprite(4, 10);
 //	public static Sprite powerup_bombpass = new Sprite(5, 10);

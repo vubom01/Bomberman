@@ -16,13 +16,13 @@ public class Game extends Canvas {
             HEIGHT = TILES_SIZE * 13;
     public static int SCALE = 2;
 
-    private static final double PLAYERSPEED = 1.0;
+    private static final double PLAYERSPEED = 0.8;
     private static final int BOMBRATE = 2;
     private static final int BOMBRADIUS = 2;
 
-    private static double playerSpeed = PLAYERSPEED;
-    private static int bomRate = BOMBRATE;
-    private static int bomRadius = BOMBRADIUS;
+    public static double playerSpeed = PLAYERSPEED;
+    public static int bombRate = BOMBRATE;
+    public static int bombRadius = BOMBRADIUS;
 
     private Keyboard input;
     private boolean running = false;
@@ -114,15 +114,23 @@ public class Game extends Canvas {
     }
 
     public static int getBombRate() {
-        return bomRate;
+        return bombRate;
     }
 
     public static int getBombRadius() {
-        return bomRadius;
+        return bombRadius;
     }
 
-    public static void setBomRate(int i) {
-        bomRate+=i;
+    public static void setBombRate(int i) {
+        bombRate += i;
+    }
+
+    public static void setBombRadius(int i) {
+        bombRadius += i;
+    }
+
+    public static void setPlayerSpeed(double i) {
+        playerSpeed += i;
     }
 
     public Keyboard getInput() {

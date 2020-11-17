@@ -1,11 +1,13 @@
 package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.ListEntity;
 import uet.oop.bomberman.entities.bomb.Bomb;
 import uet.oop.bomberman.entities.bomb.Explosion;
 import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.entities.moveObject.Player;
+import uet.oop.bomberman.entities.tile.item.Item;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -140,7 +142,25 @@ public class Collision {
                 if (check2Rect(r) == true) moveObject.kill();
             }
         }
+    }
 
+    public void itemCollision() {
+        CreateMap level = board.getLevel();
+        int width = level.getWidth();
+        int height = level.getHeight();
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                Entity e = board.getEntity(i, j);
+                if (e instanceof ListEntity) {
+                    Rectangle rectTile = new Rectangle(
+                            i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
+                            Game.TILES_SIZE, Game.TILES_SIZE
+                    );
+                    if (check2Rect(rectTile)) e.checkcollision(moveObject);
+                }
+            }
+        }
     }
 
     public boolean collision(double x, double y) {
