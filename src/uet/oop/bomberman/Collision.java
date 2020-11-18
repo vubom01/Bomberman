@@ -33,8 +33,10 @@ public class Collision {
         int height = level.getHeight();
 
         ArrayList<Rectangle> rect = new ArrayList<>();
+        double x00 = moveObject.getX() + x;
+        if (moveObject instanceof Player) x00 += 3;
         Rectangle2D playerRect = new Rectangle2D.Double(
-                moveObject.getX() + x + 3,
+                x00,
                 moveObject.getY() + y,
                 15,
                 15
@@ -82,8 +84,10 @@ public class Collision {
 
     public boolean bombCollision(double x, double y) {
         ArrayList<Rectangle> rect = new ArrayList<>();
+        double x00 = moveObject.getX() + x;
+        if (moveObject instanceof Player) x00 += 3;
         Rectangle2D playerRect = new Rectangle2D.Double(
-                moveObject.getX() + x + 3,
+                x00,
                 moveObject.getY() + y,
                 15,
                 15
