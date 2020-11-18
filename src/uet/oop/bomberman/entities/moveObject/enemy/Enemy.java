@@ -8,6 +8,8 @@ import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
+import java.util.Random;
+
 public abstract class Enemy extends MoveObject {
     protected int point;
     protected double speed;
@@ -20,6 +22,7 @@ public abstract class Enemy extends MoveObject {
         this.point = point;
         timeAfter = 10;
         collision = new Collision(board, this);
+        direction = new Random().nextInt(4);
     }
 
     @Override

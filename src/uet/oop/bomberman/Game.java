@@ -19,10 +19,20 @@ public class Game extends Canvas {
     private static final double PLAYERSPEED = 0.8;
     private static final int BOMBRATE = 2;
     private static final int BOMBRADIUS = 2;
+    private static final int SCREENDELAY = 3;
+    private static final int TIMES = 200;
+    private static final int POINTS = 0;
+    private static final int LIVES = 3;
+
 
     public static double playerSpeed = PLAYERSPEED;
     public static int bombRate = BOMBRATE;
     public static int bombRadius = BOMBRADIUS;
+    public static int screenDelay = SCREENDELAY;
+    public static int times = TIMES;
+    public static int points = POINTS;
+    public static int lives = LIVES;
+
 
     private Keyboard input;
     private boolean running = false;
@@ -94,8 +104,11 @@ public class Game extends Canvas {
         running = true;
 
         long  lastTime = System.nanoTime();
-        final double ns = 1000000000.0 / 60.0;
+        long timer = System.currentTimeMillis();
+        final double ns = 1000000000.0 / 60.0; //nanosecond, 60 frames per second
         double delta = 0;
+        int frames = 0;
+        int updates = 0;
         requestFocus();
         while(running) {
             long now = System.nanoTime();
@@ -103,8 +116,29 @@ public class Game extends Canvas {
             lastTime = now;
             while(delta >= 1) {
                 update();
+                updates++;
                 delta--;
+            }
+
+            if(paused) {
+                if(screenDelay <= 0) { //time passed? lets reset status to show the game
+                    board.setShow(-1);
+                    paused = false;
+                }
+
+                renderScreen();
+            } else {
                 renderGame();
+            }
+
+
+            frames++;
+            if(System.currentTimeMillis() - timer > 1000) { //once per second
+                timer += 1000;
+                updates = 0;
+                frames = 0;
+                if(board.getShow() == 2)
+                    screenDelay--;
             }
         }
     }
@@ -121,6 +155,10 @@ public class Game extends Canvas {
         return bombRadius;
     }
 
+    public static int getLives() {
+        return lives;
+    }
+
     public static void setBombRate(int i) {
         bombRate += i;
     }
@@ -133,12 +171,28 @@ public class Game extends Canvas {
         playerSpeed += i;
     }
 
+    public static void setLives(int i) {
+        lives += i;
+    }
+
     public Keyboard getInput() {
         return input;
     }
 
     public Board getBoard() {
         return board;
+    }
+
+    public void resetScreenDelay() {
+        screenDelay = SCREENDELAY;
+    }
+
+    public void pause() {
+        paused = true;
+    }
+
+    public boolean isPaused() {
+        return paused;
     }
 
     public static void main(String[] args) {

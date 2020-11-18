@@ -25,6 +25,8 @@ public class Board {
     private List<MoveObject> moveObjects = new ArrayList<MoveObject>();
     private List<Bomb> bombs = new ArrayList<>();
 
+    private int screenToShow = -1; //1:endGame, 2:changeLevel
+
     public Board(Game game, Keyboard input, Screen screen) {
         this.game = game;
         this.input = input;
@@ -46,12 +48,29 @@ public class Board {
     }
 
     public void render(Screen screen) {
+        if(game.isPaused() ) return;
         renderEntity(screen);
         renderBombs(screen);
         renderMoveObjects(screen);
     }
 
+
+    public void restartLevel() {
+        changeLevel(level.getLevel());
+    }
+
+    public void nextLevel() {
+        changeLevel(level.getLevel() + 1);
+    }
+
     public void changeLevel(int levelNumber) {
+        screen.resetOffset();
+        screenToShow = 2;
+        game.resetScreenDelay();
+        game.pause();
+        moveObjects.clear();
+        bombs.clear();
+
         try {
             level = new CreateMap("res/levels/Level" + levelNumber + ".txt", this);
             entities = new Entity[level.getHeight() * level.getWidth()];
@@ -62,8 +81,19 @@ public class Board {
     }
 
     public void drawScreen(Graphics g) {
-        screen.drawChangeLevel(g, level.getLevel());
+        switch (screenToShow) {
+            case 1:
+                screen.drawEndGame(g, 50000);
+                break;
+            case 2:
+                screen.drawChangeLevel(g, level.getLevel());
+                break;
+            case 3:
+                screen.drawPaused(g);
+                break;
+        }
     }
+
 
     public void addEntity(int pos, Entity e) {
         entities[pos] = e;
@@ -106,10 +136,9 @@ public class Board {
     }
 
     public void updateMoveObjects() {
-        Iterator<MoveObject> itr = moveObjects.iterator();
-
-        while(itr.hasNext())
-            itr.next().update();
+        for (int i = 0; i < moveObjects.size(); i++) {
+            moveObjects.get(i).update();
+        }
     }
 
     public void updateBombs() {
@@ -197,4 +226,19 @@ public class Board {
         game.bombRadius = 1;
         game.bombRate = 1;
     }
+
+    public void endGame() {
+        screenToShow = 1;
+        game.resetScreenDelay();
+        game.pause();
+    }
+
+    public void setShow(int i) {
+        screenToShow = i;
+    }
+
+    public int getShow() {
+        return screenToShow;
+    }
+
 }
