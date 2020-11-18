@@ -66,7 +66,8 @@ public class Collision {
     }
 
     public boolean check2Rect(Rectangle r) {
-        double x1 = moveObject.getX() + 3;
+        double x1 = moveObject.getX();
+        if (moveObject instanceof Player) x1 += 3;
         double y1 = moveObject.getY();
         double w1 = Game.TILES_SIZE - 1;
         double h1 = Game.TILES_SIZE - 1;
