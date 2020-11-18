@@ -10,8 +10,8 @@ import uet.oop.bomberman.gui.Sprite;
 
 public class iBomb extends Item {
 
-    public iBomb(double x, double y, Sprite sprite) {
-        super(x, y, sprite);
+    public iBomb(double x, double y, int level, Sprite sprite) {
+        super(x, y, level, sprite);
     }
 
     @Override

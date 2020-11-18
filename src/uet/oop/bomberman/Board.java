@@ -54,6 +54,20 @@ public class Board {
         renderMoveObjects(screen);
     }
 
+    public void newGame() {
+        while (Game.getLives() > 3) {
+            Game.setLives(-1);
+        }
+        while (Game.getLives() < 3) {
+            Game.setLives(1);
+        }
+
+        Player.items.clear();
+
+        game.playerSpeed = 1.0;
+        game.bombRadius = 1;
+        game.bombRate = 1;
+    }
 
     public void restartLevel() {
         changeLevel(level.getLevel());
@@ -67,7 +81,7 @@ public class Board {
         screen.resetOffset();
         screenToShow = 2;
         game.resetScreenDelay();
-        game.pause();
+        //game.pause();
         moveObjects.clear();
         bombs.clear();
 
@@ -239,6 +253,16 @@ public class Board {
 
     public int getShow() {
         return screenToShow;
+    }
+
+    public boolean isItemUsed(int x, int y, int level) {
+        Item item;
+        for (int i = 0; i < Player.items.size(); i++) {
+            item = Player.items.get(i);
+            if(item.getX() == x && item.getY() == y && level == item.getLevel())
+                return true;
+        }
+        return false;
     }
 
 }

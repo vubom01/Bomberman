@@ -65,20 +65,26 @@ public class CreateMap {
                         break;
                     case 'b':
                         listEntity = new ListEntity(x, y, new GrassTile(x, y, Sprite.grass),
-                                                    new iBomb(x, y, Sprite.itemBomb),
                                                     new BrickTile(x, y, Sprite.brick));
+                        if (!board.isItemUsed(x, y, level)) {
+                            listEntity.addBeforeTop(new iBomb(x, y, level, Sprite.itemBomb));
+                        }
                         board.addEntity(pos, listEntity);
                         break;
                     case 'f':
                         listEntity = new ListEntity(x, y, new GrassTile(x ,y, Sprite.grass),
-                                                    new iFire(x, y, Sprite.itemFire),
                                                     new BrickTile(x ,y, Sprite.brick));
+                        if (!board.isItemUsed(x, y, level)) {
+                            listEntity.addBeforeTop(new iFire(x, y, level, Sprite.itemFire));
+                        }
                         board.addEntity(pos, listEntity);
                         break;
                     case 's':
                         listEntity = new ListEntity(x, y, new GrassTile(x ,y, Sprite.grass),
-                                                    new iSpeed(x, y, Sprite.itemSpeed),
                                                     new BrickTile(x ,y, Sprite.brick));
+                        if (!board.isItemUsed(x, y, level)) {
+                            listEntity.addBeforeTop(new iSpeed(x, y, level, Sprite.itemSpeed));
+                        }
                         board.addEntity(pos, listEntity);
                         break;
                     case '1':

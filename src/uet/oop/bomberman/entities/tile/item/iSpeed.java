@@ -9,8 +9,8 @@ import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
 public class iSpeed extends Item {
-    public iSpeed(double x, double y, Sprite sprite) {
-        super(x, y, sprite);
+    public iSpeed(double x, double y, int level, Sprite sprite) {
+        super(x, y, level, sprite);
     }
 
     @Override

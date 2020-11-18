@@ -141,7 +141,6 @@ public class Player extends MoveObject {
     public void kill() {
         alive = false;
         Game.setLives(-1);
-        System.out.println(Game.getLives());
     }
 
     @Override
@@ -151,12 +150,12 @@ public class Player extends MoveObject {
             timeAfter--;
         }
         else if (bombs.size() == 0) {
-            if (Game.getLives() == 0) {
-                board.endGame();
-            }
-            else {
+//            if (Game.getLives() == 0) {
+//                board.endGame();
+//            }
+//            else {
                 board.restartLevel();
-            }
+//            }
         }
     }
 
