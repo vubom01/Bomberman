@@ -4,6 +4,8 @@ import uet.oop.bomberman.Board;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
+import java.util.Random;
+
 public class Enemy1 extends Enemy {
 
     public Enemy1(double x, double y, Board board) {
@@ -17,8 +19,32 @@ public class Enemy1 extends Enemy {
             sprite = Sprite.movingSprite(Sprite.enemy1_dead2, Sprite.enemy1_dead1, animation, 10);
         screen.renderEntity((int) x, (int) y - sprite.getSize(), this);
     }
+
     @Override
     public Sprite setSprite() {
         return Sprite.movingSprite(Sprite.enemy1_3, Sprite.enemy1_2, Sprite.enemy1_1, animation, 60);
+    }
+
+    public boolean canMove(double xa, double ya) {
+        if (!collision.collision(xa, ya)) {
+            direction = new Random().nextInt(4);
+        }
+        return collision.collision(xa, ya);
+    }
+
+    public void calculateMove() {
+        int xa = 0, ya = 0;
+
+        if(direction == 0) ya--;
+        if(direction == 1) ya++;
+        if(direction == 2) xa--;
+        if(direction == 3) xa++;
+
+        if(canMove(xa, ya)) {
+            move(xa * speed, ya * speed);
+            moving = true;
+        } else {
+            moving = false;
+        }
     }
 }

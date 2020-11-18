@@ -168,7 +168,7 @@ public class Collision {
         List<MoveObject> moveObjects = board.getMoveObject();
         for (int i = 0; i < moveObjects.size(); i++) {
             MoveObject e = moveObjects.get(i);
-            if (e instanceof Enemy) {
+            if (       e instanceof Enemy) {
                 Rectangle rectTile = new Rectangle(
                         (int) e.getX(), (int) e.getY(),
                         Game.TILES_SIZE, Game.TILES_SIZE

@@ -2,6 +2,7 @@ package uet.oop.bomberman.entities.moveObject.enemy;
 
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.Collision;
+import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gui.Screen;
@@ -10,7 +11,6 @@ import uet.oop.bomberman.gui.Sprite;
 public abstract class Enemy extends MoveObject {
     protected int point;
     protected double speed;
-    protected 
     protected Collision collision;
     protected boolean special = false;
 
@@ -63,9 +63,7 @@ public abstract class Enemy extends MoveObject {
     }
 
     @Override
-    public void calculateMove() {
-
-    }
+    public abstract void calculateMove();
 
     @Override
     public boolean canMove(double xa, double ya) {
