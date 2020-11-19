@@ -104,16 +104,9 @@ public class Game extends Canvas {
     public void start() {
         running = false;
 
-        while (true) {
-            System.out.println(1);
-            if (running) {
-                System.out.println(2);
-                break;
-            }
+        while (!running) {
+            System.out.println();
         }
-
-        System.out.println(3);
-
 
         long  lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();
