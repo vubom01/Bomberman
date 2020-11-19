@@ -92,7 +92,6 @@ public class Screen {
         return temp;
     }
 
-
     public void drawEndGame(Graphics g, int points) {
         g.setColor(Color.black);
         g.fillRect(0, 0, getRealWidth(), getRealHeight());

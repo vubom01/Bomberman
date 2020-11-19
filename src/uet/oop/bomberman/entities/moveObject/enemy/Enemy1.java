@@ -21,8 +21,8 @@ public class Enemy1 extends Enemy {
     }
 
     @Override
-    public Sprite setSprite() {
-        return Sprite.movingSprite(Sprite.enemy1_3, Sprite.enemy1_2, Sprite.enemy1_1, animation, 60);
+    public void setSprite() {
+        sprite = Sprite.movingSprite(Sprite.enemy1_3, Sprite.enemy1_2, Sprite.enemy1_1, animation, 60);
     }
 
     public boolean canMove(double xa, double ya) {

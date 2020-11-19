@@ -48,7 +48,7 @@ public class Board {
     }
 
     public void render(Screen screen) {
-        if(game.isPaused() ) return;
+        //if(game.isPaused() ) return;
         renderEntity(screen);
         renderBombs(screen);
         renderMoveObjects(screen);
@@ -81,7 +81,7 @@ public class Board {
         screen.resetOffset();
         screenToShow = 2;
         game.resetScreenDelay();
-        //game.pause();
+        game.pause();
         moveObjects.clear();
         bombs.clear();
 

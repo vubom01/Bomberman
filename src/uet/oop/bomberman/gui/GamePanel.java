@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel {
 
     private Game game;
+    private JPanel taskbar;
 
     public GamePanel(Frame frame) {
         setLayout(new BorderLayout());

@@ -14,7 +14,7 @@ public class Game extends Canvas {
     public static final int TILES_SIZE = 16,
             WIDTH = TILES_SIZE * 15,
             HEIGHT = TILES_SIZE * 13;
-    public static int SCALE = 2;
+    public static int SCALE = 3;
 
     private static final double PLAYERSPEED = 0.8;
     private static final int BOMBRATE = 2;
@@ -44,6 +44,7 @@ public class Game extends Canvas {
 
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+
 
     public Game(Frame frame) {
         this.frame = frame;
@@ -101,11 +102,22 @@ public class Game extends Canvas {
     }
 
     public void start() {
-        running = true;
+        running = false;
+
+        while (true) {
+            System.out.println(1);
+            if (running) {
+                System.out.println(2);
+                break;
+            }
+        }
+
+        System.out.println(3);
+
 
         long  lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();
-        final double ns = 1000000000.0 / 60.0; //nanosecond, 60 frames per second
+        final double ns = 1000000000.0 / 60.0;
         double delta = 0;
         int frames = 0;
         int updates = 0;
@@ -120,8 +132,9 @@ public class Game extends Canvas {
                 delta--;
             }
 
+
             if(paused) {
-                if(screenDelay <= 0) { //time passed? lets reset status to show the game
+                if(screenDelay <= 0) {
                     board.setShow(-1);
                     paused = false;
                 }
@@ -133,7 +146,7 @@ public class Game extends Canvas {
 
 
             frames++;
-            if(System.currentTimeMillis() - timer > 1000) { //once per second
+            if(System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
                 updates = 0;
                 frames = 0;
@@ -191,11 +204,11 @@ public class Game extends Canvas {
         paused = true;
     }
 
-    public boolean isPaused() {
-        return paused;
+    public void running() {
+        running = true;
     }
 
-    public static void main(String[] args) {
-        Frame app = new Frame();
+    public boolean isPaused() {
+        return paused;
     }
 }

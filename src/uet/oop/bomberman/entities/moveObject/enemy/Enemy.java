@@ -73,5 +73,5 @@ public abstract class Enemy extends MoveObject {
         return false;
     }
 
-    public abstract Sprite setSprite();
+    public abstract void setSprite();
 }
