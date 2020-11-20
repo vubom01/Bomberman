@@ -5,6 +5,7 @@ import uet.oop.bomberman.entities.moveObject.Player;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy1;
 import uet.oop.bomberman.entities.tile.BrickTile;
 import uet.oop.bomberman.entities.tile.GrassTile;
+import uet.oop.bomberman.entities.tile.PortalTile;
 import uet.oop.bomberman.entities.tile.WallTile;
 import uet.oop.bomberman.entities.tile.item.iBomb;
 import uet.oop.bomberman.entities.tile.item.iFire;
@@ -86,6 +87,12 @@ public class CreateMap {
                             listEntity.addBeforeTop(new iSpeed(x, y, level, Sprite.itemSpeed));
                         }
                         board.addEntity(pos, listEntity);
+                        break;
+                    case 'x':
+                        board.addEntity(pos, new ListEntity(x, y,
+                                new GrassTile(x ,y, Sprite.grass),
+                                new PortalTile(x ,y, Sprite.portal, board),
+                                new BrickTile(x ,y, Sprite.brick)) );
                         break;
                     case '1':
                         board.addMob(new Enemy1(x * 16, y * 16 + 16, board));

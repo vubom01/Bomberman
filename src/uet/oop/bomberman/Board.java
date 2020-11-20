@@ -265,4 +265,12 @@ public class Board {
         return false;
     }
 
+    public boolean detectNoEnemies() {
+        int total = 0;
+        for (int i = 0; i < moveObjects.size(); i++) {
+            if(moveObjects.get(i) instanceof Player == false)
+                total++;
+        }
+        return (total == 0);
+    }
 }
