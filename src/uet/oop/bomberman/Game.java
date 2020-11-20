@@ -17,8 +17,8 @@ public class Game extends Canvas {
     public static int SCALE = 3;
 
     private static final double PLAYERSPEED = 0.8;
-    private static final int BOMBRATE = 2;
-    private static final int BOMBRADIUS = 2;
+    private static final int BOMBRATE = 1;
+    private static final int BOMBRADIUS = 1;
     private static final int SCREENDELAY = 3;
     public static final int TIMES = 300;
     public static final int POINTS = 0;
@@ -189,12 +189,12 @@ public class Game extends Canvas {
 
     public void isRunning() {
         running = true;
-        paused = false;
+        paused = true;
     }
 
     public void isMenu() {
         running = false;
-        paused = true;
+        paused = false;
     }
 
     public boolean isPaused() {
