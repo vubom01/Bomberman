@@ -120,10 +120,7 @@ public class Game extends Canvas {
                 updates++;
                 delta--;
             }
-//
-//            if (board.getPoints() == 100) {
-//                running = false;
-//            }
+
             if(paused) {
                 if(screenDelay <= 0) {
                     board.setShow(-1);
@@ -190,13 +187,14 @@ public class Game extends Canvas {
         paused = true;
     }
 
-    public void running() {
+    public void isRunning() {
         running = true;
         paused = false;
     }
 
     public void isMenu() {
         running = false;
+        paused = true;
     }
 
     public boolean isPaused() {

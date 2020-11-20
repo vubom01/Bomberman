@@ -50,18 +50,19 @@ public class Frame extends JFrame {
 
     public void play() {
         cl.show(containerpane, "New Game");
-        game.running();
+        game.isRunning();
     }
 
-    public void gameOver() {
-        cl.show(containerpane, "Menu");
-        game.isMenu();
-        newGame();
-    }
-
-    public void newGame() {
-        game.getBoard().newGame();
-    }
+//    public void gameOver() {
+//        cl.show(containerpane, "Menu");
+//        game.isMenu();
+//        newGame();
+//    }
+//
+//    public void newGame() {
+//        game.getBoard().newGame();
+//        game.start();
+//    }
 
 
     public void setTime(int time) {

@@ -34,7 +34,7 @@ public class InfoPanel extends javax.swing.JPanel {
 
         hi_score.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         hi_score.setForeground(new java.awt.Color(255, 255, 255));
-        hi_score.setText("0");
+        hi_score.setText("999999999");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
