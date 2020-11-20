@@ -152,7 +152,6 @@ public class Player extends MoveObject {
         else if (bombs.size() == 0) {
             if (board.getLives() == 0) {
                 board.endGame();
-                board.getGame().getFrame().gameOver();
             }
             else {
                 board.restartLevel();

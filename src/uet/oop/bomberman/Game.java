@@ -106,6 +106,7 @@ public class Game extends Canvas {
 
         long  lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();
+        long timerEnd = System.currentTimeMillis();
         final double ns = 1000000000.0 / 60.0;
         double delta = 0;
         int frames = 0;
@@ -134,7 +135,7 @@ public class Game extends Canvas {
 
 
             frames++;
-            if(System.currentTimeMillis() - timer > 1000) { //once per second
+            if(System.currentTimeMillis() - timer > 1000) {
                 frame.setTime(board.subtractTime());
                 frame.setScore(board.getPoints());
                 frame.setLives(board.getLives());
@@ -143,6 +144,10 @@ public class Game extends Canvas {
                 frames = 0;
 
                 if(board.getShow() == 2) screenDelay--;
+            }
+            if(System.currentTimeMillis() - timerEnd > 12000) {
+                timerEnd += 1000;
+                if(board.getShow() == 1) frame.gameOver();
             }
         }
     }

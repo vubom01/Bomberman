@@ -99,7 +99,7 @@ public class Board {
     public void drawScreen(Graphics g) {
         switch (screenToShow) {
             case 1:
-                screen.drawEndGame(g, 50000);
+                screen.drawEndGame(g, getPoints());
                 break;
             case 2:
                 screen.drawChangeLevel(g, level.getLevel());
