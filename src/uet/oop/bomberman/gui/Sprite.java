@@ -19,6 +19,7 @@ public class Sprite {
     public static Sprite grass = new Sprite(16, 689, 110);
     public static Sprite brick = new Sprite(16, 721,110);
 	public static Sprite portal = new Sprite(16, 393, 789);
+	public static Sprite portal2 = new Sprite(16, 409, 789);
 
     /*
     |--------------------------------------------------------------------------

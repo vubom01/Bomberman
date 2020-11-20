@@ -8,6 +8,7 @@ import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.entities.moveObject.Player;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy;
+import uet.oop.bomberman.entities.tile.PortalTile;
 import uet.oop.bomberman.entities.tile.item.Item;
 
 import java.awt.*;
@@ -32,7 +33,6 @@ public class Collision {
         int width = level.getWidth();
         int height = level.getHeight();
 
-        ArrayList<Rectangle> rect = new ArrayList<>();
         double x00 = moveObject.getX() + x;
         if (moveObject instanceof Player) x00 += 3;
         Rectangle2D playerRect = new Rectangle2D.Double(
@@ -50,15 +50,10 @@ public class Collision {
                             i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
                             Game.TILES_SIZE, Game.TILES_SIZE
                     );
-                    rect.add(rectTile);
+                    if (rectTile.intersects(playerRect)) {
+                        return false;
+                    }
                 }
-
-            }
-        }
-
-        for (Rectangle r : rect) {
-            if (r.intersects(playerRect)) {
-                return false;
             }
         }
 
@@ -159,6 +154,9 @@ public class Collision {
             for (int j = 0; j < height; j++) {
                 Entity e = board.getEntity(i, j);
                 if (e instanceof ListEntity) {
+//                    if (((ListEntity) e).getTopEntity() instanceof PortalTile) {
+//                        System.out.println(1);
+//                    }
                     Rectangle rectTile = new Rectangle(
                             i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
                             Game.TILES_SIZE, Game.TILES_SIZE
@@ -168,6 +166,7 @@ public class Collision {
             }
         }
     }
+
 
     public void enemyCollision(double x, double y) {
         List<MoveObject> moveObjects = board.getMoveObject();

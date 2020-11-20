@@ -4,6 +4,7 @@ import uet.oop.bomberman.Board;
 import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.moveObject.Player;
+import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
 public class PortalTile extends Tile {
@@ -15,13 +16,24 @@ public class PortalTile extends Tile {
         this.board = board;
     }
 
-    public boolean checkCollision(Entity e) {
-        if (e.getX() == getX() * Game.TILES_SIZE && e.getY() == getY() * Game.TILES_SIZE + Game.TILES_SIZE)
-            board.nextLevel();
-        if (!board.detectNoEnemies())
+    public boolean checkcollision(Entity e) {
+        if(!board.detectNoEnemies())
             return false;
-        if (board.detectNoEnemies())
+        else {
+            if (e instanceof Player)
+                board.nextLevel();
             return true;
-        return false;
+        }
+    }
+
+    public void render(Screen screen) {
+        if (board.detectNoEnemies())
+            sprite = Sprite.movingSprite(Sprite.portal, Sprite.portal2, animation, 10);
+        else sprite = Sprite.portal;
+        screen.renderEntity( (int) x * Game.TILES_SIZE, (int) y * Game.TILES_SIZE, this);
+    }
+
+    public void update() {
+        setAnimation();
     }
 }
