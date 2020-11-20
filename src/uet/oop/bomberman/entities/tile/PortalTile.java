@@ -20,8 +20,10 @@ public class PortalTile extends Tile {
         if(!board.detectNoEnemies())
             return false;
         else {
-            if (e instanceof Player)
+            if (e instanceof Player) {
+                board.addPoints(1000);
                 board.nextLevel();
+            }
             return true;
         }
     }

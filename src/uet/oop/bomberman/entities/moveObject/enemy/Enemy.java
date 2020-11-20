@@ -54,6 +54,7 @@ public abstract class Enemy extends MoveObject {
     @Override
     public void kill() {
         alive = false;
+        board.addPoints(point);
     }
 
     @Override

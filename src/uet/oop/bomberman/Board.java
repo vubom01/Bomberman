@@ -59,11 +59,15 @@ public class Board {
     }
 
     public void newGame() {
+        screen.resetOffset();
+        points = Game.POINTS;
+        lives = Game.LIVES;
         Player.items.clear();
-
         game.playerSpeed = 0.8;
         game.bombRadius = 1;
         game.bombRate = 1;
+
+        changeLevel(1);
     }
 
     public void restartLevel() {
@@ -75,6 +79,7 @@ public class Board {
     }
 
     public void changeLevel(int levelNumber) {
+        time = Game.TIMES;
         screen.resetOffset();
         screenToShow = 2;
         game.resetScreenDelay();
@@ -296,5 +301,9 @@ public class Board {
 
     public void addLives(int lives) {
         this.lives += lives;
+    }
+
+    public Game getGame() {
+        return game;
     }
 }

@@ -152,6 +152,7 @@ public class Player extends MoveObject {
         else if (bombs.size() == 0) {
             if (board.getLives() == 0) {
                 board.endGame();
+                board.getGame().getFrame().gameOver();
             }
             else {
                 board.restartLevel();
@@ -220,7 +221,6 @@ public class Player extends MoveObject {
         }
     }
 
-    //Add item
     public void addItem(Item item) {
         if(item.isRemoved()) return;
         items.add(item);

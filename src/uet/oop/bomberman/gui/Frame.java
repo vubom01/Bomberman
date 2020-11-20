@@ -53,6 +53,17 @@ public class Frame extends JFrame {
         game.running();
     }
 
+    public void gameOver() {
+        cl.show(containerpane, "Menu");
+        game.isMenu();
+        newGame();
+    }
+
+    public void newGame() {
+        game.getBoard().newGame();
+    }
+
+
     public void setTime(int time) {
         infopane.setTime(time);
     }

@@ -22,7 +22,7 @@ public class Game extends Canvas {
     private static final int SCREENDELAY = 3;
     public static final int TIMES = 300;
     public static final int POINTS = 0;
-    public static final int LIVES = 3;
+    public static final int LIVES = 1;
 
 
     public static double playerSpeed = PLAYERSPEED;
@@ -192,7 +192,15 @@ public class Game extends Canvas {
         paused = false;
     }
 
+    public void isMenu() {
+        running = false;
+    }
+
     public boolean isPaused() {
         return paused;
+    }
+
+    public Frame getFrame() {
+        return frame;
     }
 }
