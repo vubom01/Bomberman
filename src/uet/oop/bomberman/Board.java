@@ -25,6 +25,10 @@ public class Board {
     private List<MoveObject> moveObjects = new ArrayList<MoveObject>();
     private List<Bomb> bombs = new ArrayList<>();
 
+    private int time = Game.TIMES;
+    private int points = Game.POINTS;
+    private int lives = Game.LIVES;
+
     private int screenToShow = -1; //1:endGame, 2:changeLevel
 
     public Board(Game game, Keyboard input, Screen screen) {
@@ -48,23 +52,16 @@ public class Board {
     }
 
     public void render(Screen screen) {
-        //if(game.isPaused() ) return;
+        if(game.isPaused() ) return;
         renderEntity(screen);
         renderBombs(screen);
         renderMoveObjects(screen);
     }
 
     public void newGame() {
-        while (Game.getLives() > 3) {
-            Game.setLives(-1);
-        }
-        while (Game.getLives() < 3) {
-            Game.setLives(1);
-        }
-
         Player.items.clear();
 
-        game.playerSpeed = 1.0;
+        game.playerSpeed = 0.8;
         game.bombRadius = 1;
         game.bombRate = 1;
     }
@@ -272,5 +269,32 @@ public class Board {
                 total++;
         }
         return (total == 0);
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public int subtractTime() {
+        if(game.isPaused())
+            return this.time;
+        else
+            return this.time--;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void addPoints(int points) {
+        this.points += points;
+    }
+
+    public void addLives(int lives) {
+        this.lives += lives;
     }
 }

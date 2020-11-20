@@ -20,19 +20,15 @@ public class Game extends Canvas {
     private static final int BOMBRATE = 2;
     private static final int BOMBRADIUS = 2;
     private static final int SCREENDELAY = 3;
-    private static final int TIMES = 200;
-    private static final int POINTS = 0;
-    private static final int LIVES = 3;
+    public static final int TIMES = 300;
+    public static final int POINTS = 0;
+    public static final int LIVES = 3;
 
 
     public static double playerSpeed = PLAYERSPEED;
     public static int bombRate = BOMBRATE;
     public static int bombRadius = BOMBRADIUS;
     public static int screenDelay = SCREENDELAY;
-    public static int times = TIMES;
-    public static int points = POINTS;
-    public static int lives = LIVES;
-
 
     private Keyboard input;
     private boolean running = false;
@@ -125,7 +121,6 @@ public class Game extends Canvas {
                 delta--;
             }
 
-
             if(paused) {
                 if(screenDelay <= 0) {
                     board.setShow(-1);
@@ -139,12 +134,15 @@ public class Game extends Canvas {
 
 
             frames++;
-            if(System.currentTimeMillis() - timer > 1000) {
+            if(System.currentTimeMillis() - timer > 1000) { //once per second
+                frame.setTime(board.subtractTime());
+                frame.setScore(board.getPoints());
+                frame.setLives(board.getLives());
                 timer += 1000;
                 updates = 0;
                 frames = 0;
-                if(board.getShow() == 2)
-                    screenDelay--;
+
+                if(board.getShow() == 2) screenDelay--;
             }
         }
     }
@@ -161,10 +159,6 @@ public class Game extends Canvas {
         return bombRadius;
     }
 
-    public static int getLives() {
-        return lives;
-    }
-
     public static void setBombRate(int i) {
         bombRate += i;
     }
@@ -175,10 +169,6 @@ public class Game extends Canvas {
 
     public static void setPlayerSpeed(double i) {
         playerSpeed += i;
-    }
-
-    public static void setLives(int i) {
-        lives += i;
     }
 
     public Keyboard getInput() {
@@ -199,6 +189,7 @@ public class Game extends Canvas {
 
     public void running() {
         running = true;
+        paused = false;
     }
 
     public boolean isPaused() {

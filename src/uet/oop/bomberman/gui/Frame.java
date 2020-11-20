@@ -1,14 +1,14 @@
 package uet.oop.bomberman.gui;
 
 import uet.oop.bomberman.Game;
+import uet.oop.bomberman.gui.menu.InfoPanel;
 import uet.oop.bomberman.gui.menu.Menu;
-import uet.oop.bomberman.gui.menu.Taskbar;
 
 import java.awt.*;
 
+import javax.sound.sampled.Line;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 public class Frame extends JFrame {
 
@@ -16,7 +16,7 @@ public class Frame extends JFrame {
     private JPanel containerpane;
     private JPanel _containerpane;
     private JPanel menu;
-    private JPanel taskbar;
+    private InfoPanel infopane;
     private Game game;
     private CardLayout cl;
 
@@ -27,9 +27,9 @@ public class Frame extends JFrame {
 
         gamepane = new GamePanel(this);
         menu = new Menu(this);
-        taskbar = new Taskbar();
+        infopane = new InfoPanel(gamepane.getGame());
 
-        _containerpane.add(taskbar, BorderLayout.PAGE_START);
+        _containerpane.add(infopane, BorderLayout.PAGE_START);
         _containerpane.add(gamepane, BorderLayout.PAGE_END);
 
         containerpane.add(menu, "Menu");
@@ -51,5 +51,17 @@ public class Frame extends JFrame {
     public void play() {
         cl.show(containerpane, "New Game");
         game.running();
+    }
+
+    public void setTime(int time) {
+        infopane.setTime(time);
+    }
+
+    public void setLives(int lives) {
+        infopane.setLives(lives);
+    }
+
+    public void setScore(int points) {
+        infopane.setScore(points);
     }
 }

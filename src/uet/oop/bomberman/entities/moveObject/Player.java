@@ -140,7 +140,7 @@ public class Player extends MoveObject {
     @Override
     public void kill() {
         alive = false;
-        Game.setLives(-1);
+        board.addLives(-1);
     }
 
     @Override
@@ -150,7 +150,7 @@ public class Player extends MoveObject {
             timeAfter--;
         }
         else if (bombs.size() == 0) {
-            if (Game.getLives() == 0) {
+            if (board.getLives() == 0) {
                 board.endGame();
             }
             else {
