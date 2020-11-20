@@ -150,7 +150,7 @@ public class Player extends MoveObject {
             timeAfter--;
         }
         else if (bombs.size() == 0) {
-            if (board.getLives() == 0) {
+            if (board.getLives() <= 0) {
                 board.endGame();
             }
             else {

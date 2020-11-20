@@ -92,6 +92,7 @@ public class Menu extends javax.swing.JPanel {
     }
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {
+        System.exit(0);
     }
 
 

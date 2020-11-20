@@ -83,6 +83,7 @@ public class Board {
         screen.resetOffset();
         screenToShow = 2;
         game.resetScreenDelay();
+        game.resetScreenDelayEnd();
         game.pause();
         moveObjects.clear();
         bombs.clear();

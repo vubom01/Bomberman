@@ -29,6 +29,7 @@ public class Game extends Canvas {
     public static int bombRate = BOMBRATE;
     public static int bombRadius = BOMBRADIUS;
     public static int screenDelay = SCREENDELAY;
+    public static int screenDelayEnd = SCREENDELAY;
 
     private Keyboard input;
     private boolean running = false;
@@ -106,7 +107,6 @@ public class Game extends Canvas {
 
         long  lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();
-        long timerEnd = System.currentTimeMillis();
         final double ns = 1000000000.0 / 60.0;
         double delta = 0;
         int frames = 0;
@@ -127,6 +127,11 @@ public class Game extends Canvas {
                     board.setShow(-1);
                     paused = false;
                 }
+                if (screenDelayEnd <= 0) {
+                    board.setShow(-1);
+                    paused = false;
+                    frame.gameOver();
+                }
 
                 renderScreen();
             } else {
@@ -144,10 +149,7 @@ public class Game extends Canvas {
                 frames = 0;
 
                 if(board.getShow() == 2) screenDelay--;
-            }
-            if(System.currentTimeMillis() - timerEnd > 12000) {
-                timerEnd += 1000;
-                if(board.getShow() == 1) frame.gameOver();
+                if(board.getShow() == 1) screenDelayEnd--;
             }
         }
     }
@@ -186,6 +188,9 @@ public class Game extends Canvas {
 
     public void resetScreenDelay() {
         screenDelay = SCREENDELAY;
+    }
+    public void resetScreenDelayEnd() {
+        screenDelayEnd = SCREENDELAY;
     }
 
     public void pause() {
