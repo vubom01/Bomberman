@@ -120,7 +120,10 @@ public class Game extends Canvas {
                 updates++;
                 delta--;
             }
-
+//
+//            if (board.getPoints() == 100) {
+//                running = false;
+//            }
             if(paused) {
                 if(screenDelay <= 0) {
                     board.setShow(-1);
