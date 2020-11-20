@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.tile;
 import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.ListExplosion;
+import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
@@ -36,6 +37,9 @@ public class BrickTile extends Tile {
 
     @Override
     public boolean checkcollision(Entity e) {
+        if (e instanceof MoveObject && ((MoveObject) e).isWallpass() == true) {
+            return true;
+        }
         if (e instanceof ListExplosion) {
             destroy();
         }

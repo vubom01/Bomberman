@@ -45,7 +45,7 @@ public class Collision {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Entity e = board.getEntity(i, j);
-                if (!e.checkcollision(e)) {
+                if (!e.checkcollision(moveObject)) {
                     Rectangle rectTile = new Rectangle(
                             i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
                             Game.TILES_SIZE, Game.TILES_SIZE
@@ -154,9 +154,6 @@ public class Collision {
             for (int j = 0; j < height; j++) {
                 Entity e = board.getEntity(i, j);
                 if (e instanceof ListEntity) {
-//                    if (((ListEntity) e).getTopEntity() instanceof PortalTile) {
-//                        System.out.println(1);
-//                    }
                     Rectangle rectTile = new Rectangle(
                             i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
                             Game.TILES_SIZE, Game.TILES_SIZE

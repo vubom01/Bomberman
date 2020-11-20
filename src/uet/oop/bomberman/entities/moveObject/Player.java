@@ -63,10 +63,6 @@ public class Player extends MoveObject {
         }
 
         if (!alive) {
-            if (!kt) {
-                animation = 0;
-                kt = true;
-            }
             if (sprite != Sprite.player_dead) {
                 sprite = Sprite.movingSprite(Sprite.player_dead6, Sprite.player_dead5, Sprite.player_dead4, Sprite.player_dead3, Sprite.player_dead2, Sprite.player_dead1, Sprite.player_dead, animation, 84);
             }

@@ -113,14 +113,33 @@ public class Sprite {
 	| Character
 	|--------------------------------------------------------------------------
 	 */
+
     //Enemy 1
 
 	public static Sprite enemy1_1 = new Sprite(16, 426, 215);
 	public static Sprite enemy1_2 = new Sprite(16, 442, 215);
 	public static Sprite enemy1_3 = new Sprite(16, 458, 215);
 
-	public static Sprite enemy1_dead1 = new Sprite(16, 474, 215);
-	public static Sprite enemy1_dead2 = new Sprite(16, 490, 215);
+	public static Sprite enemy1_dead = new Sprite(16, 474, 215);
+
+	//Enemy2
+    public static Sprite enemy2_up1 = new Sprite(16, 522, 233);
+    public static Sprite enemy2_up2 = new Sprite(16, 538, 233);
+    public static Sprite enemy2_up3 = new Sprite(16, 554, 233);
+
+    public static Sprite enemy2_down1 = new Sprite(16, 618, 233);
+    public static Sprite enemy2_down2 = new Sprite(16, 314, 251);
+    public static Sprite enemy2_down3 = new Sprite(16, 330, 251);
+
+    public static Sprite enemy2_left1 = new Sprite(16, 474, 233);
+    public static Sprite enemy2_left2 = new Sprite(16, 490, 233);
+    public static Sprite enemy2_left3 = new Sprite(16, 506, 233);
+
+    public static Sprite enemy2_right1 = new Sprite(16, 570, 233);
+    public static Sprite enemy2_right2 = new Sprite(16, 586, 233);
+    public static Sprite enemy2_right3 = new Sprite(16, 602, 233);
+
+    public static Sprite enemy2_dead = new Sprite(16, 394, 251);
 //
 //	//ONEAL
 //	public static Sprite oneal_left1 = new Sprite(11, 0);
@@ -240,21 +259,16 @@ public class Sprite {
         int calc = animate % time;
         int diff = time / 5;
 
-        if (calc == 0 && animate > time) {
+        if (calc < diff) {
+            return normal;
+        } else if (calc < diff * 2) {
+            return x1;
+        } else if (calc < diff * 3) {
+            return x2;
+        } else if (calc < diff * 4) {
+            return x3;
+        } else {
             return x4;
-        }
-        else {
-            if (calc < diff) {
-                return normal;
-            } else if (calc < diff * 2) {
-                return x1;
-            } else if (calc < diff * 3) {
-                return x2;
-            } else if (calc < diff * 4) {
-                return x3;
-            } else {
-                return x4;
-            }
         }
     }
 
@@ -262,25 +276,20 @@ public class Sprite {
         int calc = animate % time;
         int diff = time / 7;
 
-        if (calc == 0 && animate > time) {
+        if (calc < diff) {
+            return normal;
+        } else if (calc < diff * 2) {
+            return x1;
+        } else if (calc < diff * 3) {
+            return x2;
+        } else if (calc < diff * 4) {
+            return x3;
+        } else if (calc < diff * 5) {
+            return x4;
+        } else if (calc < diff * 6) {
+            return x5;
+        } else {
             return x6;
-        }
-        else {
-            if (calc < diff) {
-                return normal;
-            } else if (calc < diff * 2) {
-                return x1;
-            } else if (calc < diff * 3) {
-                return x2;
-            } else if (calc < diff * 4) {
-                return x3;
-            } else if (calc < diff * 5) {
-                return x4;
-            } else if (calc < diff * 6) {
-                return x5;
-            } else {
-                return x6;
-            }
         }
     }
 

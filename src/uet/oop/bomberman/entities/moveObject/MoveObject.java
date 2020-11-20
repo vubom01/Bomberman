@@ -18,7 +18,7 @@ public abstract class MoveObject extends Entity {
     protected boolean alive = true;
     protected boolean moving = false;
     protected int timeAfter = 84;
-    protected boolean kt = false;
+    protected boolean wallpass = false;
 
     public MoveObject(double x, double y, Board board) {
         this.x = x;
@@ -50,5 +50,9 @@ public abstract class MoveObject extends Entity {
 
     public int getDirection() {
         return direction;
+    }
+
+    public boolean isWallpass() {
+        return wallpass;
     }
 }
