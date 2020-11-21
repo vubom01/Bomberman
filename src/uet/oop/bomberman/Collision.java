@@ -45,14 +45,12 @@ public class Collision {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Entity e = board.getEntity(i, j);
-                if (!e.checkcollision(moveObject)) {
-                    Rectangle rectTile = new Rectangle(
-                            i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
-                            Game.TILES_SIZE, Game.TILES_SIZE
-                    );
-                    if (rectTile.intersects(playerRect)) {
-                        return false;
-                    }
+                Rectangle rectTile = new Rectangle(
+                        i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
+                        Game.TILES_SIZE, Game.TILES_SIZE
+                );
+                if (rectTile.intersects(playerRect) && !e.checkcollision(moveObject)) {
+                    return false;
                 }
             }
         }
