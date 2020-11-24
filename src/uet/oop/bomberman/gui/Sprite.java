@@ -225,7 +225,9 @@ public class Sprite {
     public static Sprite enemy2_right2 = new Sprite(16, 586, 233);
     public static Sprite enemy2_right3 = new Sprite(16, 602, 233);
 
-    public static Sprite enemy2_dead = new Sprite(16, 394, 251);
+    public static Sprite enemy2_dead1 = new Sprite(16, 346, 251);
+    public static Sprite enemy2_dead2 = new Sprite(16, 378, 251);
+    public static Sprite enemy2_dead3 = new Sprite(16, 394, 251);
     // Enemy dead
     public static Sprite dead1 = new Sprite(16, 80, 341);
     public static Sprite dead2 = new Sprite(16, 96, 341);
