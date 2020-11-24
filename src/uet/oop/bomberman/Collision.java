@@ -38,14 +38,14 @@ public class Collision {
             moveObjectRect = new Rectangle2D.Double(
                         moveObject.getX() + x + 2,
                         moveObject.getY() + y,
-                        moveObject.getW() - 1,
-                        moveObject.getH() - 1
+                        Game.TILES_SIZE - 2,
+                        Game.TILES_SIZE - 2
         );
         else moveObjectRect = new Rectangle2D.Double(
                 moveObject.getX() + x,
                 moveObject.getY() + y,
-                moveObject.getW(),
-                moveObject.getH()
+                Game.TILES_SIZE,
+                Game.TILES_SIZE
         );
 
         for (int i = 0; i < width; i++) {
@@ -65,11 +65,20 @@ public class Collision {
     }
 
     public boolean check2Rect(Rectangle r) {
-        double x1 = moveObject.getX();
-        if (moveObject instanceof Player) x1 += 3;
-        double y1 = moveObject.getY();
-        double w1 = Game.TILES_SIZE - 1;
-        double h1 = Game.TILES_SIZE - 1;
+        double x1, y1, h1, w1;
+        Rectangle2D moveObjectRect;
+        if (moveObject instanceof Player) {
+            x1 = moveObject.getX() + 2;
+            y1 = moveObject.getY();
+            w1 = Game.TILES_SIZE - 2;
+            h1 = Game.TILES_SIZE - 2;
+        }
+        else {
+            x1 = moveObject.getX();
+            y1 = moveObject.getY();
+            h1 = Game.TILES_SIZE;
+            w1 = Game.TILES_SIZE;
+        }
 
         double x2 = r.getX();
         double y2 = r.getY();
@@ -84,13 +93,20 @@ public class Collision {
 
     public boolean bombCollision(double x, double y) {
         ArrayList<Rectangle> rect = new ArrayList<>();
-        double x00 = moveObject.getX() + x;
-        if (moveObject instanceof Player) x00 += 3;
-        Rectangle2D moveObjectRect = new Rectangle2D.Double(
-                x00,
+
+        Rectangle2D moveObjectRect;
+        if (moveObject instanceof Player)
+            moveObjectRect = new Rectangle2D.Double(
+                    moveObject.getX() + x + 2,
+                    moveObject.getY() + y,
+                    Game.TILES_SIZE - 2,
+                    Game.TILES_SIZE - 2
+            );
+        else moveObjectRect = new Rectangle2D.Double(
+                moveObject.getX() + x,
                 moveObject.getY() + y,
-                15,
-                15
+                Game.TILES_SIZE,
+                Game.TILES_SIZE
         );
 
         List<Bomb> b = board.getBombs();

@@ -221,16 +221,4 @@ public class Player extends MoveObject {
         items.add(item);
         item.setValues();
     }
-
-    @Override
-
-    public double getW() {
-        return 15;
-    }
-
-    @Override
-
-    public double getH() {
-        return 15;
-    }
 }
