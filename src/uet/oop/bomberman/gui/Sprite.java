@@ -228,6 +228,14 @@ public class Sprite {
     public static Sprite enemy2_dead1 = new Sprite(16, 346, 251);
     public static Sprite enemy2_dead2 = new Sprite(16, 378, 251);
     public static Sprite enemy2_dead3 = new Sprite(16, 394, 251);
+
+    // Enemy3
+    public static Sprite enemy3_1 = new Sprite(16, 554, 269);
+    public static Sprite enemy3_2 = new Sprite(16, 570, 269);
+    public static Sprite enemy3_3 = new Sprite(16, 586, 269);
+
+    public static Sprite enemy3_dead1 = new Sprite(16, 602, 269);
+    public static Sprite enemy3_dead2 = new Sprite(16, 618, 269);
     // Enemy dead
     public static Sprite dead1 = new Sprite(16, 80, 341);
     public static Sprite dead2 = new Sprite(16, 96, 341);

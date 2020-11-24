@@ -1,7 +1,7 @@
 package uet.oop.bomberman;
 
 import uet.oop.bomberman.gui.Screen;
-import uet.oop.bomberman.gui.Frame;
+import uet.oop.bomberman.gui.menu.Frame;
 
 import java.awt.Canvas;
 import java.awt.Graphics;

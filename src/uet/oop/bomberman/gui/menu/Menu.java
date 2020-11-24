@@ -1,8 +1,6 @@
 package uet.oop.bomberman.gui.menu;
 
 
-import uet.oop.bomberman.gui.Frame;
-
 public class Menu extends javax.swing.JPanel {
 
     Frame frame;

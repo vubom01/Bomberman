@@ -2,7 +2,7 @@
 13
 15
 [WWWWWWWWWWWWW]
-Lp     s    2*R
+Lp     s    3*R
 L # # # # # # R
 L  x          R
 L # # # # # # R

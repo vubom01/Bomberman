@@ -4,6 +4,7 @@ import uet.oop.bomberman.entities.ListEntity;
 import uet.oop.bomberman.entities.moveObject.Player;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy1;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy2;
+import uet.oop.bomberman.entities.moveObject.enemy.Enemy3;
 import uet.oop.bomberman.entities.tile.BrickTile;
 import uet.oop.bomberman.entities.tile.GrassTile;
 import uet.oop.bomberman.entities.tile.PortalTile;
@@ -129,6 +130,10 @@ public class CreateMap {
                         break;
                     case '2':
                         board.addMob(new Enemy2(x * 16, y * 16 + 16, board));
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
+                        break;
+                    case '3':
+                        board.addMob(new Enemy3(x * 16, y * 16 + 16, board));
                         board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
                         break;
                     // Grass
