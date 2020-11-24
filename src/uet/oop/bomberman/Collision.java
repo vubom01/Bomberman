@@ -33,13 +33,19 @@ public class Collision {
         int width = level.getWidth();
         int height = level.getHeight();
 
-        double x00 = moveObject.getX() + x;
-        if (moveObject instanceof Player) x00 += 3;
-        Rectangle2D playerRect = new Rectangle2D.Double(
-                x00,
+        Rectangle2D moveObjectRect;
+        if (moveObject instanceof Player) 
+            moveObjectRect = new Rectangle2D.Double(
+                        moveObject.getX() + x + 2,
+                        moveObject.getY() + y,
+                        moveObject.getW() - 1,
+                        moveObject.getH() - 1
+        );
+        else moveObjectRect = new Rectangle2D.Double(
+                moveObject.getX() + x,
                 moveObject.getY() + y,
-                15,
-                15
+                moveObject.getW(),
+                moveObject.getH()
         );
 
         for (int i = 0; i < width; i++) {
@@ -49,7 +55,7 @@ public class Collision {
                         i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
                         Game.TILES_SIZE, Game.TILES_SIZE
                 );
-                if (rectTile.intersects(playerRect) && !e.checkcollision(moveObject)) {
+                if (rectTile.intersects(moveObjectRect) && !e.checkcollision(moveObject)) {
                     return false;
                 }
             }
@@ -80,7 +86,7 @@ public class Collision {
         ArrayList<Rectangle> rect = new ArrayList<>();
         double x00 = moveObject.getX() + x;
         if (moveObject instanceof Player) x00 += 3;
-        Rectangle2D playerRect = new Rectangle2D.Double(
+        Rectangle2D moveObjectRect = new Rectangle2D.Double(
                 x00,
                 moveObject.getY() + y,
                 15,
@@ -102,7 +108,7 @@ public class Collision {
         for (Rectangle r : rect) {
             if (check2Rect(r) == true) {
                 return true;
-            }else if (r.intersects(playerRect)) {
+            }else if (r.intersects(moveObjectRect)) {
                 return false;
             }
         }
@@ -147,7 +153,7 @@ public class Collision {
         List<MoveObject> moveObjects = board.getMoveObject();
         for (int i = 0; i < moveObjects.size(); i++) {
             MoveObject e = moveObjects.get(i);
-            if (e instanceof Enemy) {
+            if (       e instanceof Enemy) {
                 Rectangle rectTile = new Rectangle(
                         (int) e.getX(), (int) e.getY(),
                         Game.TILES_SIZE, Game.TILES_SIZE

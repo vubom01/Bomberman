@@ -27,14 +27,14 @@ public class Screen {
     public void renderEntity(int xp, int yp, Entity entity) {
         xp -= xOffset;
         yp -= yOffset;
-        for (int y = 0; y < entity.getSprite().getSize(); y++) {
+        for (int y = 0; y < entity.getSprite().getSIZE_Y(); y++) {
             int ya = y + yp;
-            for (int x = 0; x < entity.getSprite().getSize(); x++) {
+            for (int x = 0; x < entity.getSprite().getSIZE_X(); x++) {
                 int xa = x + xp;
-                if (xa < -entity.getSprite().getSize() || xa >= width || ya < -entity.getSprite().getSize() || ya >= height) break;
+                if (xa < -entity.getSprite().getSIZE_X() || xa >= width || ya < -entity.getSprite().getSIZE_Y() || ya >= height) break;
                 if (xa < 0) xa = 0;
                 if (ya < 0) ya = 0;
-                int color = entity.getSprite().getPixels(x + y * entity.getSprite().getSize());
+                int color = entity.getSprite().getPixels(x + y * entity.getSprite().getSIZE_Y());
                 if (color != transparent_color) pixels[xa + ya * width] = color;
             }
         }
@@ -43,16 +43,16 @@ public class Screen {
     public void renderEntity(int xp, int yp, Entity entity, Sprite below) {
         xp -= xOffset;
         yp -= yOffset;
-        for (int y = 0; y < entity.getSprite().getSize(); y++) {
+        for (int y = 0; y < entity.getSprite().getSIZE_Y(); y++) {
             int ya = y + yp;
-            for (int x = 0; x < entity.getSprite().getSize(); x++) {
+            for (int x = 0; x < entity.getSprite().getSIZE_X(); x++) {
                 int xa = x + xp;
-                if (xa < -entity.getSprite().getSize() || xa >= width || ya < -entity.getSprite().getSize() || ya >= height) break;
+                if (xa < -entity.getSprite().getSIZE_X() || xa >= width || ya < -entity.getSprite().getSIZE_Y() || ya >= height) break;
                 if (xa < 0) xa = 0;
                 if (ya < 0) ya = 0;
-                int color = entity.getSprite().getPixels(x + y * entity.getSprite().getSize());
+                int color = entity.getSprite().getPixels(x + y * entity.getSprite().getSIZE_Y());
                 if(color != transparent_color) pixels[xa + ya * width] = color;
-                else pixels[xa + ya * width] = below.getPixels(x + y * below.getSize());
+                else pixels[xa + ya * width] = below.getPixels(x + y * below.getSIZE_Y());
             }
         }
     }

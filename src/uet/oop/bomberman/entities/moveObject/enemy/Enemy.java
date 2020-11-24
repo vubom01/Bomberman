@@ -78,4 +78,14 @@ public abstract class Enemy extends MoveObject {
     }
 
     public abstract void setSprite();
+
+    @Override
+    public double getW() {
+        return 16;
+    }
+
+    @Override
+    public double getH() {
+        return 16;
+    }
 }

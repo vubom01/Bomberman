@@ -55,4 +55,8 @@ public abstract class MoveObject extends Entity {
     public boolean isWallpass() {
         return wallpass;
     }
+
+    public abstract double getW();
+
+    public abstract double getH();
 }

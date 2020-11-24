@@ -17,7 +17,7 @@ public class Enemy2 extends Enemy {
     public void render(Screen screen) {
         if(alive) setSprite();
         else sprite = Sprite.enemy2_dead;
-        screen.renderEntity((int) x, (int) y - sprite.getSize(), this);
+        screen.renderEntity((int) x, (int) y - sprite.getSIZE_Y(), this);
     }
 
     @Override

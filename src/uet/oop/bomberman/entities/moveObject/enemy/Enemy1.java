@@ -17,7 +17,7 @@ public class Enemy1 extends Enemy {
         if (alive) setSprite();
         else if (sprite != Sprite.dead4)
             sprite = Sprite.movingSprite(Sprite.enemy1_dead1, Sprite.enemy1_dead2, Sprite.enemy1_dead2, Sprite.dead1, Sprite.dead2, Sprite.dead3, Sprite.dead4, animation, 70);
-        screen.renderEntity((int) x, (int) y - sprite.getSize(), this);
+        screen.renderEntity((int) x, (int) y - sprite.getSIZE_Y(), this);
     }
 
     @Override

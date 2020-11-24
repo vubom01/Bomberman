@@ -76,7 +76,7 @@ public class Player extends MoveObject {
                 if (direction == 3) sprite = Sprite.player_right;
             }
         }
-        screen.renderEntity((int) x, (int) y - sprite.getSize(), this);
+        screen.renderEntity((int) x, (int) y - sprite.getSIZE_Y(), this);
 
     }
 
@@ -220,5 +220,17 @@ public class Player extends MoveObject {
         if(item.isRemoved()) return;
         items.add(item);
         item.setValues();
+    }
+
+    @Override
+
+    public double getW() {
+        return 15;
+    }
+
+    @Override
+
+    public double getH() {
+        return 15;
     }
 }

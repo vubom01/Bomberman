@@ -4,7 +4,8 @@ import javafx.scene.image.*;
 
 public class Sprite {
 
-    private final int SIZE;
+    private final int SIZE_X;
+    private final int SIZE_Y;
     private int x, y;
     private int[] pixels; // diem anh
     private SpriteSheet sheet = SpriteSheet.tiles;
@@ -70,22 +71,22 @@ public class Sprite {
     | Player Sprites
     |--------------------------------------------------------------------------
      */
-    public static Sprite player_up = new Sprite(21,217, 0);
-    public static Sprite player_down = new Sprite(21, 1, 0);
-    public static Sprite player_left = new Sprite(21, 145, 0);
-    public static Sprite player_right = new Sprite(21, 72, 0);
+    public static Sprite player_up = new Sprite(22, 19,218, 0);
+    public static Sprite player_down = new Sprite(22, 19, 2, 0);
+    public static Sprite player_left = new Sprite(22, 19, 146, 0);
+    public static Sprite player_right = new Sprite(22, 19, 73, 0);
 
-    public static Sprite player_up_1 = new Sprite(21, 240, 0);
-    public static Sprite player_up_2 = new Sprite(21, 266, 0);
+    public static Sprite player_up_1 = new Sprite(22, 19, 241, 0);
+    public static Sprite player_up_2 = new Sprite(22, 19, 267, 0);
 
-    public static Sprite player_down_1 = new Sprite(21, 26, 0);
-    public static Sprite player_down_2 = new Sprite(21, 48, 0);
+    public static Sprite player_down_1 = new Sprite(22, 19, 27, 0);
+    public static Sprite player_down_2 = new Sprite(22, 19, 49, 0);
 
-    public static Sprite player_left_1 = new Sprite(21, 168, 0);
-    public static Sprite player_left_2 = new Sprite(21, 192, 0);
+    public static Sprite player_left_1 = new Sprite(22, 19, 169, 0);
+    public static Sprite player_left_2 = new Sprite(22, 19, 193, 0);
 
-    public static Sprite player_right_1 = new Sprite(21, 97, 0);
-    public static Sprite player_right_2 = new Sprite(21, 121, 0);
+    public static Sprite player_right_1 = new Sprite(22, 19, 98, 0);
+    public static Sprite player_right_2 = new Sprite(22, 19, 122, 0);
 
     public static Sprite player_dead = new Sprite(21, 168, 25);
 	public static Sprite player_dead1 = new Sprite(21, 145, 25);
@@ -233,19 +234,37 @@ public class Sprite {
 
 
     public Sprite(int size, int xx, int yy) {
-        SIZE = size;
-        pixels = new int[SIZE * SIZE];
+        SIZE_X = size;
+        SIZE_Y = size;
+        pixels = new int[SIZE_X * SIZE_Y];
         x = xx;
         y = yy;
         sheet = SpriteSheet.tiles;
 
         // luu tru diem anh
-        for (int j = 0; j < SIZE; j++) {
-            for (int i = 0; i < SIZE; i++) {
-                pixels[i + j * SIZE] = sheet.pixels[(i + x) + (j + y) * sheet.SIZE];
+        for (int j = 0; j < SIZE_Y; j++) {
+            for (int i = 0; i < SIZE_X; i++) {
+                pixels[i + j * SIZE_Y] = sheet.pixels[(i + x) + (j + y) * sheet.SIZE];
             }
         }
     }
+
+    public Sprite(int sizeY, int sizeX, int xx, int yy) {
+        SIZE_X = sizeX;
+        SIZE_Y = sizeY;
+        pixels = new int[SIZE_X * SIZE_Y * 2];
+        x = xx;
+        y = yy;
+        sheet = SpriteSheet.tiles;
+
+        // luu tru diem anh
+        for (int j = 0; j < SIZE_Y; j++) {
+            for (int i = 0; i < SIZE_X; i++) {
+                pixels[i + j * SIZE_Y] = sheet.pixels[(i + x) + (j + y) * sheet.SIZE];
+            }
+        }
+    }
+
     public static Sprite movingSprite(Sprite x1, Sprite x2, int animate, int time) {
         int calc = animate % time;
         int diff = time / 2;
@@ -309,8 +328,12 @@ public class Sprite {
     }
 
 
-    public int getSize() {
-        return SIZE;
+    public int getSIZE_X() {
+        return SIZE_X;
+    }
+
+    public int getSIZE_Y() {
+        return SIZE_Y;
     }
 
     public int getPixels(int i) {
