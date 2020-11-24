@@ -52,59 +52,88 @@ public class CreateMap {
             for (int x = 0; x < width; x++) {
                 int pos = x + y * width;
                 switch (map[x][y]) {
+                    // Create Wall
+                    case 'W':
+                        board.addEntity(pos, new WallTile(x, y, Sprite.wallUp[getLevel()]));
+                        break;
+                    case 'D':
+                        board.addEntity(pos, new WallTile(x, y, Sprite.wallDown[getLevel()]));
+                        break;
+                    case 'L':
+                        board.addEntity(pos, new WallTile(x, y, Sprite.wallLeft[getLevel()]));
+                        break;
+                    case 'R':
+                        board.addEntity(pos, new WallTile(x, y, Sprite.wallRight[getLevel()]));
+                        break;
+                    case '[':
+                        board.addEntity(pos, new WallTile(x, y, Sprite.wallUpLeft[getLevel()]));
+                        break;
+                    case ']':
+                        board.addEntity(pos, new WallTile(x, y, Sprite.wallUpRight[getLevel()]));
+                        break;
+                    case '{':
+                        board.addEntity(pos, new WallTile(x, y, Sprite.wallDownRight[getLevel()]));
+                        break;
+                    case '}':
+                        board.addEntity(pos, new WallTile(x, y, Sprite.wallDownLeft[getLevel()]));
+                        break;
                     case '#':
-                        board.addEntity(pos, new WallTile(x, y, Sprite.wall));
+                        board.addEntity(pos, new WallTile(x, y, Sprite.wall[getLevel()]));
                         break;
                     case '*':
                         board.addEntity(pos, new ListEntity(x, y,
-                                new GrassTile(x, y, Sprite.grass),
-                                new BrickTile(x, y, Sprite.brick)
+                                new GrassTile(x, y, Sprite.grass[getLevel()]),
+                                new BrickTile(x, y, Sprite.brick[getLevel()], getLevel())
                         ));
                         break;
-                    case 'p':
-                        board.addMob(new Player(x * 16, y * 16 + 16, board));
-                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass));
-                        break;
+                    // Create Item
                     case 'b':
-                        listEntity = new ListEntity(x, y, new GrassTile(x, y, Sprite.grass),
-                                                    new BrickTile(x, y, Sprite.brick));
+                        listEntity = new ListEntity(x, y, new GrassTile(x, y, Sprite.grass[getLevel()]),
+                                                    new BrickTile(x, y, Sprite.brick[getLevel()], getLevel()));
                         if (!board.isItemUsed(x, y, level)) {
                             listEntity.addBeforeTop(new iBomb(x, y, level, Sprite.itemBomb));
                         }
                         board.addEntity(pos, listEntity);
                         break;
                     case 'f':
-                        listEntity = new ListEntity(x, y, new GrassTile(x ,y, Sprite.grass),
-                                                    new BrickTile(x ,y, Sprite.brick));
+                        listEntity = new ListEntity(x, y, new GrassTile(x ,y, Sprite.grass[getLevel()]),
+                                                    new BrickTile(x ,y, Sprite.brick[getLevel()], getLevel()));
                         if (!board.isItemUsed(x, y, level)) {
                             listEntity.addBeforeTop(new iFire(x, y, level, Sprite.itemFire));
                         }
                         board.addEntity(pos, listEntity);
                         break;
                     case 's':
-                        listEntity = new ListEntity(x, y, new GrassTile(x ,y, Sprite.grass),
-                                                    new BrickTile(x ,y, Sprite.brick));
+                        listEntity = new ListEntity(x, y, new GrassTile(x ,y, Sprite.grass[getLevel()]),
+                                                    new BrickTile(x ,y, Sprite.brick[getLevel()], getLevel()));
                         if (!board.isItemUsed(x, y, level)) {
                             listEntity.addBeforeTop(new iSpeed(x, y, level, Sprite.itemSpeed));
                         }
                         board.addEntity(pos, listEntity);
                         break;
+                    //
+                    case 'p':
+                        board.addMob(new Player(x * 16, y * 16 + 16, board));
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
+                        break;
                     case 'x':
                         board.addEntity(pos, new ListEntity(x, y,
-                                new GrassTile(x ,y, Sprite.grass),
+                                new GrassTile(x ,y, Sprite.grass[getLevel()]),
                                 new PortalTile(x ,y, Sprite.portal, board),
-                                new BrickTile(x ,y, Sprite.brick)) );
+                                new BrickTile(x ,y, Sprite.brick[getLevel()], getLevel())) );
                         break;
+                    // Enemy
                     case '1':
                         board.addMob(new Enemy1(x * 16, y * 16 + 16, board));
-                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass));
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
                         break;
                     case '2':
                         board.addMob(new Enemy2(x * 16, y * 16 + 16, board));
-                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass));
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
                         break;
+                    // Grass
                     default:
-                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass) );
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]) );
                         break;
                 }
             }

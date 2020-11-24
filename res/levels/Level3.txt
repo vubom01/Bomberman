@@ -1,0 +1,32 @@
+3
+29
+15
+[WWWWWWWWWWWWW]
+Lp      * *  1R
+L # # #*# # #*R
+L b *     *** R
+L # # # # #*# R
+Lf         x *R
+L # # # # # # R
+L*  *      *  R
+L # # # #*# # R
+L*    **  *   R
+L #*# # # # # R
+L           * R
+L # # # # # # R
+L             R
+L # # # # # # R
+L             R
+L # # # # # # R
+L             R
+L # # # # # # R
+L             R
+L # # # # # # R
+L             R
+L # # # # # # R
+L             R
+L # # # # # # R
+L             R
+L # # # # # # R
+L             R
+{DDDDDDDDDDDDD}

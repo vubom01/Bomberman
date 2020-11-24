@@ -38,7 +38,8 @@ public class Bomb extends Entity {
     @Override
     public void render(Screen screen) {
         if (exploded) {
-            sprite = Sprite.movingSprite(Sprite.bomb_exploded4, Sprite.bomb_exploded3, Sprite.bomb_exploded2, Sprite.bomb_exploded1, Sprite.bomb_exploded, animation, 20);
+            if (sprite != Sprite.bomb_exploded)
+                sprite = Sprite.movingSprite(Sprite.bomb_exploded4, Sprite.bomb_exploded3, Sprite.bomb_exploded2, Sprite.bomb_exploded1, Sprite.bomb_exploded, animation, 20);
             renderExplosions(screen);
         }
         else {

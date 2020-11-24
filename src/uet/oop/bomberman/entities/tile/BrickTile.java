@@ -10,10 +10,13 @@ import uet.oop.bomberman.gui.Sprite;
 public class BrickTile extends Tile {
     private boolean destroyed = false;
     private int timeAfter = 21;
-    private Sprite belowSprite = Sprite.grass;
+    private int level;
+    private Sprite belowSprite;
 
-    public BrickTile(double x, double y, Sprite sprite) {
+    public BrickTile(double x, double y, Sprite sprite, int level) {
         super(x, y, sprite);
+        this.level = level;
+        belowSprite = Sprite.grass[level];
     }
 
     @Override
@@ -28,8 +31,8 @@ public class BrickTile extends Tile {
     @Override
     public void render(Screen screen) {
         if (destroyed) {
-            if (sprite != Sprite.brick_exploded)
-                sprite = Sprite.movingSprite(Sprite.brick_exploded6, Sprite.brick_exploded5, Sprite.brick_exploded4, Sprite.brick_exploded3, Sprite.brick_exploded2, Sprite.brick_exploded1, Sprite.brick_exploded, animation, 21);
+            if (sprite != Sprite.brick_exploded[level])
+                sprite = Sprite.movingSprite(Sprite.brick_exploded6[level], Sprite.brick_exploded5[level], Sprite.brick_exploded4[level], Sprite.brick_exploded3[level], Sprite.brick_exploded2[level], Sprite.brick_exploded1[level], Sprite.brick_exploded[level], animation, 21);
         }
 
         screen.renderEntity((int) x * Game.TILES_SIZE, (int) y * Game.TILES_SIZE, this, belowSprite);

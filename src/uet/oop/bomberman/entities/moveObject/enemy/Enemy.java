@@ -20,7 +20,7 @@ public abstract class Enemy extends MoveObject {
         super(x, y, board);
         this.speed = speed;
         this.point = point;
-        timeAfter = 20;
+        timeAfter = 70;
         collision = new Collision(board, this);
         direction = new Random().nextInt(4);
     }
@@ -54,6 +54,7 @@ public abstract class Enemy extends MoveObject {
     @Override
     public void kill() {
         alive = false;
+        animation = 0;
     }
 
     @Override

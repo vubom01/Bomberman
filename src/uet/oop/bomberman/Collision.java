@@ -143,31 +143,11 @@ public class Collision {
         }
     }
 
-    public void itemCollision() {
-        CreateMap level = board.getLevel();
-        int width = level.getWidth();
-        int height = level.getHeight();
-
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                Entity e = board.getEntity(i, j);
-                if (e instanceof ListEntity) {
-                    Rectangle rectTile = new Rectangle(
-                            i * Game.TILES_SIZE, j * Game.TILES_SIZE + Game.TILES_SIZE,
-                            Game.TILES_SIZE, Game.TILES_SIZE
-                    );
-                    if (check2Rect(rectTile)) e.checkcollision(moveObject);
-                }
-            }
-        }
-    }
-
-
     public void enemyCollision(double x, double y) {
         List<MoveObject> moveObjects = board.getMoveObject();
         for (int i = 0; i < moveObjects.size(); i++) {
             MoveObject e = moveObjects.get(i);
-            if (       e instanceof Enemy) {
+            if (e instanceof Enemy) {
                 Rectangle rectTile = new Rectangle(
                         (int) e.getX(), (int) e.getY(),
                         Game.TILES_SIZE, Game.TILES_SIZE

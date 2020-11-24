@@ -50,7 +50,6 @@ public class Player extends MoveObject {
         calculateMove();
         detectPlaceBomb();
         collision.checkBombExplode();
-        collision.itemCollision();
         collision.enemyCollision(this.x, this.y);
     }
 
@@ -136,6 +135,7 @@ public class Player extends MoveObject {
     @Override
     public void kill() {
         alive = false;
+        animation = 0;
         board.addLives(-1);
     }
 

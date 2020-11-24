@@ -16,8 +16,10 @@ public class Sprite {
     | Board sprites
     |--------------------------------------------------------------------------
      */
-    public static Sprite grass = new Sprite(16, 689, 110);
-    public static Sprite brick = new Sprite(16, 721,110);
+    public static Sprite[] grass = new Sprite[]{new Sprite(16, 367, 110),
+                                            new Sprite(16, 689, 110),
+                                            new Sprite(16, 367, 176),
+                                            new Sprite(16, 689, 143)};
 	public static Sprite portal = new Sprite(16, 393, 789);
 	public static Sprite portal2 = new Sprite(16, 409, 789);
 
@@ -26,7 +28,42 @@ public class Sprite {
     | Wall sprites
     |--------------------------------------------------------------------------
      */
-    public static Sprite wall = new Sprite(16, 737, 110);
+    public static Sprite[] wall = new Sprite[]{new Sprite(16, 415, 110),
+                                            new Sprite(16, 737, 110),
+                                            new Sprite(16, 415, 176),
+                                            new Sprite(16, 737, 143)};
+    public static Sprite[] wallUp = new Sprite[]{new Sprite(16, 447, 110),
+                                            new Sprite(16, 769, 110),
+                                            new Sprite(16, 447, 176),
+                                            new Sprite(16, 769, 143)};
+    public static Sprite[] wallDown = new Sprite[]{new Sprite(16, 566, 110),
+                                            new Sprite(16, 881, 110),
+                                            new Sprite(16, 566, 176),
+                                            new Sprite(16, 881, 143)};
+    public static Sprite[] wallLeft = new Sprite[]{new Sprite(16, 623, 110),
+                                            new Sprite(16, 945, 110),
+                                            new Sprite(16, 623, 176),
+                                            new Sprite(16, 945, 143)};
+    public static Sprite[] wallRight = new Sprite[]{new Sprite(16, 495, 110),
+                                            new Sprite(16, 817, 110),
+                                            new Sprite(16, 495, 176),
+                                            new Sprite(16, 817, 143)};
+    public static Sprite[] wallUpLeft = new Sprite[]{new Sprite(16, 431, 110),
+                                            new Sprite(16, 753, 110),
+                                            new Sprite(16, 431, 176),
+                                            new Sprite(16, 753, 143)};
+    public static Sprite[] wallUpRight = new Sprite[]{new Sprite(16, 479, 110),
+                                            new Sprite(16, 801, 110),
+                                            new Sprite(16, 479, 176),
+                                            new Sprite(16, 801, 143)};
+    public static Sprite[] wallDownLeft = new Sprite[]{new Sprite(16,543, 110),
+                                            new Sprite(16,865, 110),
+                                            new Sprite(16,543, 176),
+                                            new Sprite(16,865, 143)};
+    public static Sprite[] wallDownRight = new Sprite[]{new Sprite(16, 607, 110),
+                                            new Sprite(16, 929, 110),
+                                            new Sprite(16, 607, 176),
+                                            new Sprite(16, 929, 143)};
 
     /*
     |--------------------------------------------------------------------------
@@ -114,13 +151,61 @@ public class Sprite {
 	|--------------------------------------------------------------------------
 	 */
 
+    /*
+|--------------------------------------------------------------------------
+| Brick
+|--------------------------------------------------------------------------
+ */
+    public static Sprite[] brick = new Sprite[]{new Sprite(16, 399,110),
+                                            new Sprite(16, 721,110),
+                                            new Sprite(16, 399,176),
+                                            new Sprite(16, 721,143)};
+
+    public static Sprite[] brick_exploded6 = new Sprite[]{new Sprite(16, 495, 126),
+                                            new Sprite(16, 817, 126),
+                                            new Sprite(16, 495, 192),
+                                            new Sprite(16, 817, 159)};
+    public static Sprite[] brick_exploded5 = new Sprite[]{new Sprite(16, 511, 126),
+                                            new Sprite(16, 833, 126),
+                                            new Sprite(16, 511, 192),
+                                            new Sprite(16, 833, 159)};
+    public static Sprite[] brick_exploded4 = new Sprite[]{new Sprite(16, 527, 126),
+                                            new Sprite(16, 849, 126),
+                                            new Sprite(16, 527, 192),
+                                            new Sprite(16, 849, 159)};
+    public static Sprite[] brick_exploded3 = new Sprite[]{new Sprite(16, 543, 126),
+                                            new Sprite(16, 865, 126),
+                                            new Sprite(16, 543, 192),
+                                            new Sprite(16, 865, 159)};
+    public static Sprite[] brick_exploded2 = new Sprite[]{new Sprite(16, 559, 126),
+                                            new Sprite(16, 881, 126),
+                                            new Sprite(16, 559, 192),
+                                            new Sprite(16, 881, 159)};
+    public static Sprite[] brick_exploded1 = new Sprite[]{new Sprite(16, 575, 126),
+                                            new Sprite(16, 897, 126),
+                                            new Sprite(16, 575, 192),
+                                            new Sprite(16, 897, 159)};
+    public static Sprite[] brick_exploded = new Sprite[]{new Sprite(16, 591, 126),
+                                            new Sprite(16, 913, 126),
+                                            new Sprite(16, 591, 192),
+                                            new Sprite(16, 913, 159)};
+    /*
+    |--------------------------------------------------------------------------
+    | Powerups
+    |--------------------------------------------------------------------------
+     */
+    public static Sprite itemBomb = new Sprite(16, 16, 48);
+    public static Sprite itemFire = new Sprite(16, 0, 48);
+    public static Sprite itemSpeed = new Sprite(16, 48, 48);
+
     //Enemy 1
 
 	public static Sprite enemy1_1 = new Sprite(16, 426, 215);
 	public static Sprite enemy1_2 = new Sprite(16, 442, 215);
 	public static Sprite enemy1_3 = new Sprite(16, 458, 215);
 
-	public static Sprite enemy1_dead = new Sprite(16, 474, 215);
+	public static Sprite enemy1_dead1 = new Sprite(16, 474, 215);
+	public static Sprite enemy1_dead2 = new Sprite(16, 490, 215);
 
 	//Enemy2
     public static Sprite enemy2_up1 = new Sprite(16, 522, 233);
@@ -140,82 +225,12 @@ public class Sprite {
     public static Sprite enemy2_right3 = new Sprite(16, 602, 233);
 
     public static Sprite enemy2_dead = new Sprite(16, 394, 251);
-//
-//	//ONEAL
-//	public static Sprite oneal_left1 = new Sprite(11, 0);
-//	public static Sprite oneal_left2 = new Sprite(11, 1);
-//	public static Sprite oneal_left3 = new Sprite(11, 2);
-//
-//	public static Sprite oneal_right1 = new Sprite(12, 0);
-//	public static Sprite oneal_right2 = new Sprite(12, 1);
-//	public static Sprite oneal_right3 = new Sprite(12, 2);
-//
-//	public static Sprite oneal_dead = new Sprite(11, 3);
-//
-//	//Doll
-//	public static Sprite doll_left1 = new Sprite(13, 0);
-//	public static Sprite doll_left2 = new Sprite(13, 1);
-//	public static Sprite doll_left3 = new Sprite(13, 2);
-//
-//	public static Sprite doll_right1 = new Sprite(14, 0);
-//	public static Sprite doll_right2 = new Sprite(14, 1);
-//	public static Sprite doll_right3 = new Sprite(14, 2);
-//
-//	public static Sprite doll_dead = new Sprite(13, 3);
-//
-//	//Minvo
-//	public static Sprite minvo_left1 = new Sprite(8, 5);
-//	public static Sprite minvo_left2 = new Sprite(8, 6);
-//	public static Sprite minvo_left3 = new Sprite(8, 7);
-//
-//	public static Sprite minvo_right1 = new Sprite(9, 5);
-//	public static Sprite minvo_right2 = new Sprite(9, 6);
-//	public static Sprite minvo_right3 = new Sprite(9, 7);
-//
-//	public static Sprite minvo_dead = new Sprite(8, 8);
-//
-//	//Kondoria
-//	public static Sprite kondoria_left1 = new Sprite(10, 5);
-//	public static Sprite kondoria_left2 = new Sprite(10, 6);
-//	public static Sprite kondoria_left3 = new Sprite(10, 7);
-//
-//	public static Sprite kondoria_right1 = new Sprite(11, 5);
-//	public static Sprite kondoria_right2 = new Sprite(11, 6);
-//	public static Sprite kondoria_right3 = new Sprite(11, 7);
-//
-//	public static Sprite kondoria_dead = new Sprite(10, 8);
-//
-//	//ALL
-//	public static Sprite mob_dead1 = new Sprite(15, 0);
-//	public static Sprite mob_dead2 = new Sprite(15, 1);
-//	public static Sprite mob_dead3 = new Sprite(15, 2);
+    // Enemy dead
+    public static Sprite dead1 = new Sprite(16, 80, 341);
+    public static Sprite dead2 = new Sprite(16, 96, 341);
+    public static Sprite dead3 = new Sprite(16, 112, 341);
+    public static Sprite dead4 = new Sprite(16, 128, 341);
 
-    /*
-    |--------------------------------------------------------------------------
-    | Brick FlameSegment
-    |--------------------------------------------------------------------------
-     */
-    public static Sprite brick_exploded = new Sprite(16, 495 + 16 * 6, 159);
-    public static Sprite brick_exploded1 = new Sprite(16, 495 + 16 * 5, 159);
-
-    public static Sprite brick_exploded2 = new Sprite(16, 495 + 16 * 4, 159);
-    public static Sprite brick_exploded3 = new Sprite(16, 495 + 16 * 3, 159);
-    public static Sprite brick_exploded4 = new Sprite(16, 495 + 16 * 2, 159);
-    public static Sprite brick_exploded5 = new Sprite(16, 495 + 16 * 1, 159);
-    public static Sprite brick_exploded6 = new Sprite(16, 495, 159);
-
-	/*
-	|--------------------------------------------------------------------------
-	| Powerups
-	|--------------------------------------------------------------------------
-	 */
-	public static Sprite itemBomb = new Sprite(16, 16, 48);
-	public static Sprite itemFire = new Sprite(16, 0, 48);
-	public static Sprite itemSpeed = new Sprite(16, 48, 48);
-//	public static Sprite powerup_wallpass = new Sprite(3, 10);
-//	public static Sprite powerup_detonator = new Sprite(4, 10);
-//	public static Sprite powerup_bombpass = new Sprite(5, 10);
-//	public static Sprite powerup_flamepass = new Sprite(6, 10);
 
     public Sprite(int size, int xx, int yy) {
         SIZE = size;
