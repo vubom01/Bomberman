@@ -11,13 +11,13 @@ public class Enemy2 extends Enemy {
     public Enemy2(double x, double y, Board board) {
         super(x, y, board, 1.0, 300);
         setSprite();
-        wallpass = false;
+        wallpass = true;
     }
 
     public void render(Screen screen) {
         if(alive) setSprite();
         else if (sprite != Sprite.dead4)
-            sprite = Sprite.movingSprite(Sprite.enemy2_dead1, Sprite.enemy2_dead2, Sprite.enemy2_dead3, Sprite.dead1, Sprite.dead2, Sprite.dead3, Sprite.dead4, animation, 84);
+            sprite = Sprite.movingSprite(Sprite.enemy2_dead1, Sprite.enemy2_dead2, Sprite.enemy2_dead3, Sprite.dead1, Sprite.dead2, Sprite.dead3, Sprite.dead4, animation, 70);
 
         screen.renderEntity((int) x, (int) y - sprite.getSIZE_Y(), this);
     }
