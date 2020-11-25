@@ -1,7 +1,9 @@
 package uet.oop.bomberman.gui.map;
 
 import uet.oop.bomberman.Board;
+import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.ListEntity;
+import uet.oop.bomberman.entities.moveObject.enemy.Enemy4;
 import uet.oop.bomberman.entities.moveObject.player.Player;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy1;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy2;
@@ -115,7 +117,7 @@ public class CreateMap {
                         break;
                     //
                     case 'p':
-                        board.addMob(new Player(x * 16, y * 16 + 16, board));
+                        board.addMob(new Player(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
                         board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
                         break;
                     case 'x':
@@ -126,15 +128,19 @@ public class CreateMap {
                         break;
                     // Enemy
                     case '1':
-                        board.addMob(new Enemy1(x * 16, y * 16 + 16, board));
+                        board.addMob(new Enemy1(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
                         board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
                         break;
                     case '2':
-                        board.addMob(new Enemy2(x * 16, y * 16 + 16, board));
+                        board.addMob(new Enemy2(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
                         board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
                         break;
                     case '3':
-                        board.addMob(new Enemy3(x * 16, y * 16 + 16, board));
+                        board.addMob(new Enemy3(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
+                        break;
+                    case '4':
+                        board.addMob(new Enemy4(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
                         board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
                         break;
                     // Grass

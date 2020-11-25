@@ -309,4 +309,13 @@ public class Board {
     public Game getGame() {
         return game;
     }
+
+    public Player getPlayer() {
+        for (int i = 0; i < moveObjects.size(); i++) {
+            if (moveObjects.get(i) instanceof Player) {
+                return (Player) moveObjects.get(i);
+            }
+        }
+        return null;
+    }
 }

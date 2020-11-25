@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities.moveObject;
 
 import uet.oop.bomberman.Board;
+import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.gui.Screen;
 
@@ -40,19 +41,19 @@ public abstract class MoveObject extends Entity {
 
     public abstract boolean canMove(double xa, double ya);
 
-    public boolean isAlive() {
-        return alive;
-    }
-
-    public boolean isMoving() {
-        return moving;
-    }
-
-    public int getDirection() {
-        return direction;
-    }
-
     public boolean isWallpass() {
         return wallpass;
+    }
+
+    public static int pixelToTile(double i) {
+        return (int)(i / Game.TILES_SIZE);
+    }
+
+    public int getXTile() {
+        return pixelToTile(x + Game.TILES_SIZE / 2);
+    }
+
+    public int getYTile() {
+        return pixelToTile(y - Game.TILES_SIZE / 2);
     }
 }
