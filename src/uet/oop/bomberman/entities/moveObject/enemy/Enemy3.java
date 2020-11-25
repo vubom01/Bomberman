@@ -1,7 +1,6 @@
 package uet.oop.bomberman.entities.moveObject.enemy;
 
 import uet.oop.bomberman.Board;
-import uet.oop.bomberman.Game;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
@@ -39,7 +38,7 @@ public class Enemy3 extends Enemy {
 
     public void calculateMove() {
         int xa = 0, ya = 0;
-
+        boolean[] kt = new boolean[4];
         if (step <= 0) {
             while (true) {
                 direction = new Random().nextInt(4);
@@ -53,6 +52,12 @@ public class Enemy3 extends Enemy {
                     step = 20;
                     break;
                 }
+                kt[direction] = true;
+                int cnt = 0;
+                for (int i = 0; i < 4; i++) {
+                    if (kt[i] == true) cnt++;
+                }
+                if (cnt == 4) break;
             }
         }
 

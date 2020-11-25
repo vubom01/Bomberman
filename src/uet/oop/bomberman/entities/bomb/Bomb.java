@@ -90,10 +90,6 @@ public class Bomb extends Entity {
         return null;
     }
 
-    public boolean isExploded() {
-        return exploded;
-    }
-
     public ListExplosion[] getExplosion() {
         if (exploded) return explosions;
         return null;

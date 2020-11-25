@@ -50,10 +50,6 @@ public class BrickTile extends Tile {
         return false;
     }
 
-    public boolean isDestroyed() {
-        return destroyed;
-    }
-
     public void destroy() {
         this.destroyed = true;
     }

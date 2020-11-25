@@ -9,7 +9,7 @@ import uet.oop.bomberman.gui.Sprite;
 
 public class Explosion extends Entity {
 
-    private boolean last = false;
+    private boolean last;
     private Board board;
     private int direction;
 

@@ -53,7 +53,7 @@ public class Enemy2 extends Enemy {
 
     public void calculateMove() {
         int xa = 0, ya = 0;
-
+        boolean[] kt = new boolean[4];
         if (step <= 0) {
             while (true) {
                 direction = new Random().nextInt(4);
@@ -67,6 +67,12 @@ public class Enemy2 extends Enemy {
                     step = 16 * 8;
                     break;
                 }
+                kt[direction] = true;
+                int cnt = 0;
+                for (int i = 0; i < 4; i++) {
+                    if (kt[i] == true) cnt++;
+                }
+                if (cnt == 4) break;
             }
         }
 

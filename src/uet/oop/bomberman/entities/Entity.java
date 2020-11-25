@@ -1,6 +1,5 @@
 package uet.oop.bomberman.entities;
 
-import uet.oop.bomberman.Game;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 

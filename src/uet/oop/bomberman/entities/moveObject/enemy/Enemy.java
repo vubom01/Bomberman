@@ -5,7 +5,6 @@ import uet.oop.bomberman.collision.Collision;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gui.Screen;
-import uet.oop.bomberman.gui.Sprite;
 
 import java.util.Random;
 

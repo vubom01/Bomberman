@@ -13,7 +13,7 @@ public class Enemy4 extends Enemy {
     private int step = 8;
 
     public Enemy4(double x, double y, Board board) {
-        super(x, y, board, 2.0, 100);
+        super(x, y, board, 2.0, 500);
         sprite = Sprite.enemy4_2;
         p = board.getPlayer();
     }
@@ -52,6 +52,7 @@ public class Enemy4 extends Enemy {
             if (direction == 2) xx--;
             if (direction == 3) xx++;
             if (!canMove(xx * speed, yy * speed)) {
+                boolean[] kt = new boolean[4];
                 while (true) {
                     direction = new Random().nextInt(4);
                     xx = xa;
@@ -64,6 +65,12 @@ public class Enemy4 extends Enemy {
                     if (canMove(xx * speed, yy * speed)) {
                         break;
                     }
+                    kt[direction] = true;
+                    int cnt = 0;
+                    for (int i = 0; i < 4; i++) {
+                        if (kt[i] == true) cnt++;
+                    }
+                    if (cnt == 4) break;
                 }
             }
         }
