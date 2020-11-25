@@ -1,14 +1,16 @@
-package uet.oop.bomberman.entities.moveObject;
+package uet.oop.bomberman.entities.moveObject.player;
 
 import uet.oop.bomberman.*;
+import uet.oop.bomberman.collision.Collision;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.Bomb;
 import uet.oop.bomberman.entities.bomb.ListExplosion;
+import uet.oop.bomberman.entities.moveObject.MoveObject;
+import uet.oop.bomberman.entities.moveObject.player.input.Keyboard;
 import uet.oop.bomberman.entities.tile.item.Item;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

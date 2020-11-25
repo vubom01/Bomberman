@@ -1,8 +1,7 @@
 package uet.oop.bomberman.entities.moveObject.enemy;
 
 import uet.oop.bomberman.Board;
-import uet.oop.bomberman.Collision;
-import uet.oop.bomberman.Game;
+import uet.oop.bomberman.collision.Collision;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gui.Screen;
@@ -14,13 +13,13 @@ public abstract class Enemy extends MoveObject {
     protected int point;
     protected double speed;
     protected Collision collision;
-    protected boolean special = false;
+    protected int finalAnimation = 30;
 
     public Enemy(double x, double y, Board board, double speed, int point) {
         super(x, y, board);
         this.speed = speed;
         this.point = point;
-        timeAfter = 70;
+        timeAfter = 20;
         collision = new Collision(board, this);
         direction = new Random().nextInt(4);
     }
@@ -53,19 +52,19 @@ public abstract class Enemy extends MoveObject {
 
     @Override
     public void kill() {
+        if (alive == false) return;
         alive = false;
-        animation = 0;
+        board.addPoints(point);
     }
 
     @Override
     public void dead() {
         if (timeAfter > 0) {
-            setAnimation();
             timeAfter--;
         }
         else {
-            board.addPoints(point);
-            remove();
+            if (finalAnimation > 0) finalAnimation--;
+            else remove();
         }
     }
 

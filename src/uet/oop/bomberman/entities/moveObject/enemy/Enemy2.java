@@ -8,6 +8,8 @@ import java.util.Random;
 
 public class Enemy2 extends Enemy {
 
+    private int step = 16 * 8;
+
     public Enemy2(double x, double y, Board board) {
         super(x, y, board, 1.0, 300);
         setSprite();
@@ -15,16 +17,20 @@ public class Enemy2 extends Enemy {
     }
 
     public void render(Screen screen) {
-        if(alive) setSprite();
-        else if (sprite != Sprite.dead4)
-            sprite = Sprite.movingSprite(Sprite.enemy2_dead1, Sprite.enemy2_dead2, Sprite.enemy2_dead3, Sprite.dead1, Sprite.dead2, Sprite.dead3, Sprite.dead4, animation, 70);
-
+        if (alive) setSprite();
+        else {
+            if (timeAfter > 0) {
+                sprite = Sprite.enemy2_dead;
+                animation = 0;
+            }
+            else sprite = Sprite.movingSprite(Sprite.dead1, Sprite.dead2, Sprite.dead3, animation, 60);
+        }
         screen.renderEntity((int) x, (int) y - sprite.getSIZE_Y(), this);
     }
 
     @Override
     public void setSprite() {
-        int time = 21;
+        int time = 60;
         switch (direction) {
             case 0:
                 sprite = Sprite.movingSprite(Sprite.enemy2_up1, Sprite.enemy2_up2, Sprite.enemy2_up3, animation, time);
@@ -42,14 +48,27 @@ public class Enemy2 extends Enemy {
     }
 
     public boolean canMove(double xa, double ya) {
-        if (!collision.collision(xa, ya)) {
-            direction = new Random().nextInt(4);
-        }
         return collision.collision(xa, ya);
     }
 
     public void calculateMove() {
         int xa = 0, ya = 0;
+
+        if (step <= 0) {
+            while (true) {
+                direction = new Random().nextInt(4);
+                double xx = xa, yy = ya;
+                if (direction == 0) yy--;
+                if (direction == 1) yy++;
+                if (direction == 2) xx--;
+                if (direction == 3) xx++;
+
+                if (canMove(xx * speed, yy * speed)) {
+                    step = 16 * 8;
+                    break;
+                }
+            }
+        }
 
         if(direction == 0) ya--;
         if(direction == 1) ya++;
@@ -57,9 +76,11 @@ public class Enemy2 extends Enemy {
         if(direction == 3) xa++;
 
         if(canMove(xa, ya)) {
+            step--;
             move(xa * speed, ya * speed);
             moving = true;
         } else {
+            step = 0;
             moving = false;
         }
     }

@@ -1,5 +1,6 @@
 package uet.oop.bomberman;
 
+import uet.oop.bomberman.entities.moveObject.player.input.Keyboard;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.menu.Frame;
 
@@ -178,10 +179,6 @@ public class Game extends Canvas {
         playerSpeed += i;
     }
 
-    public Keyboard getInput() {
-        return input;
-    }
-
     public Board getBoard() {
         return board;
     }
@@ -189,6 +186,7 @@ public class Game extends Canvas {
     public void resetScreenDelay() {
         screenDelay = SCREENDELAY;
     }
+
     public void resetScreenDelayEnd() {
         screenDelayEnd = SCREENDELAY;
     }

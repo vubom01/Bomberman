@@ -1,4 +1,4 @@
-package uet.oop.bomberman;
+package uet.oop.bomberman.entities.moveObject.player.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

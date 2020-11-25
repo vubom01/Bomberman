@@ -1,21 +1,19 @@
-package uet.oop.bomberman;
+package uet.oop.bomberman.collision;
 
+import uet.oop.bomberman.Board;
+import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.ListEntity;
 import uet.oop.bomberman.entities.bomb.Bomb;
 import uet.oop.bomberman.entities.bomb.Explosion;
 import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
-import uet.oop.bomberman.entities.moveObject.Player;
+import uet.oop.bomberman.entities.moveObject.player.Player;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy;
-import uet.oop.bomberman.entities.tile.PortalTile;
-import uet.oop.bomberman.entities.tile.item.Item;
+import uet.oop.bomberman.gui.map.CreateMap;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Collision {
@@ -44,8 +42,8 @@ public class Collision {
         else moveObjectRect = new Rectangle2D.Double(
                 moveObject.getX() + x,
                 moveObject.getY() + y,
-                Game.TILES_SIZE,
-                Game.TILES_SIZE
+                Game.TILES_SIZE - 1,
+                Game.TILES_SIZE - 1
         );
 
         for (int i = 0; i < width; i++) {
@@ -76,8 +74,8 @@ public class Collision {
         else {
             x1 = moveObject.getX();
             y1 = moveObject.getY();
-            h1 = Game.TILES_SIZE;
-            w1 = Game.TILES_SIZE;
+            h1 = Game.TILES_SIZE - 1;
+            w1 = Game.TILES_SIZE - 1;
         }
 
         double x2 = r.getX();
@@ -105,8 +103,8 @@ public class Collision {
         else moveObjectRect = new Rectangle2D.Double(
                 moveObject.getX() + x,
                 moveObject.getY() + y,
-                Game.TILES_SIZE,
-                Game.TILES_SIZE
+                Game.TILES_SIZE - 1,
+                Game.TILES_SIZE - 1
         );
 
         List<Bomb> b = board.getBombs();
@@ -144,8 +142,8 @@ public class Collision {
         else {
             x1 = moveObject.getX();
             y1 = moveObject.getY();
-            h1 = Game.TILES_SIZE;
-            w1 = Game.TILES_SIZE;
+            h1 = Game.TILES_SIZE - 1;
+            w1 = Game.TILES_SIZE - 1;
         }
         x1 += 3;
         y1 += 3;

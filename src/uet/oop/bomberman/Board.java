@@ -4,9 +4,11 @@ import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.Bomb;
 import uet.oop.bomberman.entities.bomb.Explosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
-import uet.oop.bomberman.entities.moveObject.Player;
+import uet.oop.bomberman.entities.moveObject.player.Player;
+import uet.oop.bomberman.entities.moveObject.player.input.Keyboard;
 import uet.oop.bomberman.entities.tile.item.Item;
 import uet.oop.bomberman.gui.Screen;
+import uet.oop.bomberman.gui.map.CreateMap;
 
 import java.awt.*;
 import java.io.IOException;

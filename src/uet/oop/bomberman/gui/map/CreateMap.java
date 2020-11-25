@@ -1,14 +1,15 @@
-package uet.oop.bomberman;
+package uet.oop.bomberman.gui.map;
 
+import uet.oop.bomberman.Board;
 import uet.oop.bomberman.entities.ListEntity;
-import uet.oop.bomberman.entities.moveObject.Player;
+import uet.oop.bomberman.entities.moveObject.player.Player;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy1;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy2;
 import uet.oop.bomberman.entities.moveObject.enemy.Enemy3;
-import uet.oop.bomberman.entities.tile.BrickTile;
-import uet.oop.bomberman.entities.tile.GrassTile;
-import uet.oop.bomberman.entities.tile.PortalTile;
-import uet.oop.bomberman.entities.tile.WallTile;
+import uet.oop.bomberman.entities.tile.block.BrickTile;
+import uet.oop.bomberman.entities.tile.block.GrassTile;
+import uet.oop.bomberman.entities.tile.block.PortalTile;
+import uet.oop.bomberman.entities.tile.block.WallTile;
 import uet.oop.bomberman.entities.tile.item.iBomb;
 import uet.oop.bomberman.entities.tile.item.iFire;
 import uet.oop.bomberman.entities.tile.item.iSpeed;
