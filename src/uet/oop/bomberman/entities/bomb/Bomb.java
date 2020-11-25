@@ -1,10 +1,11 @@
 package uet.oop.bomberman.entities.bomb;
 
-import uet.oop.bomberman.Board;
-import uet.oop.bomberman.Game;
+import uet.oop.bomberman.gamestage.Board;
+import uet.oop.bomberman.gamestage.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
+import uet.oop.bomberman.sound.Sound;
 
 public class Bomb extends Entity {
 
@@ -76,6 +77,8 @@ public class Bomb extends Entity {
         for (int i = 0; i < explosions.length; i++) {
             explosions[i] = new ListExplosion((int) x, (int) y, i, Game.getBombRadius(), board);
         }
+        Sound.playBombExplose();
+
     }
 
     public Explosion explosionAt(double x, double y) {

@@ -1,6 +1,6 @@
 package uet.oop.bomberman.gui.menu;
 
-import uet.oop.bomberman.Game;
+import uet.oop.bomberman.gamestage.Game;
 
 public class InfoPanel extends javax.swing.JPanel {
 

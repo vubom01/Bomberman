@@ -1,12 +1,13 @@
 package uet.oop.bomberman.entities.tile.block;
 
-import uet.oop.bomberman.Game;
+import uet.oop.bomberman.gamestage.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.entities.tile.Tile;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
+import uet.oop.bomberman.sound.Sound;
 
 public class BrickTile extends Tile {
     private boolean destroyed = false;
@@ -45,6 +46,7 @@ public class BrickTile extends Tile {
             return true;
         }
         if (e instanceof ListExplosion) {
+            Sound.playDestroy();
             destroy();
         }
         return false;

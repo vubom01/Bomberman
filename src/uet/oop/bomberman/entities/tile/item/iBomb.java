@@ -1,11 +1,12 @@
 package uet.oop.bomberman.entities.tile.item;
 
-import uet.oop.bomberman.Game;
+import uet.oop.bomberman.gamestage.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.entities.moveObject.player.Player;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
+import uet.oop.bomberman.sound.Sound;
 
 public class iBomb extends Item {
 
@@ -21,6 +22,7 @@ public class iBomb extends Item {
     @Override
     public boolean checkcollision(Entity e) {
         if(e instanceof Player) {
+            Sound.playGetNewItem();
             ((Player) e).addItem(this);
             remove();
         }

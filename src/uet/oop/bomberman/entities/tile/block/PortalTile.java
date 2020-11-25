@@ -1,12 +1,13 @@
 package uet.oop.bomberman.entities.tile.block;
 
-import uet.oop.bomberman.Board;
-import uet.oop.bomberman.Game;
+import uet.oop.bomberman.gamestage.Board;
+import uet.oop.bomberman.gamestage.Game;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.moveObject.player.Player;
 import uet.oop.bomberman.entities.tile.Tile;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.Sprite;
+import uet.oop.bomberman.sound.Sound;
 
 public class PortalTile extends Tile {
 

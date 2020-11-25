@@ -1,10 +1,11 @@
 package uet.oop.bomberman.entities.moveObject.enemy;
 
-import uet.oop.bomberman.Board;
+import uet.oop.bomberman.gamestage.Board;
 import uet.oop.bomberman.collision.Collision;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gui.Screen;
+import uet.oop.bomberman.sound.Sound;
 
 import java.util.Random;
 
@@ -52,6 +53,7 @@ public abstract class Enemy extends MoveObject {
     @Override
     public void kill() {
         if (alive == false) return;
+        Sound.playMosterDie();
         alive = false;
         board.addPoints(point);
     }
