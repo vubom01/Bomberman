@@ -1,7 +1,6 @@
 package uet.oop.bomberman.gamestage;
 
 import uet.oop.bomberman.entities.moveObject.player.input.Keyboard;
-import uet.oop.bomberman.gamestage.Board;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.menu.Frame;
 import uet.oop.bomberman.sound.Sound;
@@ -25,7 +24,7 @@ public class Game extends Canvas {
     private static final int SCREENDELAY = 3;
     public static final int TIMES = 300;
     public static final int POINTS = 0;
-    public static final int LIVES = 1;
+    public static final int LIVES = 3;
 
 
     public static double playerSpeed = PLAYERSPEED;
@@ -33,12 +32,12 @@ public class Game extends Canvas {
     public static int bombRadius = BOMBRADIUS;
     public static int screenDelay = SCREENDELAY;
     public static int screenDelayEnd = SCREENDELAY;
+    public static Board board;
 
     private Keyboard input;
     private boolean running = false;
     private boolean paused = true;
 
-    private Board board;
     private Screen screen;
     private Frame frame;
 
@@ -181,7 +180,11 @@ public class Game extends Canvas {
         playerSpeed += i;
     }
 
-    public Board getBoard() {
+    public static void setPlayerLive(int i) {
+
+    }
+
+    public static Board getBoard() {
         return board;
     }
 

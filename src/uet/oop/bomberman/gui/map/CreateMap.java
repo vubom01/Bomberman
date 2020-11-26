@@ -1,5 +1,6 @@
 package uet.oop.bomberman.gui.map;
 
+import uet.oop.bomberman.entities.tile.item.*;
 import uet.oop.bomberman.gamestage.Board;
 import uet.oop.bomberman.gamestage.Game;
 import uet.oop.bomberman.entities.ListEntity;
@@ -12,9 +13,6 @@ import uet.oop.bomberman.entities.tile.block.BrickTile;
 import uet.oop.bomberman.entities.tile.block.GrassTile;
 import uet.oop.bomberman.entities.tile.block.PortalTile;
 import uet.oop.bomberman.entities.tile.block.WallTile;
-import uet.oop.bomberman.entities.tile.item.iBomb;
-import uet.oop.bomberman.entities.tile.item.iFire;
-import uet.oop.bomberman.entities.tile.item.iSpeed;
 import uet.oop.bomberman.gui.Sprite;
 
 import java.io.BufferedReader;
@@ -115,11 +113,31 @@ public class CreateMap {
                         }
                         board.addEntity(pos, listEntity);
                         break;
+                    case 'l':
+                        listEntity = new ListEntity(x, y, new GrassTile(x ,y, Sprite.grass[getLevel()]),
+                                new BrickTile(x ,y, Sprite.brick[getLevel()], getLevel()));
+                        if (!board.isItemUsed(x, y, level)) {
+                            listEntity.addBeforeTop(new iLive(x, y, level, Sprite.itemLive));
+                        }
+                        board.addEntity(pos, listEntity);
+                        break;
+                    case 'w':
+                        listEntity = new ListEntity(x, y, new GrassTile(x ,y, Sprite.grass[getLevel()]),
+                                new BrickTile(x ,y, Sprite.brick[getLevel()], getLevel()));
+                        if (!board.isItemUsed(x, y, level)) {
+                            listEntity.addBeforeTop(new iWallPass(x, y, level, Sprite.itemWallPass));
+                        }
+                        board.addEntity(pos, listEntity);
+                        break;
                     //
                     case 'p':
                         board.addMob(new Player(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
                         board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
                         break;
+//                    case 'q':
+//                        board.addMob(new Player(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
+//                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
+//                        break;
                     case 'x':
                         board.addEntity(pos, new ListEntity(x, y,
                                 new GrassTile(x ,y, Sprite.grass[getLevel()]),

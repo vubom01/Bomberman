@@ -45,6 +45,10 @@ public abstract class MoveObject extends Entity {
         return wallpass;
     }
 
+    public void setWallpass() {
+        wallpass = true;
+    }
+
     public static int pixelToTile(double i) {
         return (int)(i / Game.TILES_SIZE);
     }

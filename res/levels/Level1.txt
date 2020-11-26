@@ -2,13 +2,13 @@
 13
 15
 [WWWWWWWWWWWWW]
-Lp    **  1  *R
+Lpw   **  1  *R
 L # #*# #*#*# R
 L  s    1*  1*R
 L # # # #*# # R
 L     ***     R
 L #*# #*#*# #*R
-L***  f     * R
+Ll**  f     * R
 L*# # #*#*#*#*R
 L *x       *  R
 L #*# # # #*# R

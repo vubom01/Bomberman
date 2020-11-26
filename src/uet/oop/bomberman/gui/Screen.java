@@ -1,5 +1,6 @@
 package uet.oop.bomberman.gui;
 
+import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gamestage.Board;
 import uet.oop.bomberman.gamestage.Game;
 import uet.oop.bomberman.entities.Entity;
@@ -66,7 +67,7 @@ public class Screen {
         yOffset = y0;
     }
 
-    public static double calculateXOffset(Board board, Player player) {
+    public static double calculateXOffset(Board board, MoveObject player) {
         double temp = xOffset;
 
         int firstBreakpoint = board.getWidth() / 4;
@@ -79,7 +80,7 @@ public class Screen {
         return temp;
     }
 
-    public static double calculateYOffset(Board board, Player player) {
+    public static double calculateYOffset(Board board, MoveObject player) {
         double temp = yOffset;
 
         int firstBreakpoint = board.getHeight() / 4;
@@ -99,12 +100,12 @@ public class Screen {
         Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
         g.setFont(font);
         g.setColor(Color.white);
-        drawCenteredString("GAME OVER", getRealWidth(), getRealHeight(), g);
+        //drawCenteredString("GAME OVER", getRealWidth(), getRealHeight(), g);
 
         font = new Font("Arial", Font.PLAIN, 10 * Game.SCALE);
         g.setFont(font);
         g.setColor(Color.yellow);
-        drawCenteredString("POINTS: " + points, getRealWidth(), getRealHeight() + (Game.TILES_SIZE * 2) * Game.SCALE, g);
+        //drawCenteredString("POINTS: " + points, getRealWidth(), getRealHeight() + (Game.TILES_SIZE * 2) * Game.SCALE, g);
     }
 
     public void drawChangeLevel(Graphics g, int level) {
@@ -114,7 +115,7 @@ public class Screen {
         Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
         g.setFont(font);
         g.setColor(Color.white);
-        drawCenteredString("LEVEL " + level, getRealWidth(), getRealHeight(), g);
+        //drawCenteredString("LEVEL " + level, getRealWidth(), getRealHeight(), g);
 
     }
 
@@ -122,7 +123,7 @@ public class Screen {
         Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
         g.setFont(font);
         g.setColor(Color.white);
-        drawCenteredString("PAUSED", getRealWidth(), getRealHeight(), g);
+        //drawCenteredString("PAUSED", getRealWidth(), getRealHeight(), g);
 
     }
 

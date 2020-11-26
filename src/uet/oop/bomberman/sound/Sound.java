@@ -17,9 +17,6 @@ public class Sound {
     public static String newbomb = "res\\sound\\newbomb.wav";
     public static String destroy ="res\\sound\\destroy.wav";
 
-    public Sound() {
-    }
-
     public static void play( String filePath){
         InputStream music;
         try{
@@ -35,7 +32,7 @@ public class Sound {
         Sound.play(destroy);
     }
 
-    public static  void playBombExplose(){
+    public static void playBombExplose(){
         Sound.play(bombExplose);
     }
 

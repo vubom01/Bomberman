@@ -2,10 +2,12 @@ package uet.oop.bomberman.entities.moveObject.player;
 
 import uet.oop.bomberman.collision.Collision;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.ListEntity;
 import uet.oop.bomberman.entities.bomb.Bomb;
 import uet.oop.bomberman.entities.bomb.ListExplosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.entities.moveObject.player.input.Keyboard;
+import uet.oop.bomberman.entities.tile.block.BrickTile;
 import uet.oop.bomberman.entities.tile.item.Item;
 import uet.oop.bomberman.gamestage.Board;
 import uet.oop.bomberman.gamestage.Game;
@@ -190,6 +192,9 @@ public class Player extends MoveObject {
 
     public boolean check(int x0, int y0) {
         Bomb res = board.getBomb(x0, y0);
+        Entity e = board.getEntity(x0, y0);
+        if (e instanceof ListEntity && ((ListEntity) e).getTopEntity() instanceof BrickTile)
+            return false;
         if (res == null) return true;
         return false;
     }

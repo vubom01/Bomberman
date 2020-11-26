@@ -32,13 +32,12 @@ public class Board {
     private int points = Game.POINTS;
     private int lives = Game.LIVES;
 
-    private int screenToShow = -1; //1:endGame, 2:changeLevel
+    private int screenToShow = -1;
 
     public Board(Game game, Keyboard input, Screen screen) {
         this.game = game;
         this.input = input;
         this.screen = screen;
-
         loadLevel(1);
     }
 
@@ -172,6 +171,7 @@ public class Board {
     public Keyboard getInput() {
         return input;
     }
+
 
     public List<Bomb> getBombs() {
         return bombs;

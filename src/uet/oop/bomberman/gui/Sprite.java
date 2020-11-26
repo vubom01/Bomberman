@@ -71,6 +71,8 @@ public class Sprite {
     | Player Sprites
     |--------------------------------------------------------------------------
      */
+
+    // Player1
     public static Sprite player_up = new Sprite(22, 19,218, 0);
     public static Sprite player_down = new Sprite(22, 19, 2, 0);
     public static Sprite player_left = new Sprite(22, 19, 146, 0);
@@ -95,6 +97,33 @@ public class Sprite {
 	public static Sprite player_dead4 = new Sprite(21, 49, 24);
 	public static Sprite player_dead5 = new Sprite(21, 25, 24);
 	public static Sprite player_dead6 = new Sprite(21, 1, 24);
+
+	// Player2
+
+    public static Sprite player2_up = new Sprite(22, 19,218, 0);
+    public static Sprite player2_down = new Sprite(22, 19, 2, 0);
+    public static Sprite player2_left = new Sprite(22, 19, 146, 0);
+    public static Sprite player2_right = new Sprite(22, 19, 73, 0);
+
+    public static Sprite player2_up_1 = new Sprite(22, 19, 241, 0);
+    public static Sprite player2_up_2 = new Sprite(22, 19, 267, 0);
+
+    public static Sprite player2_down_1 = new Sprite(22, 19, 27, 0);
+    public static Sprite player2_down_2 = new Sprite(22, 19, 49, 0);
+
+    public static Sprite player2_left_1 = new Sprite(22, 19, 169, 0);
+    public static Sprite player2_left_2 = new Sprite(22, 19, 193, 0);
+
+    public static Sprite player2_right_1 = new Sprite(22, 19, 98, 0);
+    public static Sprite player2_right_2 = new Sprite(22, 19, 122, 0);
+
+    public static Sprite player2_dead = new Sprite(21, 168, 25);
+    public static Sprite player2_dead1 = new Sprite(21, 145, 25);
+    public static Sprite player2_dead2 = new Sprite(21, 121, 25);
+    public static Sprite player2_dead3 = new Sprite(21, 97, 25);
+    public static Sprite player2_dead4 = new Sprite(21, 49, 24);
+    public static Sprite player2_dead5 = new Sprite(21, 25, 24);
+    public static Sprite player2_dead6 = new Sprite(21, 1, 24);
 
     /*
     |--------------------------------------------------------------------------
@@ -198,6 +227,8 @@ public class Sprite {
     public static Sprite itemBomb = new Sprite(16, 16, 48);
     public static Sprite itemFire = new Sprite(16, 0, 48);
     public static Sprite itemSpeed = new Sprite(16, 48, 48);
+    public static Sprite itemLive = new Sprite(16, 112, 48);
+    public static Sprite itemWallPass = new Sprite(16, 96, 48);
 
     //Enemy 1
 
