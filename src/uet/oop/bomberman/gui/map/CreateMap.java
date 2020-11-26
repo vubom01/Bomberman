@@ -145,22 +145,22 @@ public class CreateMap {
                                 new BrickTile(x ,y, Sprite.brick[getLevel()], getLevel())) );
                         break;
                     // Enemy
-//                    case '1':
-//                        board.addMob(new Enemy1(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
-//                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
-//                        break;
-//                    case '2':
-//                        board.addMob(new Enemy2(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
-//                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
-//                        break;
-//                    case '3':
-//                        board.addMob(new Enemy3(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
-//                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
-//                        break;
-//                    case '4':
-//                        board.addMob(new Enemy4(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
-//                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
-//                        break;
+                    case '1':
+                        board.addMob(new Enemy1(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
+                        break;
+                    case '2':
+                        board.addMob(new Enemy2(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
+                        break;
+                    case '3':
+                        board.addMob(new Enemy3(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
+                        break;
+                    case '4':
+                        board.addMob(new Enemy4(x * Game.TILES_SIZE, y * Game.TILES_SIZE + Game.TILES_SIZE, board));
+                        board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]));
+                        break;
                     // Grass
                     default:
                         board.addEntity(pos, new GrassTile(x, y, Sprite.grass[getLevel()]) );
