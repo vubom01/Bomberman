@@ -94,7 +94,6 @@ public class InfoPanel extends javax.swing.JPanel {
         hi_score.setText(t + "");
     }
 
-
     private javax.swing.JLabel background;
     private javax.swing.JLabel hi_score;
     private javax.swing.JPanel jPanel1;

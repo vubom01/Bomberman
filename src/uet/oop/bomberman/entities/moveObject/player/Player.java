@@ -57,6 +57,10 @@ public class Player extends MoveObject {
         detectPlaceBomb();
         collision.checkBombExplode();
         collision.enemyCollision(this.x, this.y);
+
+        if (board.getTime() == 0) {
+            kill();
+        }
     }
 
     @Override

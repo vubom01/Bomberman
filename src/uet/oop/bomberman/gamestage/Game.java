@@ -111,8 +111,6 @@ public class Game extends Canvas {
         long timer = System.currentTimeMillis();
         final double ns = 1000000000.0 / 60.0;
         double delta = 0;
-        int frames = 0;
-        int updates = 0;
         requestFocus();
         while(running) {
             long now = System.nanoTime();
@@ -120,9 +118,9 @@ public class Game extends Canvas {
             lastTime = now;
             while(delta >= 1) {
                 update();
-                updates++;
                 delta--;
             }
+
 
             if(paused) {
                 if(screenDelay <= 0) {
@@ -134,21 +132,20 @@ public class Game extends Canvas {
                     paused = false;
                     frame.gameOver();
                 }
-
+                if (board.getShow() == 3 && input.pause == false) board.gameResume();
                 renderScreen();
             } else {
                 renderGame();
+                if (input.pause == true) board.gamePause();
             }
 
 
-            frames++;
+
             if(System.currentTimeMillis() - timer > 1000) {
                 frame.setTime(board.subtractTime());
                 frame.setScore(board.getPoints());
                 frame.setLives(board.getLives());
                 timer += 1000;
-                updates = 0;
-                frames = 0;
 
                 if(board.getShow() == 2) screenDelay--;
                 if(board.getShow() == 1) screenDelayEnd--;
@@ -198,6 +195,11 @@ public class Game extends Canvas {
 
     public void pause() {
         paused = true;
+    }
+
+    public void run() {
+        running = true;
+        paused = false;
     }
 
     public void isRunning() {

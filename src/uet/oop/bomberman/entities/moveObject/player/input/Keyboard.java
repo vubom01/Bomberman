@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class Keyboard implements KeyListener {
 
-    public boolean up, down, left, right, space;
+    public boolean up, down, left, right, space, pause, esc;
 
     @Override
     public void keyTyped(KeyEvent e) {}
@@ -17,7 +17,7 @@ public class Keyboard implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) left = true;
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) right = true;
         if (e.getKeyCode() == KeyEvent.VK_SPACE) space = true;
-
+        if (e.getKeyCode() == KeyEvent.VK_P) pause = !pause;
     }
 
     @Override
@@ -27,7 +27,6 @@ public class Keyboard implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) left = false;
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) right = false;
         if (e.getKeyCode() == KeyEvent.VK_SPACE) space = false;
-
     }
 }
 

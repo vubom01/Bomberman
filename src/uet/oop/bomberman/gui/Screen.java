@@ -4,9 +4,13 @@ import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.gamestage.Board;
 import uet.oop.bomberman.gamestage.Game;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.moveObject.player.Player;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.net.URL;
 
 public class Screen {
 
@@ -100,30 +104,32 @@ public class Screen {
         Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
         g.setFont(font);
         g.setColor(Color.white);
-        //drawCenteredString("GAME OVER", getRealWidth(), getRealHeight(), g);
+        drawCenteredString("GAME OVER", getRealWidth(), getRealHeight(), g);
 
         font = new Font("Arial", Font.PLAIN, 10 * Game.SCALE);
         g.setFont(font);
         g.setColor(Color.yellow);
-        //drawCenteredString("POINTS: " + points, getRealWidth(), getRealHeight() + (Game.TILES_SIZE * 2) * Game.SCALE, g);
+        drawCenteredString("POINTS: " + points, getRealWidth(), getRealHeight() + (Game.TILES_SIZE * 2) * Game.SCALE, g);
     }
 
     public void drawChangeLevel(Graphics g, int level) {
-        g.setColor(Color.black);
-        g.fillRect(0, 0, getRealWidth(), getRealHeight());
-
-        Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
-        g.setFont(font);
-        g.setColor(Color.white);
-        //drawCenteredString("LEVEL " + level, getRealWidth(), getRealHeight(), g);
-
+        BufferedImage image;
+        String filePath = "/textures/level" + level + ".png   ";
+        URL a = getClass().getResource(filePath);
+        try {
+            image = ImageIO.read(a);
+            g.drawImage(image, 0, 0, getWidth() * Game.SCALE, getHeight() * Game.SCALE, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void drawPaused(Graphics g) {
+
         Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
         g.setFont(font);
         g.setColor(Color.white);
-        //drawCenteredString("PAUSED", getRealWidth(), getRealHeight(), g);
+        drawCenteredString("PAUSE", getRealWidth(), getRealHeight(), g);
 
     }
 

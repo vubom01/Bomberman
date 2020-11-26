@@ -42,6 +42,7 @@ public class Board {
     }
 
     public void update() {
+        if (game.isPaused()) return;
         updateEntities();
         updateBombs();
         updateMoveObjects();
@@ -68,7 +69,6 @@ public class Board {
         game.playerSpeed = 0.8;
         game.bombRadius = 1;
         game.bombRate = 1;
-
         loadLevel(1);
     }
 
@@ -225,7 +225,9 @@ public class Board {
     }
 
     public Entity getEntity(double x, double y) {
-       return entities[(int) x + (int) y * level.getWidth()];
+        int pos = (int) x + (int) y * level.getWidth();
+        if (pos >= entities.length) return null;
+        return entities[(int) x + (int) y * level.getWidth()];
     }
 
     public int getWidth() {
@@ -311,5 +313,18 @@ public class Board {
             }
         }
         return null;
+    }
+
+    public void gamePause() {
+        game.resetScreenDelay();
+        if(screenToShow <= 0)
+            screenToShow = 3;
+        game.pause();
+    }
+
+    public void gameResume() {
+        game.resetScreenDelay();
+        screenToShow = -1;
+        game.run();
     }
 }
