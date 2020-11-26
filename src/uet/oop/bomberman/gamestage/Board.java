@@ -38,7 +38,7 @@ public class Board {
         this.game = game;
         this.input = input;
         this.screen = screen;
-        loadLevel(1);
+        loadLevel(0);
     }
 
     public void update() {

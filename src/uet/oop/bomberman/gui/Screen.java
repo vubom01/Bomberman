@@ -98,18 +98,15 @@ public class Screen {
     }
 
     public void drawEndGame(Graphics g, int points) {
-        g.setColor(Color.black);
-        g.fillRect(0, 0, getRealWidth(), getRealHeight());
-
-        Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
-        g.setFont(font);
-        g.setColor(Color.white);
-        drawCenteredString("GAME OVER", getRealWidth(), getRealHeight(), g);
-
-        font = new Font("Arial", Font.PLAIN, 10 * Game.SCALE);
-        g.setFont(font);
-        g.setColor(Color.yellow);
-        drawCenteredString("POINTS: " + points, getRealWidth(), getRealHeight() + (Game.TILES_SIZE * 2) * Game.SCALE, g);
+        BufferedImage image;
+        String filePath = "/textures/gameover.png";
+        URL a = getClass().getResource(filePath);
+        try {
+            image = ImageIO.read(a);
+            g.drawImage(image, 0, 0, getWidth() * Game.SCALE, getHeight() * Game.SCALE, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void drawChangeLevel(Graphics g, int level) {
