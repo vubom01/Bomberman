@@ -100,22 +100,22 @@ public class Sprite {
 
 	// Player2
 
-    public static Sprite player2_up = new Sprite(22, 19,218, 0);
-    public static Sprite player2_down = new Sprite(22, 19, 2, 0);
-    public static Sprite player2_left = new Sprite(22, 19, 146, 0);
-    public static Sprite player2_right = new Sprite(22, 19, 73, 0);
+    public static Sprite player2_up = new Sprite(22, 19,242, 268);
+    public static Sprite player2_down = new Sprite(22, 19, 26, 268);
+    public static Sprite player2_left = new Sprite(22, 19, 170, 268);
+    public static Sprite player2_right = new Sprite(22, 19, 97, 268);
 
-    public static Sprite player2_up_1 = new Sprite(22, 19, 241, 0);
-    public static Sprite player2_up_2 = new Sprite(22, 19, 267, 0);
+    public static Sprite player2_up_1 = new Sprite(22, 19, 265, 268);
+    public static Sprite player2_up_2 = new Sprite(22, 19, 291, 268);
 
-    public static Sprite player2_down_1 = new Sprite(22, 19, 27, 0);
-    public static Sprite player2_down_2 = new Sprite(22, 19, 49, 0);
+    public static Sprite player2_down_1 = new Sprite(22, 19, 51, 268);
+    public static Sprite player2_down_2 = new Sprite(22, 19, 73, 268);
 
-    public static Sprite player2_left_1 = new Sprite(22, 19, 169, 0);
-    public static Sprite player2_left_2 = new Sprite(22, 19, 193, 0);
+    public static Sprite player2_left_1 = new Sprite(22, 19, 193, 268);
+    public static Sprite player2_left_2 = new Sprite(22, 19, 217, 268);
 
-    public static Sprite player2_right_1 = new Sprite(22, 19, 98, 0);
-    public static Sprite player2_right_2 = new Sprite(22, 19, 122, 0);
+    public static Sprite player2_right_1 = new Sprite(22, 19, 122, 268);
+    public static Sprite player2_right_2 = new Sprite(22, 19, 146, 268);
 
     public static Sprite player2_dead = new Sprite(21, 168, 25);
     public static Sprite player2_dead1 = new Sprite(21, 145, 25);

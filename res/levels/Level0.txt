@@ -12,5 +12,5 @@ L       *     R
 L # # # # # # R
 L             R
 L # # # # # # R
-L****         R
+L****        qR
 {DDDDDDDDDDDDD}

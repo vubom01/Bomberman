@@ -87,6 +87,7 @@ public class Menu extends javax.swing.JPanel {
     }
 
     private void battleActionPerformed(java.awt.event.ActionEvent evt) {
+        frame.battle();
     }
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {

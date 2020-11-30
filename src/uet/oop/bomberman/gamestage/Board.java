@@ -6,6 +6,7 @@ import uet.oop.bomberman.entities.bomb.Explosion;
 import uet.oop.bomberman.entities.moveObject.MoveObject;
 import uet.oop.bomberman.entities.moveObject.player.Player;
 import uet.oop.bomberman.entities.moveObject.player.input.Keyboard;
+import uet.oop.bomberman.entities.moveObject.player.input.Keyboard2;
 import uet.oop.bomberman.entities.tile.item.Item;
 import uet.oop.bomberman.gui.Screen;
 import uet.oop.bomberman.gui.map.CreateMap;
@@ -22,6 +23,7 @@ public class Board {
     private CreateMap level;
     private Game game;
     private Keyboard input;
+    private Keyboard2 input2;
     private Screen screen;
 
     private Entity[] entities;
@@ -34,9 +36,10 @@ public class Board {
 
     private int screenToShow = -1;
 
-    public Board(Game game, Keyboard input, Screen screen) {
+    public Board(Game game, Keyboard input, Keyboard2 input2, Screen screen) {
         this.game = game;
         this.input = input;
+        this.input2 = input2;
         this.screen = screen;
         loadLevel(1);
     }
@@ -170,6 +173,10 @@ public class Board {
 
     public Keyboard getInput() {
         return input;
+    }
+
+    public Keyboard2 getInput2() {
+        return input2;
     }
 
 

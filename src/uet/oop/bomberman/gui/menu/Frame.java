@@ -61,6 +61,12 @@ public class Frame extends JFrame {
         game.start();
     }
 
+    public void battle() {
+        game.getB().loadLevel(0);
+        cl.show(containerpane, "New Game");
+        game.isRunning();
+    }
+
 
     public void setTime(int time) {
         infopane.setTime(time);

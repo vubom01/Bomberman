@@ -25,7 +25,7 @@ public class Player extends MoveObject {
 
     private List<Bomb> bombs;
     private Collision collision;
-    private int timetoPutBomb;
+    protected int timetoPutBomb;
 
     public static List<Item> items = new ArrayList<>();
 
@@ -87,7 +87,6 @@ public class Player extends MoveObject {
             }
         }
         screen.renderEntity((int) x, (int) y - sprite.getSIZE_Y(), this);
-
     }
 
     @Override
