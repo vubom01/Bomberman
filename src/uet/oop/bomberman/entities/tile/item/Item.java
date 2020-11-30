@@ -6,7 +6,6 @@ import uet.oop.bomberman.gui.Sprite;
 public abstract class Item extends Entity {
 
     private int level;
-    private boolean active = false;
 
     public Item(double x, double y, int level, Sprite sprite) {
         this.x = x;

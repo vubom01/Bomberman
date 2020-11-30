@@ -54,7 +54,7 @@ public class Player extends MoveObject {
         }
         setAnimation();
         calculateMove();
-        detectPlaceBomb();
+        detectedPlaceBomb();
         collision.checkBombExplode();
         collision.enemyCollision(this.x, this.y);
 
@@ -203,7 +203,7 @@ public class Player extends MoveObject {
         return false;
     }
 
-    public void detectPlaceBomb() {
+    public void detectedPlaceBomb() {
         if (input.space && Game.getBombRate() > 0 && timetoPutBomb < 0) {
             int x0 = (int) ((x + Game.TILES_SIZE / 2) / Game.TILES_SIZE);
             int y0 = (int) ((y + Game.TILES_SIZE / 2 - Game.TILES_SIZE) / Game.TILES_SIZE);
