@@ -1,1 +1,1 @@
-![Cay thua ke](caythuake.png)
+![Cay thua ke](res/textures/caythuake.png)
